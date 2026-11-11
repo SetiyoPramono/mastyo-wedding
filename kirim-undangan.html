@@ -1493,9 +1493,9 @@ body {
           <label class="form-label" for="customUrlInput">
             <span>Base URL / Link Undangan Anda <span class="req">*</span></span>
           </label>
-          <input type="text" id="customUrlInput" class="form-input" placeholder="https://domainanda.com/undangan atau tema1.html" value="tema1.html">
+          <input type="text" id="customUrlInput" class="form-input" placeholder="https://mastyo-weddings.netlify.app/tema12.html" value="https://mastyo-weddings.netlify.app/tema12.html">
           <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 6px; line-height: 1.6;">
-            Contoh hasil link tamu: <span id="sampleUrlPreview" style="color: var(--mastyo-teal-light); word-break: break-all; font-weight: 600;">tema1.html?to=Budi+Santoso</span>
+            Contoh hasil link tamu: <span id="sampleUrlPreview" style="color: var(--mastyo-teal-light); word-break: break-all; font-weight: 600;">https://mastyo-weddings.netlify.app/tema12.html?to=Budi+Santoso</span>
           </p>
         </div>
 
@@ -2096,7 +2096,12 @@ Hormat kami, {pengantin}`
   function getCleanBaseUrl() {
     let raw = customUrlInput.value.trim();
     if (!raw) {
-      raw = 'tema1.html';
+      if (window.location.origin && window.location.origin.startsWith('http')) {
+        let path = window.location.pathname.replace('kirim-undangan.html', '');
+        raw = `${window.location.origin}${path}tema12.html`;
+      } else {
+        raw = 'https://mastyo-weddings.netlify.app/tema12.html';
+      }
     }
     return raw;
   }
