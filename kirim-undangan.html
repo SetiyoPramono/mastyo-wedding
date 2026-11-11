@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Halaman Kirim Undangan WhatsApp & Email Otomatis — MasTyo Wedding. Buat tautan personal tamu (?to=NamaTamu), atur greeting pesan, dan kirim langsung via WhatsApp perangkat Anda.">
+<title>Kirim Undangan Otomatis — MasTyo Wedding</title>
+
+<!-- Favicon / Brand Icon -->
+<link rel="icon" type="image/png" href="logo-mastyo.png">
+
+<!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   1. DESIGN SYSTEM & CSS VARIABLES (MASTYO LUXURY DARK THEME)
+══════════════════════════════════════════════════════════════ */
+:root {
+  --bg-main: #090d14;
+  --bg-surface: #0e1520;
+  --bg-card: #131c2a;
+  --bg-card-hover: #192436;
+  --bg-pill: rgba(255, 255, 255, 0.05);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* MasTyo Signature Brand Teal */
+  --mastyo-teal: #2dd4bf;
+  --mastyo-teal-light: #5eead4;
+  --mastyo-teal-dark: #0f766e;
+  --mastyo-teal-deep: #042f2e;
+  --mastyo-teal-glow: rgba(45, 212, 191, 0.28);
+
+  /* Sunset Warm Amber Accent */
+  --mastyo-amber: #f59e0b;
+  --mastyo-amber-light: #fbbf24;
+  --mastyo-amber-glow: rgba(245, 158, 11, 0.22);
+
+  /* WhatsApp Official Brand Green */
+  --wa-green: #25d366;
+  --wa-green-dark: #128c7e;
+  --wa-green-glow: rgba(37, 211, 102, 0.32);
+
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(45, 212, 191, 0.45);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(45, 212, 191, 0.16);
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: clip;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 76px; /* Offset for fixed navbar */
+}
+
+/* Ambient Background */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(37, 211, 102, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3.5vw, 36px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: #1c2636; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mastyo-teal); }
+
+/* ══════════════════════════════════════════════════════════════
+   2. FIXED NAVBAR
+══════════════════════════════════════════════════════════════ */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(9, 13, 20, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.main-header.is-scrolled {
+  background: rgba(9, 13, 20, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(45, 212, 191, 0.2);
+  padding: 9px 0;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  flex-shrink: 0;
+}
+
+.brand-logo-img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 10px rgba(45, 212, 191, 0.3));
+  transition: transform 0.3s ease;
+}
+.brand-logo-img:hover {
+  transform: scale(1.06) rotate(3deg);
+}
+
+.logo-text-col {
+  display: flex;
+  flex-direction: column;
+}
+.logo-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  line-height: 1.1;
+}
+.logo-title span {
+  color: var(--mastyo-teal);
+}
+.logo-subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mastyo-teal-light);
+  font-weight: 600;
+}
+
+/* Nav Menu Items */
+.nav-menu-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+.nav-item-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-light);
+}
+.nav-item-link.active {
+  color: var(--mastyo-teal-light);
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.badge-pill-accent {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--mastyo-amber), #d97706);
+  color: #0b0f19;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, var(--mastyo-teal), #0d9488);
+  color: var(--mastyo-teal-deep);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--mastyo-teal-glow);
+  white-space: nowrap;
+}
+.btn-contact:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 24px var(--mastyo-teal-glow);
+  color: #021f1e;
+}
+.btn-contact svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. HERO & PAGE HEADER
+══════════════════════════════════════════════════════════════ */
+.page-hero {
+  padding: clamp(32px, 5vw, 56px) 0 clamp(24px, 4vw, 36px);
+  text-align: center;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mastyo-teal-light);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.hero-title .text-gradient {
+  background: linear-gradient(135deg, #ffffff 25%, var(--mastyo-teal-light) 70%, var(--mastyo-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+  color: var(--text-muted);
+  max-width: 780px;
+  margin: 0 auto clamp(24px, 4vw, 36px);
+  line-height: 1.7;
+}
+
+/* Quick Features Row */
+.quick-features-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.feature-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(19, 28, 42, 0.85);
+  border: 1px solid var(--border-light);
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+.feature-badge-item svg {
+  color: var(--mastyo-teal);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. LAYOUT GRIDS & CARDS
+══════════════════════════════════════════════════════════════ */
+.generator-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .generator-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.panel-card {
+  background: rgba(19, 28, 42, 0.88);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3.5vw, 28px);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.panel-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.panel-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.panel-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: rgba(45, 212, 191, 0.18);
+  color: var(--mastyo-teal-light);
+  font-size: 0.8rem;
+  font-weight: 800;
+  border: 1px solid rgba(45, 212, 191, 0.4);
+}
+
+.panel-hint {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. FORM CONTROLS & INPUTS
+══════════════════════════════════════════════════════════════ */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 7px;
+}
+.form-label span.req {
+  color: var(--mastyo-amber);
+}
+.label-subtext {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: #090e17;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--mastyo-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.16);
+  background: #0c121e;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #475569;
+  font-size: 0.86rem;
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394a3b8' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.input-with-action {
+  display: flex;
+  gap: 8px;
+}
+.input-with-action .form-input {
+  flex: 1;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: #e2e8f0;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-secondary:hover {
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.35);
+  color: var(--mastyo-teal-light);
+}
+
+/* Template Helper Tags / Variable Chips */
+.tag-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.btn-chip {
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(45, 212, 191, 0.1);
+  color: var(--mastyo-teal-light);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-chip:hover {
+  background: var(--mastyo-teal);
+  color: var(--mastyo-teal-deep);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. WHATSAPP LIVE CHAT PREVIEW MOCKUP
+══════════════════════════════════════════════════════════════ */
+.wa-preview-box {
+  background: #0d141e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wa-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.wa-header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--wa-green), #075e54);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.wa-header-info {
+  display: flex;
+  flex-direction: column;
+}
+.wa-header-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+}
+.wa-header-status {
+  font-size: 0.68rem;
+  color: var(--wa-green);
+}
+
+.wa-chat-bubble {
+  background: #005c4b; /* WhatsApp dark mode outgoing message bubble */
+  color: #e9edef;
+  border-radius: 12px 0 12px 12px;
+  padding: 12px 14px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  max-width: 95%;
+  margin-left: auto;
+}
+.wa-bubble-time {
+  display: block;
+  text-align: right;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6px;
+}
+.wa-bubble-time svg {
+  vertical-align: middle;
+  color: #53bdeb;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. GUEST INPUT TABS & FORM
+══════════════════════════════════════════════════════════════ */
+.tab-nav-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+.tab-btn.active {
+  color: var(--mastyo-teal-light);
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 580px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--mastyo-teal), #0d9488);
+  color: var(--mastyo-teal-deep);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--mastyo-teal-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 24px var(--mastyo-teal-glow);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. GUEST RECIPIENT LIST & COUNTERS
+══════════════════════════════════════════════════════════════ */
+.stats-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+@media (max-width: 600px) {
+  .stats-summary-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.stat-pill-box {
+  background: rgba(14, 21, 32, 0.8);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stat-pill-info {
+  display: flex;
+  flex-direction: column;
+}
+.stat-pill-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.stat-pill-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+.stat-pill-num.stat-pending {
+  color: var(--mastyo-amber-light);
+}
+.stat-pill-num.stat-sent {
+  color: var(--wa-green);
+}
+
+/* Filter & Search Bar */
+.list-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+.search-input-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  pointer-events: none;
+}
+.search-input-wrap input {
+  padding-left: 40px;
+}
+
+.status-filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.btn-filter-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-filter-pill:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+}
+.btn-filter-pill.active {
+  background: rgba(45, 212, 191, 0.15);
+  color: var(--mastyo-teal-light);
+  border-color: rgba(45, 212, 191, 0.35);
+}
+
+/* Bulk actions bar */
+.bulk-tools-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: rgba(14, 21, 32, 0.6);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+.bulk-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-bulk-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-bulk-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.btn-bulk-action.danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. GUEST TABLE (DESKTOP) & GUEST CARDS (MOBILE)
+══════════════════════════════════════════════════════════════ */
+.guest-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: #090e17;
+}
+
+.guest-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.86rem;
+}
+
+.guest-table th {
+  background: rgba(19, 28, 42, 0.95);
+  padding: 14px 16px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.guest-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.guest-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.guest-cell-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guest-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.25), rgba(245, 158, 11, 0.25));
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--mastyo-teal-light);
+  flex-shrink: 0;
+}
+
+.guest-name-col {
+  display: flex;
+  flex-direction: column;
+}
+.guest-name {
+  font-weight: 700;
+  color: #fff;
+}
+.guest-category {
+  font-size: 0.7rem;
+  color: var(--mastyo-teal);
+}
+
+.phone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.status-badge.pending {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--mastyo-amber-light);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.status-badge.sent {
+  background: rgba(37, 211, 102, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+/* Action Buttons inside Table */
+.guest-actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-send-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, var(--wa-green), #16a34a);
+  color: #032b13;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px var(--wa-green-glow);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-send-wa:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 6px 18px var(--wa-green-glow);
+  color: #011d0d;
+}
+.btn-send-wa svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.btn-send-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-send-email:hover {
+  background: rgba(59, 130, 246, 0.25);
+  color: #bfdbfe;
+}
+
+.btn-action-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-action-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.btn-action-icon.danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Empty State */
+.guest-empty-state {
+  padding: 48px 20px;
+  text-align: center;
+}
+.empty-state-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: var(--mastyo-teal);
+}
+.empty-state-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.empty-state-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  max-width: 440px;
+  margin: 0 auto 18px;
+}
+
+/* Mobile Guest Cards (Hidden on Desktop) */
+.mobile-guest-cards {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .guest-table-wrap {
+    display: none;
+  }
+  .mobile-guest-cards {
+    display: flex;
+  }
+}
+
+.mobile-card-item {
+  background: #090e17;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: all 0.25s ease;
+}
+.mobile-card-item:hover {
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.m-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.m-card-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.m-card-contacts {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.m-card-contacts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.m-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 12px;
+}
+.m-card-actions .btn-send-wa {
+  flex: 1;
+  justify-content: center;
+  padding: 10px 14px;
+  font-size: 0.84rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. INSTRUCTION & GUIDELINES ACCORDION
+══════════════════════════════════════════════════════════════ */
+.help-section {
+  margin: 50px auto 60px;
+}
+
+.faq-card {
+  background: rgba(19, 28, 42, 0.7);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+.faq-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+.faq-header:hover {
+  color: var(--mastyo-teal-light);
+}
+.faq-body {
+  padding: 0 20px 16px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  display: none;
+}
+.faq-card.open .faq-body {
+  display: block;
+}
+.faq-card.open .faq-icon {
+  transform: rotate(180deg);
+}
+.faq-icon {
+  transition: transform 0.25s ease;
+  color: var(--mastyo-teal);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. FOOTER
+══════════════════════════════════════════════════════════════ */
+.main-footer {
+  padding: 56px 0 44px;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border-light);
+  margin-top: 40px;
+}
+.footer-brand-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.footer-logo-img {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 14px rgba(45, 212, 191, 0.35));
+}
+.footer-logo-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.footer-copyright {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.mastyo-permalink {
+  color: var(--mastyo-teal);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+.mastyo-permalink:hover {
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. FLOATING ACTION BUTTONS (BACK TO TOP & WHATSAPP)
+══════════════════════════════════════════════════════════════ */
+.floating-actions-dock {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+.floating-actions-dock > * {
+  pointer-events: auto;
+}
+
+/* Back to Top Floating Button */
+.floating-back-to-top {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(14, 21, 32, 0.92);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  color: var(--mastyo-teal-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floating-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.floating-back-to-top:hover {
+  background: var(--mastyo-teal);
+  color: var(--mastyo-teal-deep);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 28px var(--mastyo-teal-glow);
+}
+.floating-back-to-top svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* WhatsApp Consultation Floating Button */
+.floating-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s ease;
+}
+.floating-wa-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+  color: #fff;
+}
+.floating-wa-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-top: 68px;
+  }
+  .floating-actions-dock {
+    bottom: 16px;
+    right: 16px;
+    gap: 10px;
+  }
+  .floating-back-to-top {
+    width: 42px;
+    height: 42px;
+  }
+  .floating-wa-btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+  .floating-wa-btn span {
+    display: none;
+  }
+  .floating-wa-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .nav-menu-group {
+    display: none; /* Collapsed into compact header on small mobile */
+  }
+  .brand-logo-img {
+    height: 34px;
+    width: 34px;
+  }
+  .logo-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Toast Notification */
+#toastBox {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(14, 21, 32, 0.95);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--mastyo-teal);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--mastyo-teal-glow);
+  font-size: 0.86rem;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+#toastBox.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Glow Mesh Background -->
+<div class="ambient-mesh" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FIXED NAVBAR
+══════════════════════════════════════════════════════════════ -->
+<header class="main-header" id="mainHeader">
+  <div class="container">
+    <div class="header-row">
+      <a href="index.html" class="logo-area" title="MasTyo Wedding — Beranda">
+        <img src="logo-mastyo.png" alt="MasTyo Wedding Logo" class="brand-logo-img">
+        <div class="logo-text-col">
+          <span class="logo-title">MasTyo <span>Wedding</span></span>
+          <span class="logo-subtitle">Undangan Digital Eksklusif</span>
+        </div>
+      </a>
+
+      <!-- Navigation Menu -->
+      <nav class="nav-menu-group" aria-label="Menu Utama">
+        <a href="index.html" class="nav-item-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <span>Katalog 12 Tema</span>
+        </a>
+        <a href="kirim-undangan.html" class="nav-item-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          <span>Kirim Undangan</span>
+          <span class="badge-pill-accent">Auto WA</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn-secondary" style="font-size: 0.8rem; padding: 8px 14px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Katalog</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=6282332261924&text=Halo%20MasTyo%20Wedding,%20saya%20ingin%20konsultasi%20pembuatan%20undangan%20online"
+           target="_blank" rel="noopener noreferrer" class="btn-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span>Pesan Tema</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-pill">
+      <span>✦</span>
+      <span>MasTyo Wedding Tools • Otomatisasi Kirim Undangan</span>
+    </div>
+
+    <h1 class="hero-title">
+      Kirim Undangan Digital <span class="text-gradient">WhatsApp & Email</span>
+    </h1>
+
+    <p class="hero-desc">
+      Kelola daftar tamu undangan Anda dengan mudah. Buat tautan personal bersampul <code>?to=NamaTamu</code>, sesuaikan template pesan greeting, dan kirim pesan dalam <strong>1 klik langsung</strong> melalui aplikasi WhatsApp di HP Anda atau WhatsApp Web di laptop/PC.
+    </p>
+
+    <!-- Highlight Badges -->
+    <div class="quick-features-row">
+      <div class="feature-badge-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>1-Klik Buka WhatsApp Device</span>
+      </div>
+      <div class="feature-badge-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Tautan Personal Dinamis (?to=...)</span>
+      </div>
+      <div class="feature-badge-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Bisa Paste Banyak Tamu Sekaligus</span>
+      </div>
+      <div class="feature-badge-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Tersimpan Otomatis di Browser</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN APP INTERFACE: 2-COLUMN WORKSPACE
+══════════════════════════════════════════════════════════════ -->
+<main class="container">
+  <div class="generator-layout">
+
+    <!-- ──────────────────────────────────────────────────────────
+         LEFT COLUMN: SETTINGS (URL, THEME, GREETING TEMPLATE)
+    ────────────────────────────────────────────────────────── -->
+    <div class="settings-column">
+
+      <!-- Panel 1: URL Undangan -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <div class="panel-title">
+            <span class="panel-step-badge">1</span>
+            <span>URL / Tautan Undangan</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="customUrlInput">
+            <span>Base URL / Link Undangan Anda <span class="req">*</span></span>
+          </label>
+          <input type="text" id="customUrlInput" class="form-input" placeholder="https://domainanda.com/undangan atau tema1.html" value="tema1.html">
+          <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 6px; line-height: 1.6;">
+            Contoh hasil link tamu: <span id="sampleUrlPreview" style="color: var(--mastyo-teal-light); word-break: break-all; font-weight: 600;">tema1.html?to=Budi+Santoso</span>
+          </p>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="coupleNamesInput">
+              <span>Nama Mempelai</span>
+            </label>
+            <input type="text" id="coupleNamesInput" class="form-input" placeholder="Contoh: Kenzo & Althea" value="Kenzo & Althea">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="eventDateInput">
+              <span>Tanggal Acara</span>
+            </label>
+            <input type="text" id="eventDateInput" class="form-input" placeholder="Contoh: Sabtu, 28 November 2026" value="Sabtu, 28 November 2026">
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Greeting & Template Pesan WhatsApp -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <div class="panel-title">
+            <span class="panel-step-badge">2</span>
+            <span>Template Pesan (Greeting)</span>
+          </div>
+          <span class="panel-hint">Format WhatsApp & Email</span>
+        </div>
+
+        <!-- Pilihan Preset Greeting -->
+        <div class="form-group">
+          <label class="form-label" for="presetSelect">
+            <span>Pilihan Template Pesan Siap Pakai</span>
+          </label>
+          <select id="presetSelect" class="form-select">
+            <option value="formal">1. Formal & Santun (Rekomendasi Umum)</option>
+            <option value="islami">2. Nuansa Islami (Assalamu'alaikum & Doa)</option>
+            <option value="kristiani">3. Nuansa Kristiani (Kasih & Berkat)</option>
+            <option value="santai">4. Hangat & Akrab (Sahabat / Teman Dekat)</option>
+            <option value="singkat">5. Ringkas & Praktis (Quick Broadcast)</option>
+          </select>
+        </div>
+
+        <!-- Textarea Template Pesan -->
+        <div class="form-group">
+          <label class="form-label" for="messageTemplate">
+            <span>Isi Teks Pesan Undangan <span class="req">*</span></span>
+          </label>
+          <textarea id="messageTemplate" class="form-textarea" rows="9"></textarea>
+
+          <!-- Variable Tags Chips -->
+          <div style="margin-top: 8px;">
+            <span style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-bottom: 4px;">Klik variabel untuk menyisipkan ke kursor teks:</span>
+            <div class="tag-chips-wrap">
+              <button type="button" class="btn-chip" onclick="insertVariable('{nama}')">+ {nama} (Nama Tamu)</button>
+              <button type="button" class="btn-chip" onclick="insertVariable('{url}')">+ {url} (Link Personal)</button>
+              <button type="button" class="btn-chip" onclick="insertVariable('{pengantin}')">+ {pengantin}</button>
+              <button type="button" class="btn-chip" onclick="insertVariable('{tanggal}')">+ {tanggal}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Subject (Opsional) -->
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" for="emailSubjectInput">
+            <span>Subjek Email (Jika Dikirim via Email)</span>
+          </label>
+          <input type="text" id="emailSubjectInput" class="form-input" placeholder="Undangan Pernikahan {pengantin} — Khusus untuk {nama}" value="Undangan Pernikahan {pengantin} — Kepada Yth. {nama}">
+        </div>
+
+        <!-- Live WhatsApp Chat Mockup Preview -->
+        <div class="wa-preview-box">
+          <div class="wa-preview-header">
+            <div class="wa-header-avatar">M</div>
+            <div class="wa-header-info">
+              <span class="wa-header-name">Simulasi Tampilan WhatsApp</span>
+              <span class="wa-header-status">Online • Pesan siap kirim</span>
+            </div>
+          </div>
+          <div class="wa-chat-bubble">
+            <div id="waPreviewText">Teks preview pesan akan muncul di sini...</div>
+            <span class="wa-bubble-time">
+              09:30
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+          </div>
+
+          <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+            <button type="button" class="btn-secondary" style="font-size: 0.78rem; padding: 7px 12px; gap: 6px;" onclick="sendTestToSelf()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Tes Kirim ke WhatsApp Sendiri</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────────────────────
+         RIGHT COLUMN: GUEST LIST MANAGEMENT & SENDING ACTIONS
+    ────────────────────────────────────────────────────────── -->
+    <div class="guests-column">
+
+      <!-- Panel 3: Tambah Tamu (Form Satuan & Paste Massal) -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <div class="panel-title">
+            <span class="panel-step-badge">3</span>
+            <span>Input Daftar Tamu Undangan</span>
+          </div>
+          <span class="panel-hint">Satuan atau Massal</span>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tab-nav-row">
+          <button type="button" class="tab-btn active" data-tab="tab-single">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Input Satu Per Satu</span>
+          </button>
+          <button type="button" class="tab-btn" data-tab="tab-bulk">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Paste Banyak Tamu Sekaligus</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: Input Satuan -->
+        <div id="tab-single" class="tab-pane active">
+          <form id="singleGuestForm" onsubmit="event.preventDefault(); addSingleGuest();">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="guestName">
+                  <span>Nama Tamu Undangan <span class="req">*</span></span>
+                </label>
+                <input type="text" id="guestName" class="form-input" placeholder="Contoh: Budi Santoso & Partner" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="guestPhone">
+                  <span>Nomor WhatsApp <span class="req">*</span></span>
+                </label>
+                <input type="tel" id="guestPhone" class="form-input" placeholder="Contoh: 08123456789 atau 6281..." required>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="guestEmail">
+                  <span>Email Tamu (Opsional)</span>
+                </label>
+                <input type="email" id="guestEmail" class="form-input" placeholder="budi@contoh.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="guestCategory">
+                  <span>Kategori / Hubungan</span>
+                </label>
+                <select id="guestCategory" class="form-select">
+                  <option value="Sahabat">Sahabat / Teman Dekat</option>
+                  <option value="Keluarga">Keluarga Besar</option>
+                  <option value="Rekan Kerja">Rekan Kerja / Kantor</option>
+                  <option value="VIP">Tamu Khusus / VIP</option>
+                  <option value="Umum" selected>Umum</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Tambahkan Tamu ke Daftar</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: Input Massal (Bulk Paste) -->
+        <div id="tab-bulk" class="tab-pane">
+          <div class="form-group">
+            <label class="form-label" for="bulkInputArea">
+              <span>Tempel Daftar Tamu dari Excel / Catatan</span>
+              <span class="label-subtext">Format: Nama, No WA, Email (opsional)</span>
+            </label>
+            <textarea id="bulkInputArea" class="form-textarea" rows="6" placeholder="Contoh:
+Budi Santoso, 081234567890, budi@email.com
+Siti Aminah, 085712345678
+Andi Pratama, 628198765432
+dr. Hendra & Istri, 081399887766"></textarea>
+            <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 6px;">
+              💡 <em>Tips: Anda dapat langsung copy kolom nama dan nomor WhatsApp dari Microsoft Excel atau Google Sheets lalu paste di sini. Sistem akan otomatis mengenali pemisah koma atau tab!</em>
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="btn-primary" style="flex: 1;" onclick="processBulkGuests()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Proses & Masukkan Semua Tamu</span>
+            </button>
+            <button type="button" class="btn-secondary" onclick="loadSampleGuests()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>Isi Contoh Demo</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 4: Daftar Penerima Undangan & Eksekusi Pengiriman -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <div class="panel-title">
+            <span class="panel-step-badge">4</span>
+            <span>Daftar Tamu & Kirim Pesan 1-Klik</span>
+          </div>
+          <span class="panel-hint" id="guestCountSummary">0 Tamu</span>
+        </div>
+
+        <!-- Statistik Ringkasan -->
+        <div class="stats-summary-row">
+          <div class="stat-pill-box">
+            <div class="stat-pill-info">
+              <span class="stat-pill-label">Total Tamu</span>
+              <span class="stat-pill-num" id="totalCount">0</span>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mastyo-teal)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div class="stat-pill-box">
+            <div class="stat-pill-info">
+              <span class="stat-pill-label">Belum Terkirim</span>
+              <span class="stat-pill-num stat-pending" id="pendingCount">0</span>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--mastyo-amber)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="stat-pill-box">
+            <div class="stat-pill-info">
+              <span class="stat-pill-label">Sudah Terkirim</span>
+              <span class="stat-pill-num stat-sent" id="sentCount">0</span>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--wa-green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="list-filter-bar">
+          <div class="search-input-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchGuestInput" class="form-input" placeholder="Cari nama atau nomor WhatsApp...">
+          </div>
+
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <div class="status-filter-pills">
+              <button type="button" class="btn-filter-pill active" data-filter="all" onclick="setFilter('all')">Semua</button>
+              <button type="button" class="btn-filter-pill" data-filter="pending" onclick="setFilter('pending')">Belum Terkirim</button>
+              <button type="button" class="btn-filter-pill" data-filter="sent" onclick="setFilter('sent')">Sudah Terkirim</button>
+            </div>
+            <button type="button" class="btn-primary" style="width: auto; padding: 7px 14px; font-size: 0.78rem; background: linear-gradient(135deg, var(--wa-green), #15803d); color: #02200d; font-weight: 700;" onclick="sendNextPendingGuest()" title="Kirim otomatis ke tamu antrean berikutnya yang belum terkirim">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span>Kirim Tamu Berikutnya</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bulk Action Utilities -->
+        <div class="bulk-tools-bar">
+          <span style="font-size: 0.74rem; color: var(--text-dim);">Peralatan Data:</span>
+          <div class="bulk-actions-group">
+            <button type="button" class="btn-bulk-action" onclick="markAllStatus(true)" title="Tandai semua tamu sebagai terkirim">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Semua Terkirim</span>
+            </button>
+            <button type="button" class="btn-bulk-action" onclick="markAllStatus(false)" title="Reset status semua tamu">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <span>Reset Status</span>
+            </button>
+            <button type="button" class="btn-bulk-action" onclick="exportGuestsCsv()" title="Unduh daftar tamu dalam format CSV">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Ekspor CSV</span>
+            </button>
+            <button type="button" class="btn-bulk-action danger" onclick="clearAllGuests()" title="Hapus semua tamu">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              <span>Hapus Semua</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TABEL TAMU (DESKTOP) -->
+        <div class="guest-table-wrap">
+          <table class="guest-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">No</th>
+                <th>Nama Tamu</th>
+                <th>No. WhatsApp</th>
+                <th>Status</th>
+                <th>Tautan Personal</th>
+                <th style="text-align: right; width: 170px;">Aksi Pengiriman</th>
+              </tr>
+            </thead>
+            <tbody id="guestTableBody">
+              <!-- Rendered dynamically by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- KARTU TAMU (MOBILE RESPONSIVE) -->
+        <div class="mobile-guest-cards" id="mobileCardsContainer">
+          <!-- Rendered dynamically by JavaScript -->
+        </div>
+
+        <!-- State Kosong jika belum ada tamu -->
+        <div id="emptyStateBox" class="guest-empty-state" style="display: none;">
+          <div class="empty-state-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          </div>
+          <h3 class="empty-state-title">Belum Ada Tamu Undangan</h3>
+          <p class="empty-state-desc">
+            Masukkan nama dan nomor WhatsApp tamu di atas, atau klik tombol di bawah untuk mencoba data contoh seketika.
+          </p>
+          <button type="button" class="btn-secondary" onclick="loadSampleGuests()">
+            <span>Isi Contoh Format Tamu</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       PANDUAN & FAQ PENGIRIMAN UNDANGAN
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="help-section">
+    <div style="text-align: center; margin-bottom: 28px;">
+      <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: #fff; margin-bottom: 8px;">
+        Panduan & Tips Pengiriman Undangan
+      </h2>
+      <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+        Informasi penting agar pengiriman undangan digital berjalan mulus, aman, dan berkesan bagi tamu Anda.
+      </p>
+    </div>
+
+    <div style="max-width: 840px; margin: 0 auto;">
+      <div class="faq-card open">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span>Bagaimana cara kerja tombol "Kirim WhatsApp"?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="faq-body">
+          Saat Anda memencet tombol <strong>Kirim WhatsApp</strong>, sistem otomatis membuka aplikasi WhatsApp pada smartphone (Android/iPhone) atau WhatsApp Web/Desktop di laptop Anda dengan nomor tujuan dan pesan teks yang sudah terisi lengkap beserta link nama tamu khusus. Anda tinggal menekan tombol kirim di dalam WhatsApp! Status tamu pun otomatis ditandai sebagai <em>"Sudah Terkirim"</em>.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span>Format nomor WhatsApp apa yang didukung?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="faq-body">
+          Sistem kami sangat fleksibel! Anda bisa mengetik nomor dengan awalan <code>08...</code> (misal: 08123456789), <code>628...</code>, ataupun <code>+628...</code> dengan atau tanpa spasi/tanda hubung. Sistem otomatis mengonversinya ke standar internasional WhatsApp secara akurat.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span>Apakah data tamu yang saya input tersimpan aman?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="faq-body">
+          Sangat aman. Seluruh data daftar tamu dan konfigurasi pesan disimpan secara privat di dalam peramban (Local Storage browser) perangkat Anda sendiri. Tidak ada data kontak pribadi yang diunggah ke server pihak ketiga. Jika Anda me-refresh halaman, daftar tamu Anda tetap tersimpan utuh.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span>Bagaimana cara mengirim melalui Email?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="faq-body">
+          Jika tamu memiliki alamat email yang tercatat, tombol ikon surat (Email) akan aktif. Menekan tombol tersebut akan otomatis membuka aplikasi email bawaan perangkat Anda (seperti Gmail, Apple Mail, atau Outlook) dengan subjek dan teks undangan yang siap dikirim.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-brand-wrap">
+      <img src="logo-mastyo.png" alt="MasTyo Wedding Logo" class="footer-logo-img">
+      <div class="footer-logo-title">MasTyo Wedding</div>
+    </div>
+    <p style="max-width: 500px; margin: 0 auto 20px; line-height: 1.6; font-size: 0.82rem;">
+      Solusi undangan digital modern, responsif, dan estetik persembahan MasTyo Wedding. Lengkap dengan personalisasi nama tamu, RSVP otomatis, dan musik suasana.
+    </p>
+    <p class="footer-copyright">
+      © 2026 <a href="https://mastyo.my.id/" target="_blank" rel="noopener noreferrer" class="mastyo-permalink" title="Kunjungi Website Resmi MasTyo">MASTYO</a> UNDANGAN DIGITAL • ALL RIGHTS RESERVED
+    </p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FLOATING ACTION BUTTONS DOCK (TOP & WHATSAPP)
+══════════════════════════════════════════════════════════════ -->
+<div class="floating-actions-dock">
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="floating-back-to-top" title="Kembali ke Atas" aria-label="Kembali ke Atas Halaman">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- WhatsApp Consultation Button -->
+  <a href="https://api.whatsapp.com/send?phone=6282332261924&text=Halo%20MasTyo%20Wedding,%20saya%20ingin%20konsultasi%20pembuatan%20undangan%20online"
+     target="_blank" rel="noopener noreferrer" class="floating-wa-btn" title="Hubungi MasTyo via WhatsApp (082332261924)">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.82 2.791.82 3.181 0 5.768-2.587 5.768-5.766.001-3.181-2.586-5.806-5.768-5.806zm3.377 8.219c-.14.394-.711.72-1.041.766-.279.039-.64.062-1.841-.433-1.536-.632-2.529-2.186-2.608-2.29-.079-.104-.627-.834-.627-1.591 0-.756.398-1.127.538-1.282.14-.155.308-.194.41-.194.103 0 .205.003.296.007.095.005.223-.036.349.266.13.311.442 1.077.481 1.155.039.078.065.17.013.273-.052.104-.078.169-.155.26-.078.091-.164.204-.234.273-.078.078-.16.162-.069.318.091.156.403.664.865 1.075.594.528 1.096.691 1.252.769.156.078.247.065.338-.039.091-.104.39-.454.494-.61.104-.156.208-.13.349-.078.14.052.887.418 1.039.495.152.078.253.116.291.181.038.065.038.376-.102.77zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.054 22l4.978-1.306A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
+    </svg>
+    <span>Chat WhatsApp</span>
+  </a>
+</div>
+
+<!-- Toast Feedback Notification -->
+<div id="toastBox">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  <span id="toastMsg">Tindakan berhasil!</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     JAVASCRIPT LOGIC
+══════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // --- PRESET TEMPLATES ---
+  const PRESETS = {
+    formal: `Kepada Yth.
+Bapak/Ibu/Saudara/i: {nama}
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri momen istimewa pernikahan kami:
+
+💍 {pengantin}
+🗓️ Tanggal: {tanggal}
+
+Untuk informasi lengkap mengenai detail acara, peta lokasi, dan konfirmasi kehadiran (RSVP), silakan buka tautan undangan digital resmi berikut:
+👉 {url}
+
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu bagi kedua mempelai.
+
+Terima kasih.
+Hormat kami yang berbahagia,
+{pengantin} & Keluarga Besar`,
+
+    islami: `Assalamu'alaikum Warahmatullahi Wabarakatuh
+
+Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Dengan memohon rahmat dan ridho-Nya, kami bermaksud mengundang Bapak/Ibu/Saudara/i {nama} untuk menghadiri hari bahagia pernikahan kami:
+
+✨ {pengantin} ✨
+🗓️ Hari/Tanggal: {tanggal}
+
+Detail acara dan panduan kehadiran dapat diakses melalui undangan online eksklusif kami:
+👉 {url}
+
+Kehadiran serta doa restu Bapak/Ibu/Saudara/i adalah kado terindah bagi awal perjalanan suci kami.
+
+Jazakumullah Khairan Katsiran.
+Wassalamu'alaikum Warahmatullahi Wabarakatuh.
+Salam hangat,
+{pengantin}`,
+
+    kristiani: `Salam Sejahtera dalam Kasih Tuhan Yesus Kristus
+
+"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia." (Matius 19:6)
+
+Dengan penuh rasa syukur atas berkat dan kasih Tuhan, kami mengundang Bapak/Ibu/Saudara/i {nama} untuk menjadi saksi atas ikrar suci pernikahan kami:
+
+🕊️ {pengantin}
+🗓️ {tanggal}
+
+Silakan kunjungi tautan undangan online resmi berikut untuk rincian acara dan konfirmasi RSVP:
+👉 {url}
+
+Merupakan sukacita yang teramat besar bagi kami atas kehadiran dan doa restu yang diberikan.
+
+Tuhan Memberkati.
+Salam kasih,
+{pengantin}`,
+
+    santai: `Halo {nama}! 👋
+
+Kabar bahagia untuk kita semua! Kami mengundang kamu untuk hadir dan merayakan momen bahagia pernikahan kami:
+
+✨ {pengantin} ✨
+🗓️ {tanggal}
+
+Untuk info lengkap jam acara, lokasi venue, serta foto-foto prewedding kami, langsung cek undangan online di link ini ya:
+👉 {url}
+
+Jangan lupa isi RSVP di websitenya yaa. Kehadiranmu bakal bikin hari spesial kami makin seru dan berkesan!
+
+Sampai ketemu di hari bahagia kami!
+Cheers,
+{pengantin}`,
+
+    singkat: `Yth. {nama},
+
+Kami mengundang Anda pada pernikahan {pengantin} yang akan diselenggarakan pada {tanggal}.
+
+Informasi lengkap & lokasi:
+👉 {url}
+
+Mohon doa restu dan terima kasih atas perhatiannya.
+Hormat kami, {pengantin}`
+  };
+
+  // --- APPLICATION STATE ---
+  let guestList = [];
+  let currentFilter = 'all';
+
+  // --- DOM ELEMENTS ---
+  const customUrlInput = document.getElementById('customUrlInput');
+  const sampleUrlPreview = document.getElementById('sampleUrlPreview');
+  const coupleNamesInput = document.getElementById('coupleNamesInput');
+  const eventDateInput = document.getElementById('eventDateInput');
+  const presetSelect = document.getElementById('presetSelect');
+  const messageTemplate = document.getElementById('messageTemplate');
+  const emailSubjectInput = document.getElementById('emailSubjectInput');
+  const waPreviewText = document.getElementById('waPreviewText');
+
+  const guestTableBody = document.getElementById('guestTableBody');
+  const mobileCardsContainer = document.getElementById('mobileCardsContainer');
+  const emptyStateBox = document.getElementById('emptyStateBox');
+  const totalCountEl = document.getElementById('totalCount');
+  const pendingCountEl = document.getElementById('pendingCount');
+  const sentCountEl = document.getElementById('sentCount');
+  const guestCountSummary = document.getElementById('guestCountSummary');
+  const searchGuestInput = document.getElementById('searchGuestInput');
+
+  const mainHeader = document.getElementById('mainHeader');
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  const toastBox = document.getElementById('toastBox');
+  const toastMsg = document.getElementById('toastMsg');
+
+  // --- TOAST NOTIFICATION ---
+  let toastTimer = null;
+  function showToast(msg) {
+    if (!toastBox) return;
+    toastMsg.textContent = msg;
+    toastBox.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toastBox.classList.remove('show');
+    }, 2800);
+  }
+
+  // --- LOCAL STORAGE PERSISTENCE ---
+  function saveState() {
+    try {
+      localStorage.setItem('mastyo_guests_v1', JSON.stringify(guestList));
+      localStorage.setItem('mastyo_settings_v1', JSON.stringify({
+        baseUrl: customUrlInput.value,
+        couple: coupleNamesInput.value,
+        date: eventDateInput.value,
+        preset: presetSelect.value,
+        template: messageTemplate.value,
+        emailSubject: emailSubjectInput.value
+      }));
+    } catch(e) {
+      console.warn('LocalStorage error:', e);
+    }
+  }
+
+  function loadSavedState() {
+    try {
+      const savedGuests = localStorage.getItem('mastyo_guests_v1');
+      if (savedGuests) {
+        guestList = JSON.parse(savedGuests);
+      }
+
+      const savedSettings = localStorage.getItem('mastyo_settings_v1');
+      if (savedSettings) {
+        const s = JSON.parse(savedSettings);
+        if (s.baseUrl) customUrlInput.value = s.baseUrl;
+        if (s.couple) coupleNamesInput.value = s.couple;
+        if (s.date) eventDateInput.value = s.date;
+        if (s.preset) presetSelect.value = s.preset;
+        if (s.template) messageTemplate.value = s.template;
+        if (s.emailSubject) emailSubjectInput.value = s.emailSubject;
+      } else {
+        // Default initial template
+        messageTemplate.value = PRESETS.formal;
+      }
+    } catch(e) {
+      console.warn('LocalStorage read error:', e);
+      messageTemplate.value = PRESETS.formal;
+    }
+  }
+
+  // --- URL & PREVIEW HELPERS ---
+  function getCleanBaseUrl() {
+    let raw = customUrlInput.value.trim();
+    if (!raw) {
+      raw = 'tema1.html';
+    }
+    return raw;
+  }
+
+  function generatePersonalUrl(guestName) {
+    const base = getCleanBaseUrl();
+    const encoded = encodeURIComponent(guestName.trim());
+    const connector = base.includes('?') ? '&' : '?';
+    return `${base}${connector}to=${encoded}`;
+  }
+
+  function updatePreview() {
+    const couple = coupleNamesInput.value.trim() || 'Kenzo & Althea';
+    const date = eventDateInput.value.trim() || 'Sabtu, 28 November 2026';
+    const sampleGuest = 'Budi Santoso & Partner';
+    const sampleUrl = generatePersonalUrl(sampleGuest);
+
+    if (sampleUrlPreview) {
+      sampleUrlPreview.textContent = sampleUrl;
+    }
+
+    let text = messageTemplate.value;
+    text = text.replace(/\{nama\}/g, sampleGuest)
+               .replace(/\{url\}/g, sampleUrl)
+               .replace(/\{pengantin\}/g, couple)
+               .replace(/\{tanggal\}/g, date);
+
+    if (waPreviewText) {
+      waPreviewText.textContent = text;
+    }
+
+    saveState();
+  }
+
+  // --- VARIABLE INSERTION ---
+  window.insertVariable = function(tag) {
+    const start = messageTemplate.selectionStart;
+    const end = messageTemplate.selectionEnd;
+    const val = messageTemplate.value;
+    messageTemplate.value = val.substring(0, start) + tag + val.substring(end);
+    messageTemplate.focus();
+    messageTemplate.selectionStart = messageTemplate.selectionEnd = start + tag.length;
+    updatePreview();
+  };
+
+  // --- PHONE FORMATTING ---
+  // Transforms 0812..., +62812..., 62812... into 62812...
+  function cleanPhoneNumber(raw) {
+    if (!raw) return '';
+    let digits = raw.replace(/\D/g, '');
+    if (digits.startsWith('0')) {
+      digits = '62' + digits.substring(1);
+    } else if (digits.startsWith('8')) {
+      digits = '62' + digits;
+    }
+    return digits;
+  }
+
+  function formatDisplayPhone(raw) {
+    const clean = cleanPhoneNumber(raw);
+    if (clean.length >= 10 && clean.startsWith('62')) {
+      const rest = clean.substring(2);
+      if (rest.length === 10) {
+        return `+62 ${rest.substring(0,3)}-${rest.substring(3,7)}-${rest.substring(7)}`;
+      } else if (rest.length === 11) {
+        return `+62 ${rest.substring(0,3)}-${rest.substring(3,7)}-${rest.substring(7)}`;
+      }
+      return `+62 ${rest}`;
+    }
+    return raw;
+  }
+
+  // --- GENERATE PERSONALIZED MESSAGE ---
+  function buildPersonalizedMessage(guest) {
+    const couple = coupleNamesInput.value.trim() || 'Kenzo & Althea';
+    const date = eventDateInput.value.trim() || 'Sabtu, 28 November 2026';
+    const url = generatePersonalUrl(guest.name);
+
+    let text = messageTemplate.value;
+    text = text.replace(/\{nama\}/g, guest.name)
+               .replace(/\{url\}/g, url)
+               .replace(/\{pengantin\}/g, couple)
+               .replace(/\{tanggal\}/g, date);
+    return text;
+  }
+
+  function buildPersonalizedSubject(guest) {
+    const couple = coupleNamesInput.value.trim() || 'Kenzo & Althea';
+    let subj = emailSubjectInput.value.trim() || 'Undangan Pernikahan {pengantin} — Kepada Yth. {nama}';
+    return subj.replace(/\{nama\}/g, guest.name).replace(/\{pengantin\}/g, couple);
+  }
+
+  // --- GUEST LIST RENDERING ---
+  function renderGuestList() {
+    const filterQuery = (searchGuestInput.value || '').toLowerCase().trim();
+
+    // Filter logic
+    let visibleList = guestList.filter(g => {
+      // Status filter
+      if (currentFilter === 'pending' && g.sent) return false;
+      if (currentFilter === 'sent' && !g.sent) return false;
+
+      // Search filter
+      if (filterQuery) {
+        const matchesName = (g.name || '').toLowerCase().includes(filterQuery);
+        const matchesPhone = (g.phone || '').includes(filterQuery);
+        const matchesCat = (g.category || '').toLowerCase().includes(filterQuery);
+        return matchesName || matchesPhone || matchesCat;
+      }
+      return true;
+    });
+
+    // Update Counters
+    const total = guestList.length;
+    const sent = guestList.filter(g => g.sent).length;
+    const pending = total - sent;
+
+    totalCountEl.textContent = total;
+    pendingCountEl.textContent = pending;
+    sentCountEl.textContent = sent;
+    guestCountSummary.textContent = `${total} Tamu Terdaftar`;
+
+    if (total === 0) {
+      guestTableBody.innerHTML = '';
+      mobileCardsContainer.innerHTML = '';
+      emptyStateBox.style.display = 'block';
+      return;
+    }
+
+    emptyStateBox.style.display = 'none';
+
+    // RENDER TABLE (DESKTOP)
+    let tableHtml = '';
+    visibleList.forEach((guest, idx) => {
+      const cleanPhone = cleanPhoneNumber(guest.phone);
+      const displayPhone = formatDisplayPhone(guest.phone);
+      const personalUrl = generatePersonalUrl(guest.name);
+      const initial = guest.name ? guest.name.charAt(0).toUpperCase() : '?';
+
+      tableHtml += `
+        <tr id="row-${guest.id}">
+          <td style="color: var(--text-dim); font-size: 0.78rem;">${idx + 1}</td>
+          <td>
+            <div class="guest-cell-user">
+              <div class="guest-avatar">${initial}</div>
+              <div class="guest-name-col">
+                <span class="guest-name">${escapeHtml(guest.name)}</span>
+                <span class="guest-category">${escapeHtml(guest.category || 'Umum')}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span class="phone-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--wa-green)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                ${escapeHtml(displayPhone)}
+              </span>
+              ${guest.email ? `<span style="font-size: 0.72rem; color: var(--text-dim);">${escapeHtml(guest.email)}</span>` : ''}
+            </div>
+          </td>
+          <td>
+            <span class="status-badge ${guest.sent ? 'sent' : 'pending'}" id="status-badge-${guest.id}">
+              ${guest.sent ? '✓ Sudah Terkirim' : '⏳ Belum Dikirim'}
+            </span>
+          </td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <a href="${personalUrl}" target="_blank" rel="noopener noreferrer" class="btn-action-icon" title="Buka Demo Undangan Tamu Ini">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <button type="button" class="btn-action-icon" onclick="copyPersonalUrl('${guest.id}')" title="Salin Tautan Personal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </td>
+          <td style="text-align: right;">
+            <div class="guest-actions-cell" style="justify-content: flex-end;">
+              <button type="button" class="btn-send-wa" onclick="sendWhatsApp('${guest.id}')" title="Kirim Pesan WhatsApp">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.82 2.791.82 3.181 0 5.768-2.587 5.768-5.766.001-3.181-2.586-5.806-5.768-5.806zm3.377 8.219c-.14.394-.711.72-1.041.766-.279.039-.64.062-1.841-.433-1.536-.632-2.529-2.186-2.608-2.29-.079-.104-.627-.834-.627-1.591 0-.756.398-1.127.538-1.282.14-.155.308-.194.41-.194.103 0 .205.003.296.007.095.005.223-.036.349.266.13.311.442 1.077.481 1.155.039.078.065.17.013.273-.052.104-.078.169-.155.26-.078.091-.164.204-.234.273-.078.078-.16.162-.069.318.091.156.403.664.865 1.075.594.528 1.096.691 1.252.769.156.078.247.065.338-.039.091-.104.39-.454.494-.61.104-.156.208-.13.349-.078.14.052.887.418 1.039.495.152.078.253.116.291.181.038.065.038.376-.102.77zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.054 22l4.978-1.306A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
+                </svg>
+                <span>Kirim WA</span>
+              </button>
+
+              ${guest.email ? `
+                <button type="button" class="btn-send-email" onclick="sendEmail('${guest.id}')" title="Kirim via Email">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Email</span>
+                </button>
+              ` : ''}
+
+              <button type="button" class="btn-action-icon" onclick="copyPersonalMessage('${guest.id}')" title="Salin Teks Pesan Tamu Ini">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
+
+              <button type="button" class="btn-action-icon" onclick="toggleGuestStatus('${guest.id}')" title="Toggle Status Terkirim / Belum">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              </button>
+
+              <button type="button" class="btn-action-icon danger" onclick="deleteGuest('${guest.id}')" title="Hapus Tamu">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+    guestTableBody.innerHTML = tableHtml;
+
+    // RENDER MOBILE CARDS
+    let cardsHtml = '';
+    visibleList.forEach((guest) => {
+      const displayPhone = formatDisplayPhone(guest.phone);
+      const personalUrl = generatePersonalUrl(guest.name);
+      const initial = guest.name ? guest.name.charAt(0).toUpperCase() : '?';
+
+      cardsHtml += `
+        <div class="mobile-card-item">
+          <div class="m-card-top">
+            <div class="m-card-user">
+              <div class="guest-avatar">${initial}</div>
+              <div class="guest-name-col">
+                <span class="guest-name">${escapeHtml(guest.name)}</span>
+                <span class="guest-category">${escapeHtml(guest.category || 'Umum')}</span>
+              </div>
+            </div>
+            <span class="status-badge ${guest.sent ? 'sent' : 'pending'}">
+              ${guest.sent ? '✓ Terkirim' : '⏳ Belum'}
+            </span>
+          </div>
+
+          <div class="m-card-contacts">
+            <span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--wa-green)" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              ${escapeHtml(displayPhone)}
+            </span>
+            ${guest.email ? `
+              <span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                ${escapeHtml(guest.email)}
+              </span>
+            ` : ''}
+          </div>
+
+          <div class="m-card-actions">
+            <button type="button" class="btn-send-wa" onclick="sendWhatsApp('${guest.id}')">
+              <svg viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.82 2.791.82 3.181 0 5.768-2.587 5.768-5.766.001-3.181-2.586-5.806-5.768-5.806zm3.377 8.219c-.14.394-.711.72-1.041.766-.279.039-.64.062-1.841-.433-1.536-.632-2.529-2.186-2.608-2.29-.079-.104-.627-.834-.627-1.591 0-.756.398-1.127.538-1.282.14-.155.308-.194.41-.194.103 0 .205.003.296.007.095.005.223-.036.349.266.13.311.442 1.077.481 1.155.039.078.065.17.013.273-.052.104-.078.169-.155.26-.078.091-.164.204-.234.273-.078.078-.16.162-.069.318.091.156.403.664.865 1.075.594.528 1.096.691 1.252.769.156.078.247.065.338-.039.091-.104.39-.454.494-.61.104-.156.208-.13.349-.078.14.052.887.418 1.039.495.152.078.253.116.291.181.038.065.038.376-.102.77zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.054 22l4.978-1.306A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
+              </svg>
+              <span>Kirim WA</span>
+            </button>
+
+            ${guest.email ? `
+              <button type="button" class="btn-send-email" onclick="sendEmail('${guest.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email</span>
+              </button>
+            ` : ''}
+
+            <a href="${personalUrl}" target="_blank" rel="noopener noreferrer" class="btn-action-icon" title="Buka Link Undangan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+
+            <button type="button" class="btn-action-icon" onclick="copyPersonalUrl('${guest.id}')" title="Salin Tautan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+
+            <button type="button" class="btn-action-icon danger" onclick="deleteGuest('${guest.id}')" title="Hapus">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+    mobileCardsContainer.innerHTML = cardsHtml;
+  }
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  // --- ADD GUESTS ---
+  window.addSingleGuest = function() {
+    const nameInput = document.getElementById('guestName');
+    const phoneInput = document.getElementById('guestPhone');
+    const emailInput = document.getElementById('guestEmail');
+    const categorySelect = document.getElementById('guestCategory');
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
+    const category = categorySelect.value;
+
+    if (!name) {
+      alert('Silakan masukkan nama tamu undangan.');
+      nameInput.focus();
+      return;
+    }
+
+    if (!phone) {
+      alert('Silakan masukkan nomor WhatsApp tamu.');
+      phoneInput.focus();
+      return;
+    }
+
+    const newGuest = {
+      id: 'g_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+      name: name,
+      phone: phone,
+      email: email,
+      category: category,
+      sent: false,
+      timestamp: Date.now()
+    };
+
+    guestList.unshift(newGuest);
+    saveState();
+    renderGuestList();
+
+    // Reset inputs
+    nameInput.value = '';
+    phoneInput.value = '';
+    emailInput.value = '';
+    nameInput.focus();
+
+    showToast(`Tamu "${name}" berhasil ditambahkan!`);
+  };
+
+  window.processBulkGuests = function() {
+    const bulkArea = document.getElementById('bulkInputArea');
+    const rawText = bulkArea.value.trim();
+
+    if (!rawText) {
+      alert('Silakan tempelkan daftar tamu terlebih dahulu.');
+      bulkArea.focus();
+      return;
+    }
+
+    const lines = rawText.split('\n');
+    let addedCount = 0;
+
+    lines.forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
+
+      // Split by tab, semicolon, comma, or dash
+      let parts = [];
+      if (trimmed.includes('\t')) {
+        parts = trimmed.split('\t');
+      } else if (trimmed.includes(';')) {
+        parts = trimmed.split(';');
+      } else if (trimmed.includes(',')) {
+        parts = trimmed.split(',');
+      } else if (trimmed.includes(' - ')) {
+        parts = trimmed.split(' - ');
+      } else {
+        parts = [trimmed];
+      }
+
+      const name = parts[0] ? parts[0].trim() : '';
+      const phone = parts[1] ? parts[1].trim() : '';
+      const email = parts[2] ? parts[2].trim() : '';
+
+      if (name) {
+        guestList.push({
+          id: 'g_' + Date.now() + '_' + Math.floor(Math.random() * 10000) + '_' + addedCount,
+          name: name,
+          phone: phone,
+          email: email,
+          category: 'Umum',
+          sent: false,
+          timestamp: Date.now()
+        });
+        addedCount++;
+      }
+    });
+
+    if (addedCount > 0) {
+      saveState();
+      renderGuestList();
+      bulkArea.value = '';
+      showToast(`${addedCount} tamu berhasil ditambahkan ke daftar!`);
+    } else {
+      alert('Format teks tidak valid. Silakan gunakan format: Nama, No WhatsApp');
+    }
+  };
+
+  window.loadSampleGuests = function() {
+    const bulkArea = document.getElementById('bulkInputArea');
+    if (!bulkArea) return;
+
+    // Switch to bulk tab if not active
+    const bulkTabBtn = document.querySelector('[data-tab="tab-bulk"]');
+    if (bulkTabBtn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      bulkTabBtn.classList.add('active');
+      const pane = document.getElementById('tab-bulk');
+      if (pane) pane.classList.add('active');
+    }
+
+    // Fill sample text directly into bulkInputArea
+    const sampleText = `Budi Santoso & Partner, 081234567890, budi@example.com
+Siti Aminah, S.Kom, 085712345678
+dr. Hendra & Keluarga, 081399887766, hendra.doc@example.com
+Keluarga Besar Bpk. Rahmat, 082155443322
+Andi Pratama, 089677889900, andi.p@example.com`;
+
+    bulkArea.value = sampleText;
+    bulkArea.focus();
+
+    // Scroll smoothly to the textarea so user sees it right away
+    bulkArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    showToast('Contoh teks daftar tamu berhasil diisikan ke kolom!');
+  };
+
+  // --- ACTIONS ON GUEST ---
+  window.sendNextPendingGuest = function() {
+    const nextGuest = guestList.find(g => !g.sent);
+    if (!nextGuest) {
+      if (guestList.length === 0) {
+        alert('Daftar tamu masih kosong. Silakan tambahkan tamu terlebih dahulu.');
+      } else {
+        showToast('🎉 Semua tamu dalam daftar sudah terkirim!');
+      }
+      return;
+    }
+    window.sendWhatsApp(nextGuest.id);
+  };
+
+  window.sendTestToSelf = function() {
+    const myPhone = prompt('Masukkan nomor WhatsApp Anda untuk uji coba pesan (contoh: 08123456789):');
+    if (!myPhone) return;
+    const cleanPhone = cleanPhoneNumber(myPhone);
+    if (!cleanPhone || cleanPhone.length < 9) {
+      alert('Nomor WhatsApp tidak valid.');
+      return;
+    }
+    const sampleGuest = { name: 'Nama Tamu (Tes)', phone: cleanPhone };
+    const message = buildPersonalizedMessage(sampleGuest);
+    const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+    showToast('Membuka WhatsApp untuk uji coba pesan...');
+  };
+
+  window.sendWhatsApp = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest) return;
+
+    const cleanPhone = cleanPhoneNumber(guest.phone);
+    if (!cleanPhone) {
+      alert(`Nomor WhatsApp untuk ${guest.name} belum valid atau kosong.`);
+      return;
+    }
+
+    const message = buildPersonalizedMessage(guest);
+    const encodedMessage = encodeURIComponent(message);
+    const waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodedMessage}`;
+
+    // Mark as sent
+    guest.sent = true;
+    saveState();
+    renderGuestList();
+
+    // Open WhatsApp in new tab / device app
+    window.open(waUrl, '_blank');
+    showToast(`Membuka WhatsApp untuk ${guest.name}...`);
+  };
+
+  window.sendEmail = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest || !guest.email) return;
+
+    const subject = encodeURIComponent(buildPersonalizedSubject(guest));
+    const body = encodeURIComponent(buildPersonalizedMessage(guest));
+    const mailtoUrl = `mailto:${guest.email}?subject=${subject}&body=${body}`;
+
+    guest.sent = true;
+    saveState();
+    renderGuestList();
+
+    window.location.href = mailtoUrl;
+    showToast(`Membuka aplikasi email untuk ${guest.name}...`);
+  };
+
+  window.copyPersonalUrl = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest) return;
+    const url = generatePersonalUrl(guest.name);
+    copyTextToClipboard(url, `Tautan personal untuk ${guest.name} disalin!`);
+  };
+
+  window.copyPersonalMessage = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest) return;
+    const msg = buildPersonalizedMessage(guest);
+    copyTextToClipboard(msg, `Pesan lengkap untuk ${guest.name} disalin!`);
+  };
+
+  window.toggleGuestStatus = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest) return;
+    guest.sent = !guest.sent;
+    saveState();
+    renderGuestList();
+    showToast(`Status ${guest.name}: ${guest.sent ? 'Sudah Terkirim' : 'Belum Dikirim'}`);
+  };
+
+  window.deleteGuest = function(guestId) {
+    const guest = guestList.find(g => g.id === guestId);
+    if (!guest) return;
+    if (confirm(`Hapus tamu "${guest.name}" dari daftar?`)) {
+      guestList = guestList.filter(g => g.id !== guestId);
+      saveState();
+      renderGuestList();
+      showToast('Tamu berhasil dihapus.');
+    }
+  };
+
+  window.markAllStatus = function(isSent) {
+    if (guestList.length === 0) return;
+    guestList.forEach(g => g.sent = isSent);
+    saveState();
+    renderGuestList();
+    showToast(isSent ? 'Semua tamu ditandai sebagai terkirim!' : 'Status semua tamu di-reset.');
+  };
+
+  window.clearAllGuests = function() {
+    if (guestList.length === 0) return;
+    if (confirm('Yakin ingin menghapus seluruh daftar tamu? Tindakan ini tidak dapat dibatalkan.')) {
+      guestList = [];
+      saveState();
+      renderGuestList();
+      showToast('Daftar tamu dikosongkan.');
+    }
+  };
+
+  window.exportGuestsCsv = function() {
+    if (guestList.length === 0) {
+      alert('Daftar tamu masih kosong.');
+      return;
+    }
+
+    let csv = "Nama,Nomor WhatsApp,Email,Kategori,Status,Tautan Personal\n";
+    guestList.forEach(g => {
+      const url = generatePersonalUrl(g.name);
+      const row = [
+        `"${(g.name || '').replace(/"/g, '""')}"`,
+        `"${(g.phone || '').replace(/"/g, '""')}"`,
+        `"${(g.email || '').replace(/"/g, '""')}"`,
+        `"${(g.category || '').replace(/"/g, '""')}"`,
+        g.sent ? "Sudah Terkirim" : "Belum Dikirim",
+        `"${url.replace(/"/g, '""')}"`
+      ];
+      csv += row.join(",") + "\n";
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const downloadUrl = URL.createObjectURL(blob);
+    link.setAttribute("href", downloadUrl);
+    link.setAttribute("download", `daftar_tamu_undangan_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('File CSV berhasil diunduh!');
+  };
+
+  function copyTextToClipboard(text, successMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg);
+      }).catch(() => {
+        fallbackCopy(text, successMsg);
+      });
+    } else {
+      fallbackCopy(text, successMsg);
+    }
+  }
+
+  function fallbackCopy(text, successMsg) {
+    const input = document.createElement('textarea');
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    try {
+      document.execCommand('copy');
+      showToast(successMsg);
+    } catch(e) {
+      showToast('Gagal menyalin teks.');
+    }
+    document.body.removeChild(input);
+  }
+
+  // --- FILTER CONTROL ---
+  window.setFilter = function(filter) {
+    currentFilter = filter;
+    document.querySelectorAll('.btn-filter-pill').forEach(btn => {
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    renderGuestList();
+  };
+
+  // --- TABS SWITCHER ---
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const pane = document.getElementById(targetId);
+      if (pane) pane.classList.add('active');
+    });
+  });
+
+  // --- EVENT LISTENERS FOR SETTINGS ---
+  customUrlInput.addEventListener('input', () => {
+    updatePreview();
+  });
+
+  presetSelect.addEventListener('change', () => {
+    const selected = presetSelect.value;
+    if (PRESETS[selected]) {
+      messageTemplate.value = PRESETS[selected];
+      updatePreview();
+      showToast(`Template "${presetSelect.options[presetSelect.selectedIndex].text}" diterapkan!`);
+    }
+  });
+
+  messageTemplate.addEventListener('input', updatePreview);
+  coupleNamesInput.addEventListener('input', updatePreview);
+  eventDateInput.addEventListener('input', updatePreview);
+  emailSubjectInput.addEventListener('input', saveState);
+
+  searchGuestInput.addEventListener('input', () => {
+    renderGuestList();
+  });
+
+  // FAQ Accordion
+  window.toggleFaq = function(headerEl) {
+    const card = headerEl.closest('.faq-card');
+    if (card) {
+      card.classList.toggle('open');
+    }
+  };
+
+  // --- SCROLL INTERACTIONS (FIXED NAVBAR & BACK TO TOP) ---
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    // Header shadow on scroll
+    if (scrollY > 20) {
+      mainHeader.classList.add('is-scrolled');
+    } else {
+      mainHeader.classList.remove('is-scrolled');
+    }
+
+    // Floating Back to Top Button visibility
+    if (scrollY > 250) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // --- INITIALIZATION ---
+  loadSavedState();
+  updatePreview();
+  renderGuestList();
+
+})();
+</script>
+
+</body>
+</html>
+

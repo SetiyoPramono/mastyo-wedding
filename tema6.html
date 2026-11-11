@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Wedding of Dimas & Nadia — Royal Indigo & Prada Gold Heritage</title>
+  
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Plus Jakarta Sans, Ephesis -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Ephesis&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       MODERN INDONESIAN HERITAGE: ROYAL INDIGO & PRADA GOLD
+       Theme: Batik Pesisir Megamendung Kontemporer & Tenun Ikat Prada Emas
+       ========================================================================== */
+    :root {
+      --indigo-abyss: #070F22;
+      --indigo-dark: #0D1B3E;
+      --indigo-royal: #152B5C;
+      --indigo-accent: #234282;
+      --prada-gold: #D4AF37;
+      --prada-light: #F9E79F;
+      --prada-deep: #A07817;
+      --prada-bronze: #8E6E28;
+      --terracotta-sand: #D37452;
+      --pearl-cream: #FBF9F4;
+      --sand-cloth: #F3EFE6;
+      --text-charcoal: #1A1F2C;
+      --text-slate: #5A6478;
+      --shadow-royal: 0 16px 36px rgba(7, 15, 34, 0.15);
+      --shadow-prada: 0 8px 25px rgba(212, 175, 55, 0.3);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-title: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-signature: 'Ephesis', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--pearl-cream);
+      color: var(--text-charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--prada-gold);
+      color: var(--indigo-abyss);
+    }
+
+    /* Megamendung Canvas (Floating Stylized Clouds & Gold Sparks) */
+    #megamendung-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Container */
+    .heritage-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      box-shadow: 0 0 70px rgba(7, 15, 34, 0.22);
+      min-height: 100vh;
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+      border-right: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Top Tenun Ikat Motif Strip */
+    .tenun-strip-top {
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, 
+        var(--prada-deep) 0%, 
+        var(--prada-gold) 25%, 
+        var(--indigo-royal) 50%, 
+        var(--prada-gold) 75%, 
+        var(--prada-deep) 100%
+      );
+    }
+
+    /* ==========================================================================
+       SECTION 1: COVER SCREEN (100% ABOVE THE FOLD - 100dvh)
+       Candi Bentar / Gate of Blessing Royal Layout
+       ========================================================================== */
+    #cover {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(14px, 2.6vh, 28px) 16px;
+      background: 
+        radial-gradient(circle at 50% 25%, rgba(21, 43, 92, 0.94) 0%, rgba(7, 15, 34, 1) 100%);
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    /* Gunungan Wayang Minimalist Silhouette Flanks */
+    .gate-flank {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 55px;
+      opacity: 0.12;
+      pointer-events: none;
+      background-repeat: repeat-y;
+      background-size: 55px auto;
+    }
+    .gate-left {
+      left: 0;
+      background-image: radial-gradient(circle, var(--prada-gold) 1.5px, transparent 1.5px);
+      border-right: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .gate-right {
+      right: 0;
+      background-image: radial-gradient(circle, var(--prada-gold) 1.5px, transparent 1.5px);
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Main Gate Card Frame */
+    .gate-frame-box {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(13, 27, 62, 0.72);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 16px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: clamp(24px, 4vh, 38px) clamp(16px, 4vw, 28px) clamp(18px, 2.6vh, 26px);
+      position: relative;
+      box-shadow: 
+        0 24px 50px rgba(0, 0, 0, 0.55),
+        inset 0 0 35px rgba(212, 175, 55, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: gateReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes gateReveal {
+      0% { opacity: 0; transform: translateY(25px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Gunungan Kayon Icon SVG */
+    .kayon-gold-svg {
+      width: 46px;
+      height: 48px;
+      margin-bottom: clamp(4px, 1vh, 8px);
+      filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.5));
+    }
+
+    .cover-top-salut {
+      font-family: var(--font-title);
+      font-size: clamp(0.68rem, 1.4vh, 0.78rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--prada-light);
+      margin-bottom: clamp(2px, 0.6vh, 6px);
+      opacity: 0.95;
+    }
+
+    .cover-couple-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vh, 3.5rem);
+      line-height: 1.08;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: 2px;
+      margin: 2px 0;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+    .cover-couple-title .amp-sym {
+      display: block;
+      font-family: var(--font-signature);
+      font-size: 0.7em;
+      color: var(--prada-gold);
+      margin: -6px 0;
+      font-weight: 400;
+    }
+
+    .cover-date-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: clamp(4px, 1vh, 8px) 0 clamp(8px, 1.8vh, 14px);
+    }
+    .date-divider-line {
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--prada-gold));
+    }
+    .date-divider-line.rev {
+      background: linear-gradient(90deg, var(--prada-gold), transparent);
+    }
+    .cover-date-val {
+      font-family: var(--font-title);
+      font-size: clamp(0.78rem, 1.6vh, 0.9rem);
+      letter-spacing: 0.22em;
+      color: var(--prada-light);
+      text-transform: uppercase;
+    }
+
+    /* Guest Pass Box on Cover */
+    .cover-guest-box {
+      width: 100%;
+      background: rgba(7, 15, 34, 0.78);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 8px;
+      padding: clamp(8px, 1.4vh, 12px) 14px;
+      margin-top: clamp(6px, 1.2vh, 12px);
+      position: relative;
+    }
+    .guest-salut-lbl {
+      font-size: 0.63rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #9DB0D4;
+      margin-bottom: 2px;
+    }
+    .guest-name-act {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.3vh, 1.38rem);
+      font-weight: 600;
+      color: var(--prada-light);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .guest-name-act:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px var(--prada-gold);
+    }
+    .badge-edit-hint {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--prada-gold);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--prada-light);
+    }
+
+    /* Buka Undangan Button */
+    .btn-buka-pintu {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: clamp(12px, 2vh, 18px);
+      padding: clamp(10px, 1.8vh, 13px) clamp(22px, 5vw, 34px);
+      background: linear-gradient(135deg, var(--prada-light) 0%, var(--prada-gold) 50%, var(--prada-deep) 100%);
+      color: var(--indigo-abyss);
+      font-family: var(--font-title);
+      font-size: clamp(0.72rem, 1.5vh, 0.82rem);
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      border: 1px solid #FFF5D0;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-buka-pintu:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.6);
+      filter: brightness(1.08);
+    }
+
+    /* ==========================================================================
+       FLOATING AUDIO CONTROLLER (GONG SURYA EMAS)
+       ========================================================================== */
+    .floating-audio-gong {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 999;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--indigo-abyss);
+      border: 2px solid var(--prada-gold);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .floating-audio-gong:hover {
+      transform: scale(1.1);
+    }
+    .gong-disc-inner {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--prada-gold),
+        var(--indigo-dark),
+        var(--prada-deep),
+        var(--prada-light),
+        var(--prada-gold)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .gong-disc-inner::after {
+      content: '♫';
+      font-size: 0.85rem;
+      color: var(--indigo-abyss);
+      font-weight: bold;
+    }
+    .gong-disc-inner.spinning {
+      animation: spinGong 3.5s linear infinite;
+    }
+    @keyframes spinGong {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================================
+       CONTENT SECTIONS (REGAL & EDITORIAL)
+       ========================================================================== */
+    section {
+      padding: clamp(38px, 6vh, 60px) clamp(18px, 4vw, 32px);
+      position: relative;
+    }
+
+    .sec-badge {
+      display: inline-block;
+      font-family: var(--font-title);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--prada-deep);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .sec-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.2vh, 2.6rem);
+      color: var(--indigo-dark);
+      line-height: 1.18;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Heritage Motif Divider */
+    .heritage-motif-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 12px auto 24px;
+      width: 100%;
+      max-width: 260px;
+    }
+    .motif-bar {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--prada-gold), transparent);
+    }
+    .motif-symbol {
+      color: var(--prada-gold);
+      font-size: 0.85rem;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       SECTION 2: SERAT DOA & KALAM SUCI
+       ========================================================================== */
+    #serat-doa {
+      background: var(--sand-cloth);
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .doa-scroll-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px;
+      padding: clamp(24px, 4vh, 36px) clamp(16px, 3.5vw, 28px);
+      box-shadow: var(--shadow-royal);
+      position: relative;
+    }
+    .arabic-doa {
+      font-family: 'Amiri', serif, Georgia;
+      font-size: clamp(1.25rem, 2.6vh, 1.45rem);
+      line-height: 2.1;
+      color: var(--indigo-dark);
+      margin-bottom: 16px;
+      direction: rtl;
+    }
+    .terjemah-doa {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-charcoal);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .ref-doa-tag {
+      font-family: var(--font-title);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--prada-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       SECTION 3: MEMPELAI (SANG SATRIA & SANG PUTRI)
+       ========================================================================== */
+    #mempelai {
+      background: #FFFFFF;
+    }
+    .couple-split-editorial {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .mempelai-card-regal {
+      background: var(--sand-cloth);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: 26px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-royal);
+    }
+    .photo-regal-frame {
+      width: 170px;
+      height: 230px;
+      border-radius: 12px;
+      border: 2px solid var(--prada-gold);
+      overflow: hidden;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-prada);
+      position: relative;
+    }
+    .photo-regal-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-regal-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .mempelai-role-tag {
+      font-family: var(--font-title);
+      font-size: 0.65rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--prada-deep);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .mempelai-short-name {
+      font-family: var(--font-display);
+      font-size: 1.95rem;
+      color: var(--indigo-dark);
+      margin-bottom: 2px;
+    }
+    .mempelai-formal-name {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 10px;
+    }
+    .mempelai-parents-line {
+      font-size: 0.85rem;
+      color: var(--text-slate);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .btn-ig-indigo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--indigo-royal);
+      text-decoration: none;
+      padding: 5px 14px;
+      border: 1px solid var(--indigo-accent);
+      border-radius: 20px;
+      transition: all 0.2s;
+      background: #FFFFFF;
+    }
+    .btn-ig-indigo:hover {
+      background: var(--indigo-royal);
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       SECTION 4: HITUNG MUNDUR (PRADA GOLD & INDIGO REGAL)
+       ========================================================================== */
+    #countdown {
+      background: linear-gradient(135deg, var(--indigo-abyss) 0%, var(--indigo-dark) 100%);
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .countdown-indigo-box {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 14px;
+      background: rgba(7, 15, 34, 0.65);
+      padding: 26px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-top: 18px;
+    }
+    .cd-grid-prada {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .cd-prada-cell {
+      background: rgba(21, 43, 92, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 8px;
+      padding: 12px 4px;
+    }
+    .cd-prada-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--prada-light);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .cd-prada-lbl {
+      font-family: var(--font-title);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9DB0D4;
+    }
+
+    /* ==========================================================================
+       SECTION 5: RANGKAIAN ACARA (AKAD & RESEPSI)
+       ========================================================================== */
+    #pawiwahan {
+      background: var(--pearl-cream);
+    }
+    .acara-royal-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow-royal);
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .acara-royal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--prada-light), var(--prada-gold), var(--prada-deep));
+    }
+    .acara-sesi-tag {
+      font-family: var(--font-title);
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--prada-deep);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .acara-judul-main {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: var(--indigo-dark);
+      margin-bottom: 14px;
+    }
+    .acara-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+      color: var(--text-charcoal);
+    }
+    .acara-icon-gold {
+      color: var(--prada-gold);
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    .btn-pawiwahan-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn-indigo-pill {
+      flex: 1;
+      min-width: 135px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: var(--sand-cloth);
+      border: 1px solid var(--prada-gold);
+      border-radius: 25px;
+      color: var(--indigo-dark);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-indigo-pill:hover {
+      background: var(--indigo-royal);
+      color: #FFFFFF;
+      border-color: var(--indigo-royal);
+    }
+
+    /* ==========================================================================
+       SECTION 6: PALET WASTRA (PANDUAN BUSANA ADAT)
+       ========================================================================== */
+    #palet-wastra {
+      background: var(--sand-cloth);
+      text-align: center;
+    }
+    .palet-box-prada {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: 24px 18px;
+      box-shadow: var(--shadow-royal);
+      margin-top: 14px;
+    }
+    .palet-desc-text {
+      font-size: 0.9rem;
+      color: var(--text-slate);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .swatches-row-prada {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .swatch-prada-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .swatch-circle-regal {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--prada-gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease;
+    }
+    .swatch-circle-regal:hover {
+      transform: scale(1.15);
+    }
+    .swatch-label-prada {
+      font-family: var(--font-title);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--indigo-dark);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       SECTION 7: BABAD ASMARA (KISAH CINTA)
+       ========================================================================== */
+    #babad-asmara {
+      background: #FFFFFF;
+    }
+    .timeline-babad {
+      position: relative;
+      margin-top: 24px;
+      padding-left: 28px;
+    }
+    .timeline-babad::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--prada-light), var(--prada-gold), var(--prada-deep));
+    }
+    .babad-node {
+      position: relative;
+      margin-bottom: 26px;
+    }
+    .babad-node::before {
+      content: '❖';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--indigo-royal);
+      border: 1px solid var(--prada-gold);
+      color: var(--prada-light);
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .babad-year-tag {
+      font-family: var(--font-title);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--prada-deep);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .babad-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--indigo-dark);
+      margin-bottom: 6px;
+    }
+    .babad-p {
+      font-size: 0.88rem;
+      color: var(--text-slate);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 8: BALE GALERI (PREWEDDING FOTO)
+       ========================================================================== */
+    #bale-galeri {
+      background: var(--sand-cloth);
+      text-align: center;
+    }
+    .galeri-indigo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .galeri-indigo-item {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      position: relative;
+      cursor: pointer;
+      box-shadow: var(--shadow-royal);
+    }
+    .galeri-indigo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .galeri-indigo-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 15, 34, 0.94);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-img-box {
+      max-width: 90%;
+      max-height: 80vh;
+      border: 2px solid var(--prada-gold);
+      border-radius: 8px;
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: var(--prada-light);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       SECTION 9: TANDA TRESNA (AMPLOP DIGITAL & KADO FISIK)
+       ========================================================================== */
+    #tanda-tresna {
+      background: #FFFFFF;
+      text-align: center;
+    }
+    .tresna-card-box {
+      background: var(--sand-cloth);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: 20px 18px;
+      margin-top: 14px;
+      text-align: left;
+      box-shadow: var(--shadow-royal);
+    }
+    .tresna-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .bank-name-lbl {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--indigo-dark);
+    }
+    .bank-sub-lbl {
+      font-size: 0.68rem;
+      color: var(--prada-deep);
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+    .rek-number-lbl {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--indigo-dark);
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .rek-name-lbl {
+      font-size: 0.82rem;
+      color: var(--text-slate);
+      margin-bottom: 12px;
+    }
+    .btn-salin-prada {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--prada-light), var(--prada-gold));
+      color: var(--indigo-abyss);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--prada-gold);
+      border-radius: 20px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-salin-prada:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       SECTION 10: PENUTUP & TEMBANG TRESNA
+       ========================================================================== */
+    #penutup {
+      background: linear-gradient(180deg, var(--pearl-cream) 0%, var(--sand-cloth) 100%);
+      text-align: center;
+    }
+    .penutup-royal-box {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: clamp(24px, 4vh, 36px) clamp(16px, 3.5vw, 28px);
+      box-shadow: var(--shadow-royal);
+    }
+    .penutup-body-text {
+      font-size: 0.92rem;
+      color: var(--text-charcoal);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .penutup-mempelai-names {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--indigo-dark);
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+    .penutup-footer-text {
+      font-family: var(--font-title);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-slate);
+      margin-top: 24px;
+      text-transform: uppercase;
+    }
+
+    /* Toast Notification */
+    #prada-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: var(--indigo-abyss);
+      color: var(--prada-light);
+      border: 1px solid var(--prada-gold);
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 1001;
+      white-space: nowrap;
+    }
+    #prada-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Megamendung Clouds & Gold Sparks Canvas -->
+  <canvas id="megamendung-canvas"></canvas>
+
+  <!-- Local Background Audio -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="Payung Teduh - Akad (Official Music Video).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Audio Controller (Gong Surya Emas) -->
+  <div class="floating-audio-gong" id="audio-control" title="Putar / Jeda Musik">
+    <div class="gong-disc-inner" id="gong-disc"></div>
+  </div>
+
+  <!-- Main Website Container -->
+  <div class="heritage-wrapper">
+
+    <!-- Top Tenun Ikat Accent Line -->
+    <div class="tenun-strip-top"></div>
+
+    <!-- ========================================================================
+         SECTION 1: COVER SCREEN (100% ABOVE THE FOLD - 100dvh)
+         Candi Bentar Gate of Blessing
+         ======================================================================== -->
+    <section id="cover">
+      <!-- Minimalist Gunungan Gate Flanks -->
+      <div class="gate-flank gate-left"></div>
+      <div class="gate-flank gate-right"></div>
+
+      <!-- Main Gate Card Frame -->
+      <div class="gate-frame-box">
+        <!-- SVG Gunungan Kayon Motif -->
+        <svg class="kayon-gold-svg" viewBox="0 0 60 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 2 C 22 16, 8 28, 8 46 C 8 58, 20 62, 30 62 C 40 62, 52 58, 52 46 C 52 28, 38 16, 30 2 Z" stroke="url(#pradaGradient)" stroke-width="1.8" fill="rgba(212,175,55,0.1)"/>
+          <path d="M30 14 L30 54" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M22 28 Q 30 34, 38 28" stroke="rgba(249,231,159,0.7)" stroke-width="1" fill="none"/>
+          <path d="M18 40 Q 30 48, 42 40" stroke="rgba(249,231,159,0.7)" stroke-width="1" fill="none"/>
+          <circle cx="30" cy="14" r="2.5" fill="#F9E79F"/>
+          <defs>
+            <linearGradient id="pradaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F9E79F"/>
+              <stop offset="50%" stop-color="#D4AF37"/>
+              <stop offset="100%" stop-color="#A07817"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <span class="cover-top-salut">PAWIWAHAN AGUNG NUSANTARA</span>
+
+        <h1 class="cover-couple-title">
+          DIMAS<span class="amp-sym">&</span>NADIA
+        </h1>
+
+        <div class="cover-date-strip">
+          <span class="date-divider-line"></span>
+          <span class="cover-date-val">24 • OKTOBER • 2026</span>
+          <span class="date-divider-line rev"></span>
+        </div>
+
+        <!-- Dynamic Guest Pass Card -->
+        <div class="cover-guest-box">
+          <div class="guest-salut-lbl">KEPADA YTH. BAPAK/IBU/SAUDARA/I:</div>
+          <div class="guest-name-act" id="guest-card" title="Klik untuk mengubah nama preview">
+            <span id="guest-name">Tamu Undangan</span>
+            <span class="badge-edit-hint">✎ Ganti</span>
+          </div>
+        </div>
+
+        <!-- Buka Undangan Action Button -->
+        <button class="btn-buka-pintu" id="btn-open-heritage">
+          <span>BUKA PINTU UNDANGAN</span>
+          <span>❖</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: SERAT DOA & KALAM SUCI
+         ======================================================================== -->
+    <section id="serat-doa" class="reveal">
+      <div class="sec-badge">KALAM ILLAHI</div>
+      <h2 class="sec-headline">Doa &amp; Restu Luhur</h2>
+      <div class="heritage-motif-line">
+        <span class="motif-bar"></span>
+        <span class="motif-symbol">❖</span>
+        <span class="motif-bar"></span>
+      </div>
+
+      <div class="doa-scroll-card">
+        <div class="arabic-doa">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+        </div>
+        <p class="terjemah-doa">
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+        </p>
+        <div class="ref-doa-tag">QS. AR-RUM : 21</div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 3: MEMPELAI (SANG SATRIA & SANG PUTRI)
+         ======================================================================== -->
+    <section id="mempelai" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-badge">PASANGAN PENGANTIN</div>
+        <h2 class="sec-headline">Sang Satria &amp; Sang Putri</h2>
+        <div class="heritage-motif-line">
+          <span class="motif-bar"></span>
+          <span class="motif-symbol">❖</span>
+          <span class="motif-bar"></span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-slate); max-width: 480px; margin: 0 auto 20px;">
+          Dengan memohon ridho dan rahmat Allah SWT, kami bermaksud menyelenggarakan akad pernikahan putra-putri kami:
+        </p>
+      </div>
+
+      <div class="couple-split-editorial">
+        <!-- Groom Card -->
+        <div class="mempelai-card-regal">
+          <div class="photo-regal-frame">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80" alt="Dimas Rizky Pratama">
+          </div>
+          <span class="mempelai-role-tag">SANG MEMPELAI PRIA</span>
+          <h3 class="mempelai-short-name">Dimas</h3>
+          <p class="mempelai-formal-name">Dimas Rizky Pratama, S.T.</p>
+          <p class="mempelai-parents-line">
+            Putra Pertama dari Pasangan<br>
+            <strong>Bapak Bambang Pratama</strong><br>&amp; <strong>Ibu Sri Wahyuni</strong>
+          </p>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-ig-indigo">
+            <span>📷</span> @dimaspratama
+          </a>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="mempelai-card-regal">
+          <div class="photo-regal-frame">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Nadia Anindya Putri">
+          </div>
+          <span class="mempelai-role-tag">SANG MEMPELAI WANITA</span>
+          <h3 class="mempelai-short-name">Nadia</h3>
+          <p class="mempelai-formal-name">Nadia Anindya Putri, S.Ds.</p>
+          <p class="mempelai-parents-line">
+            Putri Kedua dari Pasangan<br>
+            <strong>Bapak Hendra Gunawan</strong><br>&amp; <strong>Ibu Ratna Dewi</strong>
+          </p>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-ig-indigo">
+            <span>📷</span> @nadiaputri
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 4: HITUNG MUNDUR (PRADA GOLD & INDIGO REGAL)
+         ======================================================================== -->
+    <section id="countdown" class="reveal">
+      <div class="sec-badge" style="color: var(--prada-light);">HARI BAHAGIA DINANTI</div>
+      <h2 class="sec-headline" style="color: #FFFFFF;">Hitung Mundur Pawiwahan</h2>
+      <div class="heritage-motif-line">
+        <span class="motif-bar" style="background: linear-gradient(90deg, transparent, var(--prada-light), transparent);"></span>
+        <span class="motif-symbol" style="color: var(--prada-light);">❖</span>
+        <span class="motif-bar" style="background: linear-gradient(90deg, transparent, var(--prada-light), transparent);"></span>
+      </div>
+
+      <div class="countdown-indigo-box">
+        <p style="font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--prada-light); margin-bottom: 8px;">
+          MENUJU HARI IJAB &amp; SAKRAL
+        </p>
+        <div class="cd-grid-prada">
+          <div class="cd-prada-cell">
+            <div class="cd-prada-num" id="cd-days">00</div>
+            <div class="cd-prada-lbl">HARI</div>
+          </div>
+          <div class="cd-prada-cell">
+            <div class="cd-prada-num" id="cd-hours">00</div>
+            <div class="cd-prada-lbl">JAM</div>
+          </div>
+          <div class="cd-prada-cell">
+            <div class="cd-prada-num" id="cd-minutes">00</div>
+            <div class="cd-prada-lbl">MENIT</div>
+          </div>
+          <div class="cd-prada-cell">
+            <div class="cd-prada-num" id="cd-seconds">00</div>
+            <div class="cd-prada-lbl">DETIK</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 5: RANGKAIAN ACARA (AKAD & RESEPSI)
+         ======================================================================== -->
+    <section id="pawiwahan" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-badge">RANGKAIAN ACARA</div>
+        <h2 class="sec-headline">Waktu &amp; Lokasi Sakral</h2>
+        <div class="heritage-motif-line">
+          <span class="motif-bar"></span>
+          <span class="motif-symbol">❖</span>
+          <span class="motif-bar"></span>
+        </div>
+      </div>
+
+      <!-- Akad Nikah -->
+      <div class="acara-royal-card">
+        <span class="acara-sesi-tag">RANGKAIAN PERTAMA</span>
+        <h3 class="acara-judul-main">Akad Nikah &amp; Panggih Adat</h3>
+        
+        <div class="acara-detail-item">
+          <span class="acara-icon-gold">📅</span>
+          <div>
+            <strong>Sabtu, 24 Oktober 2026</strong><br>
+            <span style="color: var(--text-slate); font-size: 0.85rem;">Pukul 08.00 - 10.00 WIB</span>
+          </div>
+        </div>
+
+        <div class="acara-detail-item">
+          <span class="acara-icon-gold">🏛️</span>
+          <div>
+            <strong>Grand Ballroom Keraton Heritage</strong><br>
+            <span style="color: var(--text-slate); font-size: 0.85rem;">Jl. Gatot Subroto Kav. 55, Jakarta Selatan</span>
+          </div>
+        </div>
+
+        <div class="btn-pawiwahan-actions">
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-indigo-pill">
+            <span>🗺️</span> GOOGLE MAPS
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Dimas+%26+Nadia&dates=20261024T010000Z/20261024T030000Z&details=Akad+Nikah+Dimas+%26+Nadia&location=Keraton+Heritage+Jakarta" target="_blank" rel="noopener noreferrer" class="btn-indigo-pill">
+            <span>📅</span> SIMPAN KE KALENDER
+          </a>
+        </div>
+      </div>
+
+      <!-- Resepsi -->
+      <div class="acara-royal-card">
+        <span class="acara-sesi-tag">RANGKAIAN KEDUA</span>
+        <h3 class="acara-judul-main">Resepsi Pawiwahan Agung</h3>
+        
+        <div class="acara-detail-item">
+          <span class="acara-icon-gold">📅</span>
+          <div>
+            <strong>Sabtu, 24 Oktober 2026</strong><br>
+            <span style="color: var(--text-slate); font-size: 0.85rem;">Pukul 11.30 - 14.30 WIB</span>
+          </div>
+        </div>
+
+        <div class="acara-detail-item">
+          <span class="acara-icon-gold">🏛️</span>
+          <div>
+            <strong>Grand Ballroom Keraton Heritage</strong><br>
+            <span style="color: var(--text-slate); font-size: 0.85rem;">Jl. Gatot Subroto Kav. 55, Jakarta Selatan</span>
+          </div>
+        </div>
+
+        <div class="btn-pawiwahan-actions">
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-indigo-pill">
+            <span>🗺️</span> GOOGLE MAPS
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Dimas+%26+Nadia&dates=20261024T043000Z/20261024T073000Z&details=Resepsi+Dimas+%26+Nadia&location=Keraton+Heritage+Jakarta" target="_blank" rel="noopener noreferrer" class="btn-indigo-pill">
+            <span>📅</span> SIMPAN KE KALENDER
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 6: PALET WASTRA (PANDUAN BUSANA ADAT)
+         ======================================================================== -->
+    <section id="palet-wastra" class="reveal">
+      <div class="sec-badge">PANDUAN BUSANA TAMU</div>
+      <h2 class="sec-headline">Palet Warna Wastra</h2>
+      <div class="heritage-motif-line">
+        <span class="motif-bar"></span>
+        <span class="motif-symbol">❖</span>
+        <span class="motif-bar"></span>
+      </div>
+
+      <div class="palet-box-prada">
+        <p class="palet-desc-text">
+          Tamu undangan disarankan mengenakan busana bernuansa Wastra Nusantara (Batik Tradisional, Tenun Ikat, atau Songket) dengan keselarasan warna berikut:
+        </p>
+
+        <div class="swatches-row-prada">
+          <div class="swatch-prada-item">
+            <div class="swatch-circle-regal" style="background: #0D1B3E;"></div>
+            <span class="swatch-label-prada">Indigo Blue</span>
+          </div>
+          <div class="swatch-prada-item">
+            <div class="swatch-circle-regal" style="background: #D4AF37;"></div>
+            <span class="swatch-label-prada">Prada Emas</span>
+          </div>
+          <div class="swatch-prada-item">
+            <div class="swatch-circle-regal" style="background: #D37452;"></div>
+            <span class="swatch-label-prada">Terracotta</span>
+          </div>
+          <div class="swatch-prada-item">
+            <div class="swatch-circle-regal" style="background: #FBF9F4;"></div>
+            <span class="swatch-label-prada">Mutiara</span>
+          </div>
+          <div class="swatch-prada-item">
+            <div class="swatch-circle-regal" style="background: #1C2421;"></div>
+            <span class="swatch-label-prada">Soga Hitam</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 7: BABAD ASMARA (KISAH CINTA)
+         ======================================================================== -->
+    <section id="babad-asmara" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-badge">BABAD ASMARA</div>
+        <h2 class="sec-headline">Langkah Menuju Pelaminan</h2>
+        <div class="heritage-motif-line">
+          <span class="motif-bar"></span>
+          <span class="motif-symbol">❖</span>
+          <span class="motif-bar"></span>
+        </div>
+      </div>
+
+      <div class="timeline-babad">
+        <div class="babad-node">
+          <div class="babad-year-tag">TAHUN 2021 • TERTULIS DI LAUHUL MAHFUZ</div>
+          <h4 class="babad-title">Awal Mula Perjumpaan</h4>
+          <p class="babad-p">
+            Takdir mempertemukan kami di sebuah simposium seni rupa di Surakarta. Diskusi sederhana seputar filosofi ragam hias Nusantara membuka ruang dialog yang mengalir begitu tulus dan alami.
+          </p>
+        </div>
+
+        <div class="babad-node">
+          <div class="babad-year-tag">TAHUN 2023 • SATU ARAH DAN TUJUAN</div>
+          <h4 class="babad-title">Menjalin Komitmen Luhur</h4>
+          <p class="babad-p">
+            Waktu menguji kedewasaan dan keselarasan visi kami. Bersama melangkah dalam suka dan duka, menguatkan doa agar niat suci senantiasa diberkahi kelapangan jalan.
+          </p>
+        </div>
+
+        <div class="babad-node">
+          <div class="babad-year-tag">TAHUN 2025 • RESTU KELUARGA BESAR</div>
+          <h4 class="babad-title">Pertemuan &amp; Lamaran Resmi</h4>
+          <p class="babad-p">
+            Dua keluarga besar berhimpun dalam kehangatan adat silaturahmi. Sujud syukur kami panjatkan saat restu kedua orang tua terucap dengan penuh keikhlasan dan linangan air mata bahagia.
+          </p>
+        </div>
+
+        <div class="babad-node">
+          <div class="babad-year-tag">TAHUN 2026 • JANJI SEUMUR HIDUP</div>
+          <h4 class="babad-title">Menyempurnakan Agama</h4>
+          <p class="babad-p">
+            Di hadapan saksi dan Sang Khaliq, kami menautkan janji suci. Semoga Allah SWT menganugerahkan rumah tangga yang penuh sakinah, mawaddah, dan warahmah hingga akhir hayat.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 8: BALE GALERI (PREWEDDING FOTO)
+         ======================================================================== -->
+    <section id="bale-galeri" class="reveal">
+      <div class="sec-badge">MEMORI INDAH</div>
+      <h2 class="sec-headline">Bale Galeri Prewedding</h2>
+      <div class="heritage-motif-line">
+        <span class="motif-bar"></span>
+        <span class="motif-symbol">❖</span>
+        <span class="motif-bar"></span>
+      </div>
+
+      <div class="galeri-indigo-grid">
+        <div class="galeri-indigo-item" onclick="openPradaLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Moment 1">
+        </div>
+        <div class="galeri-indigo-item" onclick="openPradaLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Moment 2">
+        </div>
+        <div class="galeri-indigo-item" onclick="openPradaLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=80" alt="Moment 3">
+        </div>
+        <div class="galeri-indigo-item" onclick="openPradaLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Moment 4">
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="prada-lightbox" onclick="closePradaLightbox()">
+      <span class="lightbox-close-btn">&times;</span>
+      <img src="" alt="Enlarged" class="lightbox-img-box" id="prada-lightbox-img">
+    </div>
+
+    <!-- ========================================================================
+         SECTION 9: TANDA TRESNA (AMPLOP DIGITAL & KADO FISIK)
+         ======================================================================== -->
+    <section id="tanda-tresna" class="reveal">
+      <div class="sec-badge">TANDA TRESNA</div>
+      <h2 class="sec-headline">Amplop &amp; Kado Digital</h2>
+      <div class="heritage-motif-line">
+        <span class="motif-bar"></span>
+        <span class="motif-symbol">❖</span>
+        <span class="motif-bar"></span>
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--text-slate); max-width: 460px; margin: 0 auto 16px;">
+        Kehadiran dan doa restu Anda adalah berkah paling berharga bagi kami. Namun apabila Anda berkehendak memberikan tanda kasih secara digital, Anda dapat melalui rekening di bawah ini:
+      </p>
+
+      <!-- BCA -->
+      <div class="tresna-card-box">
+        <div class="tresna-card-top">
+          <div>
+            <div class="bank-name-lbl">BANK BCA</div>
+            <div class="bank-sub-lbl">TRANSFER DIGITAL</div>
+          </div>
+          <span style="font-size: 1.4rem;">💳</span>
+        </div>
+        <div class="rek-number-lbl">8820 4912 30</div>
+        <div class="rek-name-lbl">a.n. Dimas Rizky Pratama</div>
+        <button class="btn-salin-prada" onclick="copyPradaText('8820491230', 'Rekening BCA Dimas')">
+          <span>📋</span> SALIN NO. REKENING
+        </button>
+      </div>
+
+      <!-- Mandiri -->
+      <div class="tresna-card-box">
+        <div class="tresna-card-top">
+          <div>
+            <div class="bank-name-lbl">BANK MANDIRI</div>
+            <div class="bank-sub-lbl">TRANSFER DIGITAL</div>
+          </div>
+          <span style="font-size: 1.4rem;">💳</span>
+        </div>
+        <div class="rek-number-lbl">1370 0192 8491</div>
+        <div class="rek-name-lbl">a.n. Nadia Anindya Putri</div>
+        <button class="btn-salin-prada" onclick="copyPradaText('137001928491', 'Rekening Mandiri Nadia')">
+          <span>📋</span> SALIN NO. REKENING
+        </button>
+      </div>
+
+      <!-- Alamat Kado Fisik -->
+      <div class="tresna-card-box">
+        <div class="tresna-card-top">
+          <div>
+            <div class="bank-name-lbl">KADO FISIK</div>
+            <div class="bank-sub-lbl">ALAMAT DOMISILI MEMPELAI</div>
+          </div>
+          <span style="font-size: 1.4rem;">📦</span>
+        </div>
+        <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-charcoal); margin-bottom: 12px;">
+          <strong>Kediaman Mempelai:</strong><br>
+          Graha Indigo Residence No. 24, Jl. Senopati Raya, Kebayoran Baru, Jakarta Selatan 12190<br>
+          <em>(Penerima: Dimas & Nadia / 0812-3456-7890)</em>
+        </div>
+        <button class="btn-salin-prada" onclick="copyPradaText('Graha Indigo Residence No. 24, Jl. Senopati Raya, Kebayoran Baru, Jakarta Selatan 12190 (Penerima: Dimas & Nadia / 0812-3456-7890)', 'Alamat Pengiriman Kado')">
+          <span>📋</span> SALIN ALAMAT KADO
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 10: PENUTUP & TEMBANG TRESNA
+         ======================================================================== -->
+    <section id="penutup" class="reveal">
+      <div class="penutup-royal-box">
+        <div class="sec-badge">UNGKAPAN SYUKUR</div>
+        <div class="heritage-motif-line">
+          <span class="motif-bar"></span>
+          <span class="motif-symbol">❖</span>
+          <span class="motif-bar"></span>
+        </div>
+
+        <p class="penutup-body-text">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta melimpahkan doa restu bagi langkah baru perjalanan suci kami.
+        </p>
+
+        <p style="font-family: var(--font-title); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--prada-deep); font-weight: 700;">
+          KAMI YANG BERBAHAGIA,
+        </p>
+        <h3 class="penutup-mempelai-names">Dimas &amp; Nadia</h3>
+
+        <div class="penutup-footer-text">
+          © 2026 DIMAS & NADIA • ROYAL INDIGO & PRADA GOLD EDITION
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End .heritage-wrapper -->
+
+  <!-- Toast Notification Popup -->
+  <div id="prada-toast">BERHASIL DISALIN!</div>
+
+  <!-- ========================================================================
+       JAVASCRIPT LOGIC & INTERACTION
+       ======================================================================== -->
+  <script>
+    /* ──────────────────────────────────────────────
+       1. FLOATING MEGAMENDUNG CLOUDS & PRADA SPARKS CANVAS
+       ────────────────────────────────────────────── */
+    (function initMegamendungCanvas() {
+      const canvas = document.getElementById('megamendung-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H;
+      let sparks = [];
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class SparkPrada {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * W;
+          this.y = Math.random() * H;
+          this.size = Math.random() * 5 + 2;
+          this.vy = -(Math.random() * 0.6 + 0.3);
+          this.vx = (Math.random() - 0.5) * 0.4;
+          this.alpha = Math.random() * 0.6 + 0.2;
+          this.pulse = Math.random() * Math.PI * 2;
+          this.vPulse = 0.03 + Math.random() * 0.02;
+          this.isStar = Math.random() > 0.5;
+        }
+        update() {
+          this.y += this.vy;
+          this.x += this.vx;
+          this.pulse += this.vPulse;
+          if (this.y < -20 || this.x < -20 || this.x > W + 20) {
+            this.reset();
+            this.y = H + 10;
+          }
+        }
+        draw() {
+          const currentAlpha = Math.max(0.1, this.alpha * (0.6 + 0.4 * Math.sin(this.pulse)));
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.globalAlpha = currentAlpha;
+          ctx.fillStyle = '#D4AF37';
+
+          if (this.isStar) {
+            // 4-point Diamond Spark
+            ctx.beginPath();
+            ctx.moveTo(0, -this.size);
+            ctx.lineTo(this.size * 0.35, -this.size * 0.35);
+            ctx.lineTo(this.size, 0);
+            ctx.lineTo(this.size * 0.35, this.size * 0.35);
+            ctx.lineTo(0, this.size);
+            ctx.lineTo(-this.size * 0.35, this.size * 0.35);
+            ctx.lineTo(-this.size, 0);
+            ctx.lineTo(-this.size * 0.35, -this.size * 0.35);
+            ctx.closePath();
+            ctx.fill();
+          } else {
+            // Soft Golden Ember
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      const count = Math.min(26, Math.floor(window.innerWidth / 34));
+      for (let i = 0; i < count; i++) {
+        sparks.push(new SparkPrada());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < sparks.length; i++) {
+          sparks[i].update();
+          sparks[i].draw();
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    /* ──────────────────────────────────────────────
+       2. URL QUERY PARAMETER & GUEST NAME
+       ────────────────────────────────────────────── */
+    (function initGuestName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestFromUrl = urlParams.get('to') || urlParams.get('u') || urlParams.get('nama');
+      const guestEl = document.getElementById('guest-name');
+      const guestCard = document.getElementById('guest-card');
+
+      if (guestFromUrl && guestEl) {
+        guestEl.textContent = guestFromUrl;
+      }
+
+      if (guestCard && guestEl) {
+        guestCard.addEventListener('click', function() {
+          const current = guestEl.textContent.trim();
+          const nextName = prompt("Ubah nama tamu (untuk preview / bagikan link):", current);
+          if (nextName && nextName.trim() !== "") {
+            guestEl.textContent = nextName.trim();
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('to', nextName.trim());
+            window.history.replaceState({}, '', newUrl);
+            showPradaToast("Nama tamu berhasil diperbarui!");
+          }
+        });
+      }
+    })();
+
+    /* ──────────────────────────────────────────────
+       3. BACKGROUND AUDIO & GONG CONTROLLER
+       ────────────────────────────────────────────── */
+    const audioEl = document.getElementById('bg-audio');
+    const audioControl = document.getElementById('audio-control');
+    const gongDisc = document.getElementById('gong-disc');
+    let isPlaying = false;
+
+    function playMusic() {
+      if (!audioEl) return;
+      audioEl.volume = 0.6;
+      const playPromise = audioEl.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isPlaying = true;
+          if (gongDisc) gongDisc.classList.add('spinning');
+        }).catch(err => {
+          console.warn('Autoplay terhalang browser, menunggu interaksi pengguna:', err);
+        });
+      }
+    }
+
+    function pauseMusic() {
+      if (!audioEl) return;
+      audioEl.pause();
+      isPlaying = false;
+      if (gongDisc) gongDisc.classList.remove('spinning');
+    }
+
+    if (audioControl) {
+      audioControl.addEventListener('click', () => {
+        if (isPlaying) {
+          pauseMusic();
+        } else {
+          playMusic();
+        }
+      });
+    }
+
+    // Tombol Buka Undangan
+    const btnOpenHeritage = document.getElementById('btn-open-heritage');
+    if (btnOpenHeritage) {
+      btnOpenHeritage.addEventListener('click', function(e) {
+        e.preventDefault();
+        playMusic();
+        const target = document.getElementById('serat-doa');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    /* ──────────────────────────────────────────────
+       4. COUNTDOWN TIMER
+       ────────────────────────────────────────────── */
+    (function initCountdown() {
+      const targetDate = new Date('2026-10-24T08:00:00+07:00').getTime();
+      const elDays = document.getElementById('cd-days');
+      const elHours = document.getElementById('cd-hours');
+      const elMinutes = document.getElementById('cd-minutes');
+      const elSeconds = document.getElementById('cd-seconds');
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          if (elDays) elDays.textContent = "00";
+          if (elHours) elHours.textContent = "00";
+          if (elMinutes) elMinutes.textContent = "00";
+          if (elSeconds) elSeconds.textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMinutes) elMinutes.textContent = String(minutes).padStart(2, '0');
+        if (elSeconds) elSeconds.textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    })();
+
+    /* ──────────────────────────────────────────────
+       5. SCROLL REVEAL OBSERVER
+       ────────────────────────────────────────────── */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('active'));
+    }
+
+    /* ──────────────────────────────────────────────
+       6. COPY TO CLIPBOARD & TOAST NOTIFICATION
+       ────────────────────────────────────────────── */
+    function showPradaToast(msg) {
+      const toast = document.getElementById('prada-toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copyPradaText(text, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showPradaToast(`✓ ${label} berhasil disalin!`);
+        }).catch(() => {
+          fallbackPradaCopy(text, label);
+        });
+      } else {
+        fallbackPradaCopy(text, label);
+      }
+    }
+
+    function fallbackPradaCopy(text, label) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showPradaToast(`✓ ${label} berhasil disalin!`);
+      } catch (err) {
+        showPradaToast("Gagal menyalin!");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    /* ──────────────────────────────────────────────
+       7. GALLERY LIGHTBOX MODAL
+       ────────────────────────────────────────────── */
+    function openPradaLightbox(el) {
+      const img = el.querySelector('img');
+      const modal = document.getElementById('prada-lightbox');
+      const targetImg = document.getElementById('prada-lightbox-img');
+      if (img && modal && targetImg) {
+        targetImg.src = img.src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closePradaLightbox() {
+      const modal = document.getElementById('prada-lightbox');
+      if (modal) modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePradaLightbox();
+    });
+  </script>
+</body>
+</html>
+

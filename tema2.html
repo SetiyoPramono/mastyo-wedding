@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wedding Story | Rizki & Salsabila (Watercolor Storybook)</title>
+  
+  <!-- Google Fonts: Whimsical Calligraphy, Storybook Serif, & Clean Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@400;600;700&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       PALET WARNA WATERCOLOR & STORYBOOK FAIRYTALE
+    ══════════════════════════════════════════════ */
+    :root {
+      --parchment:      #FDFBF7;
+      --parchment-deep: #F6F1E9;
+      --sage:           #6E8B74;
+      --sage-light:     #8FA994;
+      --sage-pale:      #E8EFE9;
+      --blush:          #D48B8A;
+      --blush-light:    #EBBAB8;
+      --blush-pale:     #F9EDED;
+      --terracotta:     #B26A54;
+      --forest:         #2F4836;
+      --text-main:      #3E4A3F;
+      --text-muted:     #6E7A6F;
+      --gold-accent:    #D1A758;
+      --paper-shadow:   0 15px 35px rgba(62, 74, 63, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--parchment);
+      color: var(--text-main);
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+      background-image: 
+        radial-gradient(var(--blush-pale) 1px, transparent 1px),
+        radial-gradient(var(--sage-pale) 1px, var(--parchment) 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+    }
+
+    /* ══════════════════════════════════════════════
+       FLOATING WATERCOLOR PETALS & LEAVES CANVAS
+    ══════════════════════════════════════════════ */
+    #petals-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Scroll progress bar */
+    #scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--blush), var(--gold-accent));
+      width: 0%;
+      z-index: 10000;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(212, 139, 138, 0.4);
+    }
+
+    /* Container wrapper */
+    .story-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      background: rgba(253, 251, 247, 0.94);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.04);
+    }
+
+    section {
+      padding: 85px 25px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ══════════════════════════════════════════════
+       WATERCOLOR ORNAMENT HELPERS
+    ══════════════════════════════════════════════ */
+    .chapter-tag {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blush);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .chapter-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--forest);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .chapter-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .watercolor-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 16px auto 35px;
+    }
+
+    .watercolor-divider .leaf-line {
+      height: 1px;
+      width: 60px;
+      background: linear-gradient(90deg, transparent, var(--sage-light), transparent);
+    }
+
+    .watercolor-divider svg {
+      width: 28px;
+      height: 28px;
+      animation: gentleRotate 6s ease-in-out infinite;
+    }
+
+    @keyframes gentleRotate {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    /* Washi Tape Accent */
+    .washi-tape {
+      position: absolute;
+      width: 110px;
+      height: 26px;
+      background: rgba(212, 139, 138, 0.28);
+      transform: rotate(-3deg);
+      top: -12px;
+      left: 50%;
+      margin-left: -55px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+      z-index: 5;
+    }
+
+    /* Floating music button */
+    #music-btn {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--forest), var(--sage));
+      border: 2px solid #fff;
+      color: var(--parchment);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(47, 72, 54, 0.35);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #music-btn:hover {
+      transform: scale(1.12) rotate(15deg);
+    }
+    #music-btn.playing {
+      animation: spinVinyl 6s linear infinite;
+    }
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 1: THE STORYBOOK COVER
+    ══════════════════════════════════════════════ */
+    #cover {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(12px, 2.5vh, 28px) 16px;
+      box-sizing: border-box;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(235, 186, 184, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(143, 169, 148, 0.3) 0%, transparent 40%),
+        linear-gradient(180deg, #FDFBF7 0%, #F5EFE6 100%);
+      position: relative;
+    }
+
+    .storybook-frame {
+      max-width: 500px;
+      width: 100%;
+      background: #FFFFFF;
+      padding: clamp(22px, 3vh, 32px) clamp(18px, 3.5vw, 28px) clamp(18px, 2.5vh, 24px);
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 
+        0 18px 50px rgba(62, 74, 63, 0.09),
+        0 0 0 1px rgba(209, 167, 88, 0.25);
+      border: 6px solid #FAF6EF;
+      animation: storybookOpen 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes storybookOpen {
+      0% {
+        opacity: 0;
+        transform: perspective(800px) rotateY(-8deg) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: perspective(800px) rotateY(0deg) scale(1);
+      }
+    }
+
+    /* Botanical corners */
+    .botanical-corner {
+      position: absolute;
+      width: clamp(55px, 9vw, 75px);
+      height: clamp(55px, 9vw, 75px);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .botanical-corner.top-left { top: -6px; left: -6px; }
+    .botanical-corner.top-right { top: -6px; right: -6px; transform: scaleX(-1); }
+    .botanical-corner.bottom-left { bottom: -6px; left: -6px; transform: scaleY(-1); }
+    .botanical-corner.bottom-right { bottom: -6px; right: -6px; transform: scale(-1); }
+
+    .fairytale-badge {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(0.95rem, 1.8vh, 1.15rem);
+      font-weight: 700;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: clamp(2px, 0.8vh, 6px);
+    }
+
+    .storybook-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.3rem, 5.8vh, 3.5rem);
+      color: var(--forest);
+      line-height: 1.1;
+      margin: 2px 0 4px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .storybook-names span {
+      display: block;
+      font-family: 'Alex Brush', cursive;
+      font-size: 0.48em;
+      color: var(--blush);
+      margin: 1px 0;
+    }
+
+    .storybook-date {
+      font-family: 'Lora', serif;
+      font-size: clamp(0.85rem, 1.8vh, 0.98rem);
+      letter-spacing: 0.1em;
+      color: var(--terracotta);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    /* Guest card on cover */
+    .guest-storybook-box {
+      margin-top: clamp(10px, 1.8vh, 18px);
+      padding: clamp(8px, 1.4vh, 12px) 14px;
+      background: var(--parchment-deep);
+      border-radius: 8px;
+      border: 1px dashed var(--sage-light);
+      position: relative;
+    }
+
+    .guest-header {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .guest-name-text {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.15rem, 2.4vh, 1.35rem);
+      font-weight: 600;
+      color: var(--forest);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .guest-name-text:hover {
+      color: var(--blush);
+    }
+
+    /* Wax seal button "Buka Undangan" */
+    .btn-open-story {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: clamp(12px, 2vh, 18px);
+      padding: clamp(10px, 1.8vh, 13px) clamp(22px, 4vw, 32px);
+      background: linear-gradient(135deg, var(--forest), #3c5e46);
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(0.72rem, 1.6vh, 0.8rem);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 8px 25px rgba(47, 72, 54, 0.25);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      animation: pulseOpenBtn 2.2s infinite ease-in-out;
+    }
+    .btn-open-story:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(47, 72, 54, 0.4);
+      background: linear-gradient(135deg, #3c5e46, var(--forest));
+      color: #fff;
+    }
+    @keyframes pulseOpenBtn {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(209, 167, 88, 0.5), 0 8px 25px rgba(47, 72, 54, 0.25);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(209, 167, 88, 0), 0 10px 28px rgba(47, 72, 54, 0.35);
+      }
+    }
+
+    .wax-seal-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold-accent);
+      animation: pulseGently 2s infinite ease-in-out;
+    }
+    @keyframes pulseGently {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      margin-top: clamp(8px, 1.5vh, 16px);
+      font-family: 'Caveat', cursive;
+      font-size: clamp(0.9rem, 1.8vh, 1.05rem);
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      animation: floatDown 2s infinite ease-in-out;
+    }
+    @keyframes floatDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 2: PEMBUKAAN / BISMILLAH
+    ══════════════════════════════════════════════ */
+    #verse {
+      background: #FFFFFF;
+      border-top: 1px solid rgba(143, 169, 148, 0.2);
+      border-bottom: 1px solid rgba(143, 169, 148, 0.2);
+    }
+
+    .verse-card {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px;
+      position: relative;
+    }
+
+    .arabic-text {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      color: var(--forest);
+      line-height: 2;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .translation-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .verse-source {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-top: 16px;
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 3: MEMPELAI (THE CHARACTERS)
+    ══════════════════════════════════════════════ */
+    #characters {
+      background: var(--parchment);
+    }
+
+    .couples-container {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .polaroid-card {
+      background: #FFFFFF;
+      padding: 20px 20px 30px;
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(62, 74, 63, 0.08);
+      border: 1px solid rgba(143, 169, 148, 0.2);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .polaroid-card:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 18px 40px rgba(62, 74, 63, 0.14);
+    }
+
+    .polaroid-frame {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush-pale), var(--sage-pale));
+      border: 4px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .polaroid-frame svg {
+      width: 75px;
+      height: 75px;
+      fill: var(--sage);
+      opacity: 0.8;
+    }
+
+    .character-role {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--blush);
+      margin-bottom: 4px;
+    }
+
+    .character-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.6rem;
+      color: var(--forest);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .character-bio {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .character-bio strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .heart-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: var(--blush);
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+    }
+    .connector-line {
+      width: 1px;
+      height: 70px;
+      background: linear-gradient(to bottom, transparent, var(--blush), transparent);
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 4: COUNTDOWN
+    ══════════════════════════════════════════════ */
+    #countdown {
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(235, 186, 184, 0.25) 0%, transparent 60%),
+        #FFFFFF;
+      border-top: 1px solid rgba(212, 139, 138, 0.15);
+      border-bottom: 1px solid rgba(212, 139, 138, 0.15);
+    }
+
+    .countdown-boxes {
+      display: flex;
+      justify-content: center;
+      gap: clamp(10px, 3vw, 24px);
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .timer-tile {
+      background: #FFFFFF;
+      border: 1px solid rgba(143, 169, 148, 0.35);
+      border-radius: 8px;
+      padding: 20px 22px;
+      min-width: 90px;
+      box-shadow: 0 8px 25px rgba(62, 74, 63, 0.06);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .timer-tile:hover {
+      transform: translateY(-4px);
+    }
+
+    .timer-tile::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blush), transparent);
+    }
+
+    .timer-number {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .timer-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 5: HARI BAHAGIA (WAKTU & TEMPAT)
+    ══════════════════════════════════════════════ */
+    #celebration {
+      background: var(--parchment);
+    }
+
+    .event-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .fairytale-event-card {
+      background: #FFFFFF;
+      padding: 38px 26px;
+      border-radius: 8px;
+      border: 1px solid rgba(143, 169, 148, 0.25);
+      box-shadow: var(--paper-shadow);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .fairytale-event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(62, 74, 63, 0.12);
+      border-color: var(--sage);
+    }
+
+    .fairytale-event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sage), var(--blush));
+      border-radius: 8px 8px 0 0;
+    }
+
+    .event-icon-circle {
+      width: 54px;
+      height: 54px;
+      background: var(--sage-pale);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--forest);
+    }
+    .event-icon-circle svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--forest);
+    }
+
+    .event-type-name {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blush);
+      margin-bottom: 6px;
+    }
+
+    .event-main-title {
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+
+    .event-info-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .event-info-text strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .btn-fairytale-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 22px;
+      background: transparent;
+      border: 1px solid var(--sage);
+      color: var(--forest);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    .btn-fairytale-map:hover {
+      background: var(--sage);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(110, 139, 116, 0.35);
+    }
+
+    /* ══════════════════════════════════════════════
+       DRESS CODE COLOR PALETTE
+    ══════════════════════════════════════════════ */
+    .palette-storybook-card {
+      background: #FFFFFF;
+      padding: 34px 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 139, 138, 0.3);
+      max-width: 520px;
+      margin: 40px auto 0;
+      box-shadow: var(--paper-shadow);
+      position: relative;
+    }
+
+    .swatches-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 20px 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .swatch-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-disc {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .swatch-disc:hover {
+      transform: scale(1.15) translateY(-3px);
+    }
+
+    .swatch-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 6: OUR FAIRYTALE (LOVE STORY)
+    ══════════════════════════════════════════════ */
+    #story {
+      background: #FFFFFF;
+      border-top: 1px solid rgba(143, 169, 148, 0.15);
+      border-bottom: 1px solid rgba(143, 169, 148, 0.15);
+    }
+
+    .fairytale-timeline {
+      position: relative;
+      max-width: 660px;
+      margin: 40px auto 0;
+      padding: 10px 0;
+    }
+
+    .fairytale-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--sage-light), var(--blush), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-page {
+      position: relative;
+      width: 50%;
+      padding: 16px 30px;
+      box-sizing: border-box;
+    }
+    .timeline-page.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-page.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .flower-pin {
+      position: absolute;
+      top: 24px;
+      width: 22px;
+      height: 22px;
+      background: var(--blush);
+      border-radius: 50%;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 0 0 2px var(--blush-light);
+      z-index: 2;
+    }
+    .timeline-page.left .flower-pin { right: -11px; }
+    .timeline-page.right .flower-pin { left: -11px; }
+
+    .page-sheet {
+      background: var(--parchment);
+      border: 1px solid rgba(143, 169, 148, 0.3);
+      padding: 22px;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(62, 74, 63, 0.05);
+      transition: all 0.3s ease;
+    }
+    .page-sheet:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(62, 74, 63, 0.1);
+      border-color: var(--sage);
+    }
+
+    .page-chapter-num {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--terracotta);
+    }
+
+    .page-title {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin: 4px 0 8px;
+    }
+
+    .page-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 7: GALERI POTRET
+    ══════════════════════════════════════════════ */
+    #gallery {
+      background: var(--parchment);
+    }
+
+    .scrapbook-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .scrapbook-item {
+      background: #FFFFFF;
+      padding: 10px 10px 24px;
+      border-radius: 4px;
+      box-shadow: 0 8px 25px rgba(62, 74, 63, 0.08);
+      border: 1px solid rgba(143, 169, 148, 0.2);
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+    .scrapbook-item:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+    .scrapbook-item:nth-child(odd) {
+      transform: rotate(-1.5deg);
+    }
+    .scrapbook-item:hover {
+      transform: scale(1.05) rotate(0deg);
+      z-index: 5;
+      box-shadow: 0 15px 35px rgba(62, 74, 63, 0.15);
+    }
+
+    .scrapbook-photo-placeholder {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--sage-pale), var(--blush-pale));
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage);
+      position: relative;
+    }
+    .scrapbook-photo-placeholder svg {
+      width: 44px;
+      height: 44px;
+      opacity: 0.6;
+    }
+
+    .photo-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 8: TANDA KASIH (AMPLOP DIGITAL & KADO)
+    ══════════════════════════════════════════════ */
+    #gift {
+      background: #FFFFFF;
+      border-top: 1px solid rgba(143, 169, 148, 0.15);
+      border-bottom: 1px solid rgba(143, 169, 148, 0.15);
+    }
+
+    .gift-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+      max-width: 760px;
+      margin: 35px auto 0;
+    }
+
+    .fairytale-bank-card {
+      background: var(--parchment);
+      border: 1px solid rgba(143, 169, 148, 0.35);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: left;
+      position: relative;
+      box-shadow: var(--paper-shadow);
+      transition: all 0.3s ease;
+    }
+    .fairytale-bank-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(62, 74, 63, 0.12);
+      border-color: var(--sage);
+    }
+
+    .card-bank-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .bank-name-tag {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--forest);
+      letter-spacing: 0.05em;
+    }
+
+    .bank-watercolor-chip {
+      width: 38px;
+      height: 26px;
+      background: linear-gradient(135deg, var(--gold-accent), #B88A3A);
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+    }
+
+    .card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .card-acc-num {
+      font-family: 'Lora', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--forest);
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .card-acc-holder {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      margin-bottom: 18px;
+    }
+
+    .btn-copy-fairytale {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--sage);
+      color: var(--forest);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-copy-fairytale:hover {
+      background: var(--sage);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(110, 139, 116, 0.3);
+    }
+
+    .physical-gift-card {
+      grid-column: 1 / -1;
+      background: var(--parchment);
+      border: 1px solid rgba(212, 139, 138, 0.35);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: left;
+      position: relative;
+    }
+
+    /* Floating Toast */
+    #storybook-toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: var(--forest);
+      color: var(--parchment);
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--sage-light);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 999999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #storybook-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAPTER 9: PENUTUP (THE EPILOGUE)
+    ══════════════════════════════════════════════ */
+    #epilogue {
+      background: 
+        radial-gradient(circle at 50% 90%, rgba(235, 186, 184, 0.35) 0%, transparent 60%),
+        var(--parchment);
+      padding: 95px 25px 70px;
+    }
+
+    .epilogue-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 7vw, 4.2rem);
+      color: var(--forest);
+      line-height: 1.2;
+      margin: 15px 0 20px;
+    }
+
+    .epilogue-text {
+      max-width: 550px;
+      margin: 0 auto;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .footer-quote {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--terracotta);
+      margin-top: 30px;
+    }
+
+    .footer-stamp {
+      font-family: 'Caveat', cursive;
+      font-size: 1.25rem;
+      color: var(--sage);
+      margin-top: 40px;
+    }
+
+    /* ══════════════════════════════════════════════
+       SCROLL REVEAL ANIMATIONS
+    ══════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-35px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(35px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE ADJUSTMENTS
+    ══════════════════════════════════════════════ */
+    @media (max-width: 640px) {
+      section { padding: 60px 18px; }
+      #cover {
+        padding: clamp(10px, 2vh, 20px) 12px;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      .storybook-frame {
+        padding: clamp(18px, 2.5vh, 26px) clamp(14px, 3.5vw, 20px) clamp(16px, 2vh, 22px);
+        border-width: 5px;
+      }
+
+      .couples-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .heart-connector {
+        flex-direction: row;
+        margin: 15px 0;
+      }
+      .connector-line {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--blush), transparent);
+      }
+
+      .fairytale-timeline::before {
+        left: 20px;
+      }
+      .timeline-page {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 10px;
+        text-align: left !important;
+      }
+      .timeline-page.left, .timeline-page.right {
+        left: 0;
+      }
+      .timeline-page.left .flower-pin, .timeline-page.right .flower-pin {
+        left: 9px;
+        right: auto;
+      }
+
+      .scrapbook-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-indicator"></div>
+
+<!-- Background Floating Petals Canvas -->
+<canvas id="petals-canvas"></canvas>
+
+<!-- Background Music Element -->
+<audio id="bg-audio" loop preload="auto">
+  <source src="Payung Teduh - Akad (Official Music Video).mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Floating Music Toggle Button -->
+<button id="music-btn" title="Putar Musik (Payung Teduh - Akad)" aria-label="Toggle musik">♪</button>
+
+<div class="story-wrapper">
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER I: THE STORYBOOK COVER
+  ══════════════════════════════════════════════ -->
+  <section id="cover">
+    <div class="storybook-frame">
+      <div class="washi-tape"></div>
+
+      <!-- Botanical Corner SVGs -->
+      <svg class="botanical-corner top-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 95 C 10 40, 40 10, 95 5" stroke="#8FA994" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Soft watercolor eucalyptus leaves -->
+        <path d="M30 45 C 15 30, 25 10, 45 25 C 40 38, 35 42, 30 45 Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="0.8"/>
+        <path d="M60 25 C 50 8, 75 5, 78 22 C 72 26, 65 26, 60 25 Z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="0.8"/>
+        <path d="M18 70 C 5 60, 10 40, 26 50 C 24 60, 20 66, 18 70 Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="0.8"/>
+        <circle cx="48" cy="18" r="3" fill="#D1A758" opacity="0.7"/>
+        <circle cx="22" cy="42" r="2.5" fill="#D48B8A" opacity="0.6"/>
+      </svg>
+      <svg class="botanical-corner top-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 95 C 10 40, 40 10, 95 5" stroke="#8FA994" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M30 45 C 15 30, 25 10, 45 25 C 40 38, 35 42, 30 45 Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="0.8"/>
+        <path d="M60 25 C 50 8, 75 5, 78 22 C 72 26, 65 26, 60 25 Z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="0.8"/>
+      </svg>
+      <svg class="botanical-corner bottom-left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 95 C 10 40, 40 10, 95 5" stroke="#8FA994" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M30 45 C 15 30, 25 10, 45 25 C 40 38, 35 42, 30 45 Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="0.8"/>
+        <path d="M60 25 C 50 8, 75 5, 78 22 C 72 26, 65 26, 60 25 Z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="0.8"/>
+      </svg>
+      <svg class="botanical-corner bottom-right" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 95 C 10 40, 40 10, 95 5" stroke="#8FA994" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M30 45 C 15 30, 25 10, 45 25 C 40 38, 35 42, 30 45 Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="0.8"/>
+      </svg>
+
+      <p class="fairytale-badge">~ Chapter I : The Wedding Story ~</p>
+
+      <!-- Romantic Watercolor Ribbon / Branch -->
+      <svg width="160" height="18" viewBox="0 0 220 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto; max-width: 90%;">
+        <path d="M10 12 Q 60 3, 110 12 T 210 12" stroke="#8FA994" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="110" cy="12" r="5" fill="#EBBAB8" stroke="#D48B8A" stroke-width="1"/>
+        <circle cx="85" cy="8" r="2.5" fill="#8FA994"/>
+        <circle cx="135" cy="16" r="2.5" fill="#8FA994"/>
+      </svg>
+
+      <div class="storybook-names">
+        Rizki Ananda
+        <span>&amp;</span>
+        Salsabila Putri
+      </div>
+
+      <div class="watercolor-divider" style="margin: 6px auto 8px;">
+        <div class="leaf-line" style="width: 45px;"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+          <path d="M12 2C8 6 6 10 6 14C6 17.3 8.7 20 12 20C15.3 20 18 17.3 18 14C18 10 16 6 12 2Z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line" style="width: 45px;"></div>
+      </div>
+
+      <p class="storybook-date">Sabtu, 14 Februari 2026</p>
+
+      <!-- Kotak Penerima Tamu Undangan -->
+      <div class="guest-storybook-box">
+        <p class="guest-header">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <h3 class="guest-name-text" id="guest-name" title="Klik di sini untuk pratinjau ganti nama tamu">Tamu Undangan</h3>
+      </div>
+
+      <!-- Tombol Buka Lembaran Kisah -->
+      <div>
+        <a href="#verse" class="btn-open-story" id="btn-open-story">
+          <svg class="wax-seal-icon" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          <span>Buka Cerita Cinta</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Gulir untuk membaca kisah</span>
+      <span>&darr;</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER II: PEMBUKAAN SUCI (AR-RUM: 21)
+  ══════════════════════════════════════════════ -->
+  <section id="verse">
+    <div class="verse-card reveal">
+      <p class="chapter-tag">Chapter II &bull; The Sacred Verse</p>
+      <h2 class="chapter-title">Maha Suci Allah</h2>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4C7 8 7 16 12 20C17 16 17 8 12 4Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+
+      <p class="arabic-text">
+        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."
+      </p>
+      <p class="translation-text">
+        Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda kebesaran Allah bagi kaum yang berfikir.
+      </p>
+      <p class="verse-source">— Surat Ar-Rum : 21 —</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER III: MEMPELAI (THE CHARACTERS)
+  ══════════════════════════════════════════════ -->
+  <section id="characters">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter III &bull; The Two Souls</p>
+      <h2 class="chapter-title">Dua Insan Berbahagia</h2>
+      <p class="chapter-subtitle">Yang dipersatukan dalam takdir cinta yang indah</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="6" fill="#EBBAB8" stroke="#D48B8A" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+    </div>
+
+    <div class="couples-container">
+      <!-- Mempelai Wanita -->
+      <div class="polaroid-card reveal-left">
+        <div class="washi-tape"></div>
+        <div class="polaroid-frame">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 12c-4.42 0-8 2.24-8 5v2h16v-2c0-2.76-3.58-5-8-5z"/>
+          </svg>
+        </div>
+        <p class="character-role">Mempelai Wanita</p>
+        <h3 class="character-name">Salsabila Putri</h3>
+        <p class="character-bio">
+          <strong>Putri tercinta dari :</strong>
+          Bapak H. Ahmad Fauzi<br/>
+          &amp; Ibu Hj. Ratna Dewi
+        </p>
+      </div>
+
+      <!-- Heart Connector -->
+      <div class="heart-connector reveal">
+        <div class="connector-line"></div>
+        <span>&amp;</span>
+        <div class="connector-line"></div>
+      </div>
+
+      <!-- Mempelai Pria -->
+      <div class="polaroid-card reveal-right">
+        <div class="washi-tape"></div>
+        <div class="polaroid-frame">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 12c-4.42 0-8 2.24-8 5v2h16v-2c0-2.76-3.58-5-8-5z"/>
+          </svg>
+        </div>
+        <p class="character-role">Mempelai Pria</p>
+        <h3 class="character-name">Rizki Ananda</h3>
+        <p class="character-bio">
+          <strong>Putra tercinta dari :</strong>
+          Bapak Ir. Budi Santoso<br/>
+          &amp; Ibu Dra. Sri Wahyuni
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER IV: COUNTDOWN
+  ══════════════════════════════════════════════ -->
+  <section id="countdown">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter IV &bull; The Awaited Day</p>
+      <h2 class="chapter-title">Menghitung Hari Bahagia</h2>
+      <p class="chapter-subtitle">Setiap detik membawa kami lebih dekat menuju janji suci</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="#F9EDED" stroke="#D1A758" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+    </div>
+
+    <div class="countdown-boxes reveal">
+      <div class="timer-tile">
+        <div class="timer-number" id="tb-days">00</div>
+        <div class="timer-label">Hari</div>
+      </div>
+      <div class="timer-tile">
+        <div class="timer-number" id="tb-hours">00</div>
+        <div class="timer-label">Jam</div>
+      </div>
+      <div class="timer-tile">
+        <div class="timer-number" id="tb-minutes">00</div>
+        <div class="timer-label">Menit</div>
+      </div>
+      <div class="timer-tile">
+        <div class="timer-number" id="tb-seconds">00</div>
+        <div class="timer-label">Detik</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER V: HARI BAHAGIA (WAKTU & TEMPAT)
+  ══════════════════════════════════════════════ -->
+  <section id="celebration">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter V &bull; The Celebration</p>
+      <h2 class="chapter-title">Waktu &amp; Tempat</h2>
+      <p class="chapter-subtitle">Dengan penuh rasa syukur kami mengundang kehadiran Anda</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" fill="#E8EFE9" stroke="#6E8B74" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+    </div>
+
+    <div class="event-cards-grid">
+      <!-- Akad Nikah -->
+      <div class="fairytale-event-card reveal-left">
+        <div class="event-icon-circle">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <p class="event-type-name">Ijab Kabul</p>
+        <h3 class="event-main-title">Akad Nikah</h3>
+        <div class="event-info-text">
+          <strong>Sabtu, 14 Februari 2026</strong>
+          Pukul 08.00 – 10.00 WIB<br/><br/>
+          <strong>Masjid Al-Ikhlas</strong>
+          Jl. Pahlawan No. 45, Kotagede,<br/>
+          Yogyakarta 55111
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn-fairytale-map">
+          &bull; Buka Google Maps &bull;
+        </a>
+      </div>
+
+      <!-- Resepsi Pernikahan -->
+      <div class="fairytale-event-card reveal-right">
+        <div class="event-icon-circle">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+          </svg>
+        </div>
+        <p class="event-type-name">Walimatul Ursy</p>
+        <h3 class="event-main-title">Resepsi</h3>
+        <div class="event-info-text">
+          <strong>Sabtu, 14 Februari 2026</strong>
+          Pukul 11.00 – 15.00 WIB<br/><br/>
+          <strong>Gedung Graha Budaya</strong>
+          Jl. Sultan Agung No. 10,<br/>
+          Yogyakarta 55111
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn-fairytale-map">
+          &bull; Buka Google Maps &bull;
+        </a>
+      </div>
+    </div>
+
+    <!-- Dress Code: Watercolor Color Palette -->
+    <div class="palette-storybook-card reveal">
+      <div class="washi-tape" style="background: rgba(143, 169, 148, 0.35);"></div>
+      <p class="chapter-tag" style="margin-bottom: 2px;">Dress Code</p>
+      <h4 style="font-family:'Lora',serif; font-size:1.35rem; font-weight:600; color:var(--forest); margin-bottom:8px;">
+        Palet Warna Busana
+      </h4>
+      <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.6;">
+        Demi keselarasan dokumentasi foto bersama, tamu undangan disarankan mengenakan pakaian dengan sentuhan warna pastel alami:
+      </p>
+
+      <div class="swatches-row">
+        <div class="swatch-group">
+          <div class="swatch-disc" style="background:#D48B8A;" title="Dusty Rose"></div>
+          <span class="swatch-title">Dusty Rose</span>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch-disc" style="background:#8FA994;" title="Sage Green"></div>
+          <span class="swatch-title">Sage Green</span>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch-disc" style="background:#D1A758;" title="Soft Gold"></div>
+          <span class="swatch-title">Soft Gold</span>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch-disc" style="background:#B26A54;" title="Terracotta"></div>
+          <span class="swatch-title">Terracotta</span>
+        </div>
+        <div class="swatch-group">
+          <div class="swatch-disc" style="background:#B6A6C7;" title="Lavender"></div>
+          <span class="swatch-title">Lavender</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.75rem; color:var(--terracotta); font-style:italic;">
+        Pria: Kemeja Batik / Setelan Kasual Rapi &bull; Wanita: Gamis / Kebaya Modern / Dress Senada
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER VI: OUR FAIRYTALE (LOVE STORY)
+  ══════════════════════════════════════════════ -->
+  <section id="story">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter VI &bull; Our Fairytale</p>
+      <h2 class="chapter-title">Untaian Cerita Kasih</h2>
+      <p class="chapter-subtitle">Setiap kisah cinta itu indah, namun kisah kami adalah favorit kami</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" fill="#F9EDED" stroke="#D48B8A" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+    </div>
+
+    <div class="fairytale-timeline">
+      <!-- Story 1 -->
+      <div class="timeline-page left reveal-left">
+        <div class="flower-pin"></div>
+        <div class="page-sheet">
+          <span class="page-chapter-num">Lembaran 1 &bull; 2021</span>
+          <h4 class="page-title">Pertemuan Pertama</h4>
+          <p class="page-text">
+            Bermula dari perjumpaan sederhana di sebuah pameran seni di Yogyakarta. Di antara lukisan dan alunan senja, semesta menautkan dua pasang mata yang mengawali segalanya.
+          </p>
+        </div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="timeline-page right reveal-right">
+        <div class="flower-pin"></div>
+        <div class="page-sheet">
+          <span class="page-chapter-num">Lembaran 2 &bull; 2023</span>
+          <h4 class="page-title">Menemukan Keselarasan</h4>
+          <p class="page-text">
+            Hari berganti musim, kami belajar memahami cerita hidup satu sama lain. Menguatkan saat rapuh, dan tersenyum dalam tawa, hingga kami yakin langkah ini ditakdirkan bersama.
+          </p>
+        </div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="timeline-page left reveal-left">
+        <div class="flower-pin"></div>
+        <div class="page-sheet">
+          <span class="page-chapter-num">Lembaran 3 &bull; 2025</span>
+          <h4 class="page-title">Janji Khitbah</h4>
+          <p class="page-text">
+            Di hadapan keluarga besar tercinta, niat baik dipersatukan. Dua hati saling mengikat komitmen suci dalam suasana haru penuh doa restu kedua orang tua.
+          </p>
+        </div>
+      </div>
+
+      <!-- Story 4 -->
+      <div class="timeline-page right reveal-right">
+        <div class="flower-pin"></div>
+        <div class="page-sheet">
+          <span class="page-chapter-num">Lembaran 4 &bull; 2026</span>
+          <h4 class="page-title">Hari Bahagia Selamanya</h4>
+          <p class="page-text">
+            Babak baru resmi dimulai. Membina bahtera rumah tangga yang sakinah, mawaddah, wa rahmah, mengukir cerita indah berdua hingga akhir usia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER VII: SWEET MOMENTS (GALERI FOTO)
+  ══════════════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter VII &bull; Sweet Moments</p>
+      <h2 class="chapter-title">Galeri Potret Bahagia</h2>
+      <p class="chapter-subtitle">Merekam senyum dan kenangan manis dalam bingkai cerita</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="16" height="16" rx="2" fill="#E8EFE9" stroke="#6E8B74" stroke-width="1"/>
+          <circle cx="9" cy="9" r="2" fill="#D48B8A"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+    </div>
+
+    <div class="scrapbook-grid reveal">
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px;"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Senja di Kotagede</p>
+      </div>
+
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px; background: rgba(143, 169, 148, 0.35);"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Tawa yang Sama</p>
+      </div>
+
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px;"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Hari Mengikat Janji</p>
+      </div>
+
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px; background: rgba(209, 167, 88, 0.3);"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Langkah Bersama</p>
+      </div>
+
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px;"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Bunga &amp; Doa</p>
+      </div>
+
+      <div class="scrapbook-item">
+        <div class="washi-tape" style="top: -8px; background: rgba(143, 169, 148, 0.35);"></div>
+        <div class="scrapbook-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9a3 3 0 100 6 3 3 0 000-6zm-7 9h14V8H5v10zm7-14a9 9 0 110 18 9 9 0 010-18z"/></svg>
+        </div>
+        <p class="photo-caption">Menuju Bahagia</p>
+      </div>
+    </div>
+
+    <p style="font-size:0.75rem; color:var(--text-muted); font-style:italic; margin-top:20px;">
+      * Foto di atas dapat diganti dengan potret galeri foto asli Anda
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER VIII: TANDA KASIH (WEDDING GIFT)
+  ══════════════════════════════════════════════ -->
+  <section id="gift">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter VIII &bull; Token of Love</p>
+      <h2 class="chapter-title">Tanda Kasih &amp; Kado</h2>
+      <p class="chapter-subtitle">Doa restu Anda adalah karunia terindah bagi lembaran baru kami</p>
+      
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 12V22H4V12H20Z" fill="#E8EFE9" stroke="#6E8B74" stroke-width="1"/>
+          <path d="M22 7H2V12H22V7Z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+
+      <p style="font-size:0.84rem; color:var(--text-muted); max-width:540px; margin:0 auto; line-height:1.8; font-style:italic;">
+        Namun apabila Bapak/Ibu/Saudara/i bermaksud memberikan tanda kasih sebagai hadiah pernikahan, Anda dapat menyampaikannya melalui:
+      </p>
+    </div>
+
+    <div class="gift-cards-container reveal">
+      <!-- Rekening BCA -->
+      <div class="fairytale-bank-card">
+        <div class="card-bank-header">
+          <span class="bank-name-tag">BCA</span>
+          <div class="bank-watercolor-chip"></div>
+        </div>
+        <div class="card-label">Nomor Rekening</div>
+        <div class="card-acc-num">1234567890</div>
+        <div class="card-label">Atas Nama</div>
+        <div class="card-acc-holder">Rizki Ananda</div>
+        <button class="btn-copy-fairytale" onclick="copyText('1234567890', 'Nomor Rekening BCA')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Salin No. Rekening
+        </button>
+      </div>
+
+      <!-- Rekening Mandiri -->
+      <div class="fairytale-bank-card">
+        <div class="card-bank-header">
+          <span class="bank-name-tag">MANDIRI</span>
+          <div class="bank-watercolor-chip"></div>
+        </div>
+        <div class="card-label">Nomor Rekening</div>
+        <div class="card-acc-num">9876543210123</div>
+        <div class="card-label">Atas Nama</div>
+        <div class="card-acc-holder">Salsabila Putri</div>
+        <button class="btn-copy-fairytale" onclick="copyText('9876543210123', 'Nomor Rekening Mandiri')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Salin No. Rekening
+        </button>
+      </div>
+
+      <!-- Kirim Kado Fisik -->
+      <div class="physical-gift-card">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+          <span style="font-size:1.8rem;">📦</span>
+          <div>
+            <h4 style="font-family:'Lora',serif; font-size:1.25rem; font-weight:600; color:var(--forest); margin:0;">Kirim Kado Fisik</h4>
+            <span class="card-label" style="color:var(--terracotta);">Alamat Kediaman Mempelai</span>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">
+          <strong>Penerima :</strong> Rizki Ananda &amp; Salsabila Putri (0812-3456-7890)
+        </p>
+        <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.7; margin-bottom:16px;">
+          Jl. Pahlawan No. 45, RT 02 / RW 05, Kelurahan Kotagede, Kecamatan Kotagede, Kota Yogyakarta, D.I. Yogyakarta 55111
+        </p>
+        <button class="btn-copy-fairytale" onclick="copyText('Jl. Pahlawan No. 45, RT 02 / RW 05, Kelurahan Kotagede, Kecamatan Kotagede, Kota Yogyakarta, D.I. Yogyakarta 55111 (Penerima: Rizki Ananda & Salsabila Putri - 0812-3456-7890)', 'Alamat Pengiriman Kado')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Salin Alamat Lengkap
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER IX: PENUTUP (THE EPILOGUE)
+  ══════════════════════════════════════════════ -->
+  <section id="epilogue">
+    <div class="reveal">
+      <p class="chapter-tag">Chapter IX &bull; The Epilogue</p>
+      <h2 class="epilogue-names">Rizki &amp; Salsabila</h2>
+
+      <p class="epilogue-text">
+        Merupakan suatu kehormatan dan kebahagiaan yang tak terhingga bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami berdua.
+      </p>
+
+      <div class="watercolor-divider">
+        <div class="leaf-line"></div>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#EBBAB8" stroke="#D48B8A" stroke-width="1"/>
+        </svg>
+        <div class="leaf-line"></div>
+      </div>
+
+      <p class="footer-quote">
+        "Barakallahu laka wa baraka alaika wa jama'a bainakuma fii khair"
+      </p>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+        Semoga Allah memberkahi kalian dan menghimpun kalian berdua dalam kebaikan.
+      </p>
+
+      <p class="footer-stamp">
+        ~ Dan kisah bahagia kami pun dimulai... &hearts; ~
+      </p>
+    </div>
+  </section>
+
+</div><!-- end story-wrapper -->
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT: PETALS, MUSIC & ANIMATIONS
+══════════════════════════════════════════════ -->
+<script>
+/* ──────────────────────────────────────────────
+   1. FLOATING WATERCOLOR PETALS & LEAVES CANVAS
+   ────────────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('petals-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  let particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Soft Watercolor tones: blush, rose, sage, olive, warm gold
+  const petalColors = [
+    'rgba(235, 186, 184, ',  // Soft Blush
+    'rgba(212, 139, 138, ',  // Rose Quartz
+    'rgba(143, 169, 148, ',  // Sage Leaf
+    'rgba(209, 167, 88, ',   // Golden Glow
+    'rgba(232, 239, 233, '   // Pale Eucalyptus
+  ];
+
+  class Petal {
+    constructor() {
+      this.reset(true);
+    }
+
+    reset(initial = false) {
+      this.x = Math.random() * W;
+      this.y = initial ? Math.random() * H : -20;
+      this.size = Math.random() * 8 + 5;
+      this.speedY = Math.random() * 0.9 + 0.4;
+      this.speedX = (Math.random() - 0.5) * 0.6;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.02;
+      this.alpha = Math.random() * 0.45 + 0.2;
+      this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+      this.shape = Math.random() > 0.4 ? 'petal' : 'leaf';
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX + Math.sin(this.y * 0.015) * 0.35;
+      this.rotation += this.rotSpeed;
+
+      if (this.y > H + 25 || this.x < -30 || this.x > W + 30) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = this.color + this.alpha + ')';
+      ctx.beginPath();
+
+      if (this.shape === 'petal') {
+        // Delicate teardrop rose petal
+        ctx.moveTo(0, -this.size);
+        ctx.bezierCurveTo(this.size * 0.8, -this.size * 0.5, this.size * 0.8, this.size * 0.8, 0, this.size);
+        ctx.bezierCurveTo(-this.size * 0.8, this.size * 0.8, -this.size * 0.8, -this.size * 0.5, 0, -this.size);
+      } else {
+        // Small oval watercolor leaf
+        ctx.ellipse(0, 0, this.size * 0.5, this.size * 1.2, Math.PI / 4, 0, Math.PI * 2);
+      }
+
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // Create 35 delicate floating elements
+  for (let i = 0; i < 35; i++) {
+    particles.push(new Petal());
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ──────────────────────────────────────────────
+   2. SCROLL PROGRESS BAR
+   ────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  const indicator = document.getElementById('scroll-indicator');
+  if (indicator) indicator.style.width = progress + '%';
+});
+
+/* ──────────────────────────────────────────────
+   3. SCROLL REVEAL OBSERVER
+   ────────────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  revealObserver.observe(el);
+});
+
+/* ──────────────────────────────────────────────
+   4. NAMA TAMU DINAMIS (?to=Nama+Tamu & KLIK LANGSUNG)
+   ────────────────────────────────────────────── */
+(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestParam = urlParams.get('to') || urlParams.get('u') || urlParams.get('nama');
+  const guestEl = document.getElementById('guest-name');
+  if (guestEl) {
+    if (guestParam) {
+      guestEl.textContent = guestParam;
+    }
+    // Klik langsung untuk ganti nama secara pratinjau instan
+    guestEl.addEventListener('click', () => {
+      const input = prompt('Ketikkan nama tamu untuk pratinjau:', guestEl.textContent);
+      if (input !== null && input.trim() !== '') {
+        guestEl.textContent = input.trim();
+      }
+    });
+  }
+})();
+
+/* ──────────────────────────────────────────────
+   5. COUNTDOWN TIMER CERITA
+   ────────────────────────────────────────────── */
+let weddingDate = new Date('2026-02-14T08:00:00');
+// Jika tanggal demo sudah terlewat, otomatis hitung mundur 30 hari ke depan agar animasi selalu aktif
+if (weddingDate - new Date() <= 0) {
+  weddingDate = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000) + (10 * 60 * 60 * 1000));
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = weddingDate - now;
+
+  if (diff <= 0) {
+    ['tb-days', 'tb-hours', 'tb-minutes', 'tb-seconds'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '00';
+    });
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(val).padStart(2, '0');
+  };
+
+  setVal('tb-days', days);
+  setVal('tb-hours', hours);
+  setVal('tb-minutes', minutes);
+  setVal('tb-seconds', seconds);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ──────────────────────────────────────────────
+   6. MUSIK LATAR (Payung Teduh - Akad)
+   ────────────────────────────────────────────── */
+let isPlaying = false;
+const musicBtn = document.getElementById('music-btn');
+const audioEl = document.getElementById('bg-audio');
+
+function startMusic() {
+  if (isPlaying) return;
+  isPlaying = true;
+  if (musicBtn) {
+    musicBtn.textContent = '♫';
+    musicBtn.classList.add('playing');
+  }
+  if (audioEl) {
+    audioEl.volume = 0.6;
+    const playPromise = audioEl.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => {
+        console.warn('Autoplay tertahan kebijakan browser, menunggu sentuhan pengguna:', err);
+      });
+    }
+  }
+}
+
+function pauseMusic() {
+  isPlaying = false;
+  if (musicBtn) {
+    musicBtn.textContent = '♪';
+    musicBtn.classList.remove('playing');
+  }
+  if (audioEl) {
+    try { audioEl.pause(); } catch(e) {}
+  }
+}
+
+if (musicBtn) {
+  musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      pauseMusic();
+    } else {
+      startMusic();
+    }
+  });
+}
+
+// Tombol "Buka Cerita Cinta"
+const openStoryBtn = document.getElementById('btn-open-story');
+if (openStoryBtn) {
+  openStoryBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    startMusic();
+    const target = document.getElementById('verse');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+/* ──────────────────────────────────────────────
+   7. FUNGSI SALIN TEKS & TOAST NOTIFIKASI
+   ────────────────────────────────────────────── */
+function copyText(text, label) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(`✓ ${label} berhasil disalin!`);
+    }).catch(() => {
+      fallbackCopy(text, label);
+    });
+  } else {
+    fallbackCopy(text, label);
+  }
+}
+
+function fallbackCopy(text, label) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    showToast(`✓ ${label} berhasil disalin!`);
+  } catch (err) {
+    prompt('Salin secara manual:', text);
+  }
+  document.body.removeChild(textarea);
+}
+
+function showToast(message) {
+  let toast = document.getElementById('storybook-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'storybook-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
+

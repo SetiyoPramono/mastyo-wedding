@@ -1,0 +1,2694 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Royal Wedding of Lady Beatrice & Lord Arthur — Vintage European Chateau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   1. ROYAL BAROQUE DESIGN TOKENS
+══════════════════════════════════════════════════════════════ */
+:root {
+  --burgundy-900: #290408;
+  --burgundy-800: #3c0910;
+  --burgundy-700: #58111a;
+  --burgundy-600: #741b25;
+  --burgundy-500: #8f2633;
+  --burgundy-glow: rgba(88, 17, 26, 0.45);
+
+  --parchment-50:  #fcfaf4;
+  --parchment-100: #f7f2e7;
+  --parchment-200: #efe5d2;
+  --parchment-300: #e2d3b9;
+  --parchment-400: #cebc9b;
+  --parchment-dark:#241d17;
+
+  --gold-800: #684e1b;
+  --gold-700: #8c6a28;
+  --gold-600: #b18838;
+  --gold-500: #cfa54f;
+  --gold-400: #e5c16e;
+  --gold-300: #f3d893;
+  --gold-200: #faebc2;
+  --gold-glow: rgba(207, 165, 79, 0.35);
+
+  --font-royal:   'Cinzel', 'Times New Roman', serif;
+  --font-script:  'Pinyon Script', cursive;
+  --font-body:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Montserrat', sans-serif;
+
+  --shadow-parchment: 0 18px 45px rgba(41, 4, 8, 0.15), 0 4px 15px rgba(41, 4, 8, 0.08);
+  --shadow-gilded:    0 14px 35px rgba(104, 78, 27, 0.22), 0 2px 8px rgba(104, 78, 27, 0.12);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--burgundy-900);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--parchment-100);
+  color: var(--parchment-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--parchment-300); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-600), var(--burgundy-700));
+  border-radius: 999px;
+  border: 1px solid var(--parchment-100);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. ANTIQUE PARCHMENT & BAROQUE TEXTURE ENVIRONMENT
+══════════════════════════════════════════════════════════════ */
+.chateau-bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(207, 165, 79, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(88, 17, 26, 0.06) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3' result='n'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.88, 0 0 0 0 0.82, 0 0 0 0 0.72, 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+/* Golden Shimmer Animation across borders */
+@keyframes shimmerBeam {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.gold-shimmer-border {
+  position: relative;
+}
+.gold-shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(115deg, transparent 20%, var(--gold-400) 45%, var(--gold-200) 50%, var(--gold-400) 55%, transparent 80%);
+  background-size: 250% 100%;
+  animation: shimmerBeam 6s ease-in-out infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. COVER: OLD-MONEY WAX-SEALED ENVELOPE
+══════════════════════════════════════════════════════════════ */
+#coverScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(88, 17, 26, 0.95) 0%, rgba(41, 4, 8, 0.99) 100%),
+    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cfa54f' fill-opacity='0.03'%3E%3Cpath d='M100 0 L115 35 L150 50 L115 65 L100 100 L85 65 L50 50 L85 35 Z'/%3E%3C/g%3E%3C/svg%3E");
+  padding: clamp(12px, 3vh, 24px);
+  transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.1s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#coverScreen.opened {
+  transform: translateY(-110vh) scale(0.96);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The Royal Folded Envelope */
+.envelope-frame {
+  margin: auto;
+  width: 100%;
+  max-width: 480px;
+  background:
+    radial-gradient(circle at 50% 30%, #fdfcf7 0%, var(--parchment-200) 80%, #dfd1b8 100%);
+  border: 2px solid var(--gold-500);
+  border-radius: 16px;
+  padding: clamp(28px, 5vh, 44px) clamp(16px, 4vw, 32px) clamp(22px, 4vh, 40px);
+  position: relative;
+  text-align: center;
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    inset 0 0 35px rgba(140, 106, 40, 0.15);
+}
+
+/* Filigree Ornate Corners on Envelope */
+.envelope-frame::before {
+  content: '';
+  position: absolute;
+  inset: clamp(6px, 1.5vw, 10px);
+  border: 1px solid var(--gold-600);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.filigree-corner {
+  position: absolute;
+  width: clamp(28px, 6vw, 38px);
+  height: clamp(28px, 6vw, 38px);
+  pointer-events: none;
+  color: var(--gold-600);
+}
+.filigree-corner.top-left { top: 10px; left: 10px; }
+.filigree-corner.top-right { top: 10px; right: 10px; transform: scaleX(-1); }
+.filigree-corner.bottom-left { bottom: 10px; left: 10px; transform: scaleY(-1); }
+.filigree-corner.bottom-right { bottom: 10px; right: 10px; transform: scale(-1); }
+
+/* Monogram Crest Top */
+.royal-crest-wrap {
+  width: clamp(56px, 12vw, 76px);
+  height: clamp(56px, 12vw, 76px);
+  margin: 0 auto clamp(8px, 2vh, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.royal-crest-wrap svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--gold-700);
+  filter: drop-shadow(0 2px 4px rgba(104, 78, 27, 0.3));
+}
+
+.cover-french-proclamation {
+  font-family: var(--font-royal);
+  font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: clamp(3px, 1vw, 5px);
+  text-transform: uppercase;
+  color: var(--burgundy-700);
+  margin-bottom: 6px;
+}
+
+.cover-cursive-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.3rem, 7.5vw, 4.2rem);
+  color: var(--burgundy-800);
+  line-height: 1.05;
+  margin: 4px 0 12px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.cover-cursive-title span.and-char {
+  display: block;
+  font-family: var(--font-royal);
+  font-size: 0.3em;
+  letter-spacing: 4px;
+  color: var(--gold-700);
+  margin: 2px 0;
+  text-transform: uppercase;
+}
+
+.cover-date-engraved {
+  font-family: var(--font-royal);
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
+  letter-spacing: clamp(2px, 0.8vw, 4px);
+  text-transform: uppercase;
+  color: var(--gold-800);
+  border-top: 1px solid var(--gold-400);
+  border-bottom: 1px solid var(--gold-400);
+  padding: 5px clamp(10px, 3vw, 16px);
+  display: inline-block;
+  margin-bottom: clamp(14px, 3vh, 22px);
+  max-width: 100%;
+}
+
+/* Guest Recipient Box */
+.guest-recipient-box {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px dashed var(--gold-600);
+  border-radius: 8px;
+  padding: 10px clamp(10px, 3vw, 16px);
+  margin-bottom: clamp(16px, 3vh, 26px);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.guest-recipient-sub {
+  font-family: var(--font-royal);
+  font-size: 0.64rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--burgundy-600);
+}
+.guest-recipient-name {
+  font-family: var(--font-royal);
+  font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+  font-weight: 700;
+  color: var(--burgundy-900);
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+/* 3D BURGUNDY WAX SEAL */
+.wax-seal-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  margin-top: 4px;
+}
+
+.wax-seal-btn {
+  width: clamp(80px, 18vw, 92px);
+  height: clamp(80px, 18vw, 92px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8f2633 0%, #58111a 55%, #290408 100%);
+  border: none;
+  box-shadow:
+    0 16px 35px rgba(41, 4, 8, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 0 3px 6px rgba(255, 255, 255, 0.35),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.wax-seal-btn:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow:
+    0 22px 45px rgba(88, 17, 26, 0.7),
+    0 6px 14px rgba(0, 0, 0, 0.5),
+    inset 0 3px 8px rgba(255, 255, 255, 0.45);
+}
+
+.wax-seal-btn:active {
+  transform: scale(0.96);
+}
+
+/* Gold Fleur-de-lis Insignia inside wax */
+.wax-seal-btn svg {
+  width: clamp(40px, 9vw, 48px);
+  height: clamp(40px, 9vw, 48px);
+  fill: var(--gold-400);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.6));
+}
+
+.wax-seal-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(94px, 21vw, 108px);
+  height: clamp(94px, 21vw, 108px);
+  border-radius: 50%;
+  border: 1px dashed var(--gold-400);
+  animation: ringPulse 3s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes ringPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.9); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.35); opacity: 0; }
+}
+
+.wax-seal-text {
+  font-family: var(--font-royal);
+  font-size: clamp(0.68rem, 1.8vw, 0.74rem);
+  letter-spacing: clamp(2px, 0.6vw, 3px);
+  text-transform: uppercase;
+  color: var(--burgundy-800);
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. FLOATING GRAMOPHONE MUSIC PLAYER
+══════════════════════════════════════════════════════════════ */
+.gramophone-floater {
+  position: fixed;
+  top: clamp(14px, 2.5vh, 24px);
+  right: clamp(12px, 2.5vw, 22px);
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--burgundy-800);
+  border: 1.5px solid var(--gold-500);
+  padding: 5px clamp(10px, 2vw, 16px) 5px 5px;
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.gramophone-floater.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gramophone-floater:hover {
+  transform: scale(1.05);
+  border-color: var(--gold-300);
+}
+
+.gramophone-disc {
+  width: clamp(30px, 6vw, 36px);
+  height: clamp(30px, 6vw, 36px);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-400) 25%, #180305 75%);
+  border: 1.5px solid var(--gold-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+.gramophone-disc.spin {
+  animation: discSpin 5s linear infinite;
+}
+@keyframes discSpin { to { transform: rotate(360deg); } }
+
+.music-label-antique {
+  font-family: var(--font-royal);
+  font-size: clamp(0.58rem, 1.6vw, 0.65rem);
+  letter-spacing: clamp(1px, 0.4vw, 2px);
+  text-transform: uppercase;
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. FLOATING BOTTOM BAROQUE NAV
+══════════════════════════════════════════════════════════════ */
+.baroque-nav-dock {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: rgba(41, 4, 8, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid var(--gold-500);
+  border-radius: 999px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: calc(100vw - 24px);
+}
+.baroque-nav-dock.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.dock-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--gold-400);
+  text-decoration: none;
+  font-family: var(--font-royal);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+.dock-link svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  margin-bottom: 2px;
+}
+.dock-link:hover, .dock-link.active {
+  color: #ffffff;
+  background: var(--burgundy-700);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. MAIN WRAPPER & SECTIONS
+══════════════════════════════════════════════════════════════ */
+#mainWrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px clamp(14px, 3.5vw, 24px) max(140px, calc(110px + env(safe-area-inset-bottom, 20px)));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+section {
+  padding: clamp(48px, 7vw, 70px) 0;
+  position: relative;
+  width: 100%;
+}
+
+.royal-heading-center {
+  text-align: center;
+  margin-bottom: clamp(28px, 5vw, 44px);
+  position: relative;
+  padding: 0 10px;
+}
+
+.royal-sub-eyebrow {
+  font-family: var(--font-royal);
+  font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: clamp(3px, 1vw, 6px);
+  text-transform: uppercase;
+  color: var(--burgundy-600);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.royal-main-title {
+  font-family: var(--font-royal);
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  color: var(--burgundy-900);
+  font-weight: 700;
+  letter-spacing: clamp(1px, 0.4vw, 2px);
+  line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.royal-filigree-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px auto 0;
+  max-width: 220px;
+}
+.royal-filigree-divider::before, .royal-filigree-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-600), transparent);
+}
+.royal-filigree-divider svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--gold-600);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. HERO: ROYAL DECREE PROCLAMATION WARKAT
+══════════════════════════════════════════════════════════════ */
+.hero-decree-scroll {
+  background:
+    radial-gradient(circle at 50% 20%, #fffefb 0%, var(--parchment-100) 70%, var(--parchment-200) 100%);
+  border: 2px solid var(--gold-500);
+  border-radius: 20px;
+  padding: clamp(36px, 6vw, 65px) clamp(16px, 4vw, 36px) clamp(28px, 5vw, 54px);
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-parchment);
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Baroque Inner Filigree Frame */
+.hero-decree-scroll::before {
+  content: '';
+  position: absolute;
+  inset: clamp(8px, 1.8vw, 12px);
+  border: 1px solid var(--gold-600);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.bismillah-arab-classic {
+  font-family: 'Amiri', 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  color: var(--burgundy-800);
+  margin-bottom: 12px;
+  direction: rtl;
+  line-height: 1.3;
+}
+
+.decree-salutation {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--burgundy-700);
+  max-width: 580px;
+  margin: 0 auto clamp(20px, 3.5vw, 30px);
+  line-height: 1.65;
+}
+
+.hero-names-cursive {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 7.5vw, 5.2rem);
+  color: var(--burgundy-900);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 2px rgba(207, 165, 79, 0.25);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.hero-names-cursive span.and-sign {
+  display: block;
+  font-family: var(--font-royal);
+  font-size: 0.28em;
+  letter-spacing: 5px;
+  color: var(--gold-700);
+  text-transform: uppercase;
+  margin: 4px 0;
+}
+
+.decree-date-ribbon {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(6px, 1.8vw, 16px);
+  padding: 8px clamp(14px, 3vw, 30px);
+  background: var(--burgundy-800);
+  color: var(--gold-300);
+  font-family: var(--font-royal);
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
+  letter-spacing: clamp(1.5px, 0.5vw, 4px);
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1.5px solid var(--gold-400);
+  margin-top: 14px;
+  box-shadow: 0 6px 18px rgba(41, 4, 8, 0.3);
+  max-width: 100%;
+}
+
+.holy-scripture-box {
+  margin-top: clamp(24px, 4vw, 36px);
+  padding: clamp(18px, 3vw, 24px) clamp(10px, 2.5vw, 20px);
+  border-top: 1px solid var(--gold-400);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(0.98rem, 2.3vw, 1.12rem);
+  color: var(--burgundy-800);
+  line-height: 1.7;
+}
+.holy-scripture-box cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. REALTIME COUNTDOWN: GILDED CLOCKWORK FRAME
+══════════════════════════════════════════════════════════════ */
+.countdown-section {
+  padding: 20px 0 clamp(40px, 6vw, 60px);
+}
+
+.gilded-timer-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 16px);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.timer-parchment-card {
+  background: var(--parchment-50);
+  border: 1.5px solid var(--gold-500);
+  border-radius: 14px;
+  padding: clamp(14px, 2.5vw, 22px) clamp(4px, 1.2vw, 10px);
+  text-align: center;
+  box-shadow: var(--shadow-gilded);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.timer-parchment-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-600), var(--gold-300), var(--gold-600));
+}
+
+.timer-number {
+  font-family: var(--font-royal);
+  font-size: clamp(1.4rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--burgundy-800);
+  line-height: 1;
+}
+
+.timer-label {
+  font-family: var(--font-royal);
+  font-size: clamp(0.55rem, 1.6vw, 0.65rem);
+  font-weight: 700;
+  letter-spacing: clamp(1px, 0.4vw, 2.5px);
+  text-transform: uppercase;
+  color: var(--gold-800);
+  margin-top: 6px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. COUPLE PROFILES: OVAL BAROQUE GILDED PORTRAITS
+══════════════════════════════════════════════════════════════ */
+.royal-couples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 4vw, 40px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.royal-profile-card {
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 44px) clamp(16px, 3.5vw, 28px) clamp(24px, 4vw, 36px);
+  text-align: center;
+  box-shadow: var(--shadow-parchment);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+.royal-profile-card:hover {
+  transform: translateY(-6px);
+}
+
+.oval-portrait-frame {
+  width: clamp(170px, 42vw, 210px);
+  height: clamp(225px, 55vw, 275px);
+  margin: 0 auto 26px;
+  border-radius: 50% / 40%;
+  overflow: hidden;
+  border: 5px solid var(--gold-500);
+  box-shadow:
+    0 16px 35px rgba(41, 4, 8, 0.25),
+    inset 0 0 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  background: var(--parchment-dark);
+}
+.oval-portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  filter: contrast(1.05) sepia(0.08);
+}
+.royal-profile-card:hover .oval-portrait-frame img {
+  transform: scale(1.08);
+}
+
+.profile-aristocrat-title {
+  font-family: var(--font-royal);
+  font-size: clamp(0.66rem, 1.8vw, 0.72rem);
+  letter-spacing: clamp(2.5px, 0.8vw, 4px);
+  text-transform: uppercase;
+  color: var(--gold-700);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.profile-full-name {
+  font-family: var(--font-royal);
+  font-size: clamp(1.45rem, 4.2vw, 1.85rem);
+  font-weight: 700;
+  color: var(--burgundy-900);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.profile-lineage-desc {
+  font-size: clamp(0.88rem, 2vw, 0.94rem);
+  color: var(--burgundy-800);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.profile-lineage-desc strong {
+  font-weight: 700;
+  color: var(--burgundy-900);
+}
+
+.profile-social-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: var(--burgundy-800);
+  color: var(--gold-300);
+  border: 1px solid var(--gold-400);
+  text-decoration: none;
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.profile-social-seal:hover {
+  background: var(--burgundy-700);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. CHRONICLE OF LOVE (TIMELINE)
+══════════════════════════════════════════════════════════════ */
+.chronicle-timeline {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.chronicle-timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--gold-600) 15%, var(--burgundy-600) 85%, transparent);
+}
+
+.chronicle-chapter {
+  position: relative;
+  display: flex;
+  margin-bottom: 46px;
+  width: 50%;
+}
+.chronicle-chapter:nth-child(odd) {
+  left: 0;
+  padding-right: 40px;
+  text-align: right;
+  justify-content: flex-end;
+}
+.chronicle-chapter:nth-child(even) {
+  left: 50%;
+  padding-left: 40px;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.chronicle-node-badge {
+  position: absolute;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--burgundy-800);
+  border: 2px solid var(--gold-400);
+  color: var(--gold-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px var(--gold-glow);
+  z-index: 2;
+  font-size: 0.9rem;
+}
+.chronicle-chapter:nth-child(odd) .chronicle-node-badge { right: -17px; }
+.chronicle-chapter:nth-child(even) .chronicle-node-badge { left: -17px; }
+
+.chronicle-card {
+  background: var(--parchment-50);
+  border: 1.5px solid var(--gold-500);
+  border-radius: 16px;
+  padding: clamp(16px, 3vw, 22px) clamp(16px, 3.5vw, 24px);
+  box-shadow: var(--shadow-parchment);
+  word-break: break-word;
+}
+.chapter-era {
+  font-family: var(--font-royal);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--burgundy-600);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.chapter-title {
+  font-family: var(--font-royal);
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+  color: var(--burgundy-900);
+  margin-bottom: 6px;
+  font-weight: 700;
+  word-break: break-word;
+}
+.chapter-desc {
+  font-size: clamp(0.88rem, 2vw, 0.94rem);
+  color: var(--parchment-dark);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. ROYAL AGENDA: THE CEREMONY & THE BALL
+══════════════════════════════════════════════════════════════ */
+.agenda-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 3.5vw, 32px);
+  max-width: 880px;
+  margin: 0 auto 40px;
+}
+
+.agenda-warkat-box {
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 20px;
+  padding: clamp(28px, 4.5vw, 42px) clamp(16px, 3.5vw, 30px);
+  box-shadow: var(--shadow-parchment);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.agenda-warkat-box::before {
+  content: '';
+  position: absolute;
+  inset: clamp(6px, 1.2vw, 8px);
+  border: 1px solid var(--gold-400);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.agenda-tag-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  background: var(--burgundy-800);
+  color: var(--gold-300);
+  border: 1px solid var(--gold-400);
+  border-radius: 999px;
+  font-family: var(--font-royal);
+  font-size: clamp(0.64rem, 1.6vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: clamp(2px, 0.5vw, 3px);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.agenda-name {
+  font-family: var(--font-royal);
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--burgundy-900);
+  margin-bottom: 22px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.agenda-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.agenda-icon-box {
+  width: clamp(36px, 8vw, 42px);
+  height: clamp(36px, 8vw, 42px);
+  border-radius: 10px;
+  background: var(--parchment-200);
+  border: 1px solid var(--gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--burgundy-800);
+}
+.agenda-icon-box svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.agenda-text-primary {
+  font-family: var(--font-royal);
+  font-size: clamp(0.98rem, 2.5vw, 1.12rem);
+  font-weight: 700;
+  color: var(--burgundy-900);
+  line-height: 1.3;
+}
+.agenda-text-sub {
+  font-size: clamp(0.82rem, 2vw, 0.88rem);
+  color: var(--burgundy-700);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.agenda-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: clamp(20px, 3.5vw, 30px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-royal-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--font-royal);
+  font-size: clamp(0.68rem, 1.8vw, 0.74rem);
+  font-weight: 700;
+  letter-spacing: clamp(1.2px, 0.4vw, 2px);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1.5px solid var(--gold-400);
+  background: var(--burgundy-800);
+  color: var(--gold-300);
+  box-shadow: 0 6px 18px rgba(41, 4, 8, 0.25);
+  box-sizing: border-box;
+}
+.btn-royal-gold:hover {
+  background: var(--burgundy-700);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(41, 4, 8, 0.35);
+}
+
+.btn-royal-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: var(--font-royal);
+  font-size: clamp(0.68rem, 1.8vw, 0.74rem);
+  font-weight: 700;
+  letter-spacing: clamp(1.2px, 0.4vw, 2px);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--parchment-100);
+  border: 1.5px solid var(--gold-600);
+  color: var(--burgundy-900);
+  box-sizing: border-box;
+}
+.btn-royal-outline:hover {
+  background: var(--parchment-200);
+  transform: translateY(-2px);
+}
+
+/* Dress Code Imperial Card */
+.dresscode-imperial-box {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 32px) clamp(16px, 3.5vw, 32px);
+  text-align: center;
+  box-shadow: var(--shadow-parchment);
+  box-sizing: border-box;
+}
+.dresscode-imperial-title {
+  font-family: var(--font-royal);
+  font-size: clamp(1.2rem, 3.5vw, 1.45rem);
+  color: var(--burgundy-900);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.dresscode-swatches {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2.5vw, 18px);
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.swatch-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.swatch-circle {
+  width: clamp(36px, 8vw, 44px);
+  height: clamp(36px, 8vw, 44px);
+  border-radius: 50%;
+  border: 3px solid var(--gold-400);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.swatch-text {
+  font-family: var(--font-royal);
+  font-size: clamp(0.58rem, 1.6vw, 0.65rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--burgundy-800);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. THE ROYAL GALLERY (GILDED PICTURE FRAMES)
+══════════════════════════════════════════════════════════════ */
+.gilded-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 2vw, 16px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gallery-gilded-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--parchment-dark);
+  border: 3px solid var(--gold-500);
+  box-shadow: var(--shadow-gilded);
+  aspect-ratio: 1;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.gallery-gilded-item:hover {
+  transform: scale(1.025);
+  box-shadow: 0 20px 45px rgba(104, 78, 27, 0.35);
+  z-index: 2;
+}
+
+.gallery-gilded-item.tall {
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+.gallery-gilded-item.wide {
+  grid-column: span 2;
+  aspect-ratio: 16 / 10;
+}
+
+.gallery-gilded-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  filter: contrast(1.05) sepia(0.06);
+  display: block;
+}
+.gallery-gilded-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-gilded-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(41, 4, 8, 0.75) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(10px, 2vw, 16px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-gilded-item:hover .gallery-gilded-overlay {
+  opacity: 1;
+}
+.gallery-caption-text {
+  color: var(--gold-300);
+  font-family: var(--font-royal);
+  font-size: clamp(0.76rem, 1.8vw, 0.88rem);
+  letter-spacing: 1px;
+}
+
+/* Lightbox Modal */
+#royalLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(24, 3, 5, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 3vw, 24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+#royalLightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-frame-wrap {
+  position: relative;
+  max-width: 92vw;
+  max-height: 86vh;
+}
+.lightbox-main-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 14px;
+  border: 4px solid var(--gold-400);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+.lightbox-close-seal {
+  position: absolute;
+  top: clamp(-42px, -6vw, -36px);
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--burgundy-800);
+  border: 1.5px solid var(--gold-400);
+  color: var(--gold-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: background 0.3s;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. FORM RSVP & WHATSAPP TO GROOM/BRIDE
+══════════════════════════════════════════════════════════════ */
+.rsvp-centered-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rsvp-decree-box {
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 24px;
+  padding: clamp(28px, 4.5vw, 42px) clamp(16px, 3.5vw, 34px);
+  box-shadow: var(--shadow-parchment);
+  position: relative;
+  box-sizing: border-box;
+}
+.rsvp-decree-box::before {
+  content: '';
+  position: absolute;
+  inset: clamp(6px, 1.5vw, 10px);
+  border: 1px solid var(--gold-400);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.form-field-group {
+  margin-bottom: 20px;
+}
+.form-field-label {
+  display: block;
+  font-family: var(--font-royal);
+  font-size: clamp(0.66rem, 1.8vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: clamp(1.5px, 0.4vw, 2px);
+  text-transform: uppercase;
+  color: var(--burgundy-800);
+  margin-bottom: 8px;
+}
+
+.form-antique-input, .form-antique-select, .form-antique-textarea {
+  width: 100%;
+  padding: 12px clamp(12px, 2.5vw, 18px);
+  background: #ffffff;
+  border: 1.5px solid var(--gold-500);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--burgundy-900);
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+.form-antique-input:focus, .form-antique-select:focus, .form-antique-textarea:focus {
+  border-color: var(--burgundy-700);
+  box-shadow: 0 0 0 3px rgba(88, 17, 26, 0.15);
+}
+.form-antique-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Attendance Pills */
+.attendance-pills-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1.5vw, 10px);
+}
+.att-pill-item {
+  position: relative;
+}
+.att-pill-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.att-pill-item label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 4px;
+  background: var(--parchment-100);
+  border: 1.5px solid var(--gold-500);
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font-royal);
+  font-size: clamp(0.62rem, 1.8vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--burgundy-800);
+  transition: all 0.25s ease;
+  text-align: center;
+  box-sizing: border-box;
+}
+.att-pill-item input:checked + label {
+  background: var(--burgundy-800);
+  border-color: var(--burgundy-800);
+  color: var(--gold-300);
+  box-shadow: 0 6px 14px rgba(41, 4, 8, 0.25);
+}
+
+/* WhatsApp Dispatcher Buttons */
+.wa-dispatch-section {
+  margin-top: 26px;
+  border-top: 1px dashed var(--gold-500);
+  padding-top: 20px;
+}
+.wa-dispatch-heading {
+  font-family: var(--font-royal);
+  font-size: clamp(0.68rem, 1.8vw, 0.74rem);
+  font-weight: 700;
+  letter-spacing: clamp(1.5px, 0.5vw, 2px);
+  text-transform: uppercase;
+  color: var(--burgundy-800);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.wa-dual-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-wa-chateau {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gold-400);
+  cursor: pointer;
+  font-family: var(--font-royal);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(41, 4, 8, 0.2);
+  width: 100%;
+  box-sizing: border-box;
+}
+.btn-wa-chateau svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.btn-wa-info {
+  text-align: left;
+  line-height: 1.25;
+}
+.btn-wa-info-role {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.btn-wa-info-name {
+  display: block;
+  font-size: 0.86rem;
+}
+
+.btn-wa-lady {
+  background: linear-gradient(135deg, var(--burgundy-700), var(--burgundy-800));
+  color: var(--gold-300);
+}
+.btn-wa-lady:hover {
+  background: linear-gradient(135deg, var(--burgundy-600), var(--burgundy-700));
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-wa-lord {
+  background: linear-gradient(135deg, var(--gold-800), #45320e);
+  color: var(--gold-200);
+}
+.btn-wa-lord:hover {
+  background: linear-gradient(135deg, var(--gold-700), #5a4214);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. DIGITAL ENVELOPE / ROYAL TRIBUTE
+══════════════════════════════════════════════════════════════ */
+.tribute-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(18px, 3vw, 28px);
+  max-width: 820px;
+  margin: 0 auto 36px;
+}
+
+.royal-bank-card {
+  position: relative;
+  border-radius: 20px;
+  padding: clamp(22px, 3.8vw, 30px);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(41, 4, 8, 0.35);
+  transition: transform 0.4s ease;
+  min-height: clamp(190px, 25vw, 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.royal-bank-card:hover {
+  transform: translateY(-5px);
+}
+
+.bank-card-burgundy {
+  background: radial-gradient(circle at 20% 20%, #741b25 0%, #3c0910 65%, #290408 100%);
+  color: var(--gold-300);
+  border: 2px solid var(--gold-500);
+}
+.bank-card-gold {
+  background: radial-gradient(circle at 20% 20%, #8c6a28 0%, #523c12 65%, #291c04 100%);
+  color: var(--gold-200);
+  border: 2px solid var(--gold-400);
+}
+
+.card-crest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-bank-emblem {
+  font-family: var(--font-royal);
+  font-size: clamp(0.78rem, 2vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: clamp(1.2px, 0.4vw, 2px);
+}
+.card-antique-chip {
+  width: clamp(38px, 8vw, 44px);
+  height: clamp(28px, 6vw, 32px);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f5d68d 0%, #cfa54f 50%, #8c6a28 100%);
+  border: 1px solid var(--gold-200);
+}
+
+.card-account-digits {
+  font-family: var(--font-royal);
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+  letter-spacing: clamp(1.5px, 0.6vw, 4px);
+  font-weight: 700;
+  margin: 16px 0 6px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  word-break: break-all;
+}
+.card-beneficiary {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.btn-card-copy {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--gold-400);
+  color: var(--gold-300);
+  font-family: var(--font-royal);
+  font-size: clamp(0.64rem, 1.6vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.25s ease;
+}
+.btn-card-copy:hover {
+  background: var(--gold-400);
+  color: var(--burgundy-900);
+}
+
+/* Physical Gift Address Box */
+.chateau-postal-box {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 32px) clamp(16px, 3.5vw, 32px);
+  text-align: center;
+  box-shadow: var(--shadow-parchment);
+  box-sizing: border-box;
+}
+.postal-box-title {
+  font-family: var(--font-royal);
+  font-size: clamp(1.15rem, 3.2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--burgundy-900);
+  margin-bottom: 8px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. CLOSING & PROTOCOL
+══════════════════════════════════════════════════════════════ */
+.closing-arch-section {
+  text-align: center;
+  padding: clamp(40px, 6vw, 60px) 0 20px;
+}
+
+.closing-scroll-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--parchment-50);
+  border: 2px solid var(--gold-500);
+  border-radius: 20px;
+  padding: clamp(38px, 5.5vw, 55px) clamp(16px, 3.5vw, 30px) clamp(30px, 4.5vw, 48px);
+  box-shadow: var(--shadow-parchment);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.closing-salutation-quote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  color: var(--burgundy-800);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+
+.closing-cursive-names {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  color: var(--burgundy-900);
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.closing-chateau-footer {
+  font-family: var(--font-royal);
+  font-size: clamp(0.66rem, 1.6vw, 0.72rem);
+  letter-spacing: clamp(1.5px, 0.5vw, 3px);
+  text-transform: uppercase;
+  color: var(--gold-800);
+  margin-top: clamp(24px, 4vw, 36px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   16. TOAST NOTIFICATION
+══════════════════════════════════════════════════════════════ */
+#royalToast {
+  position: fixed;
+  bottom: max(75px, calc(65px + env(safe-area-inset-bottom, 16px)));
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  z-index: 9999999;
+  background: var(--burgundy-900);
+  color: var(--gold-300);
+  padding: 10px clamp(16px, 3.5vw, 24px);
+  border-radius: 999px;
+  border: 1.5px solid var(--gold-400);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-royal);
+  font-size: clamp(0.68rem, 1.8vw, 0.76rem);
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+#royalToast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   17. RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, MOBILE)
+══════════════════════════════════════════════════════════════ */
+/* Large Tablet & Small Laptop (<= 860px) */
+@media (max-width: 860px) {
+  .royal-couples-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .agenda-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .tribute-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+/* Tablet & Mobile (<= 768px) */
+@media (max-width: 768px) {
+  section { padding: 48px 0; }
+  
+  /* Timeline converts to vertical line on left */
+  .chronicle-timeline::before { left: 20px; }
+  .chronicle-chapter {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 52px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    margin-bottom: 30px;
+  }
+  .chronicle-node-badge {
+    left: 5px !important;
+    right: auto !important;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  /* Gallery converts to 2 columns */
+  .gilded-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .gallery-gilded-item.wide {
+    grid-column: span 2;
+  }
+  .gallery-gilded-item.tall {
+    grid-row: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  /* Floating Bottom Nav Dock */
+  .baroque-nav-dock {
+    bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    padding: 6px 10px;
+    gap: 2px;
+  }
+  .dock-link {
+    padding: 5px 8px;
+    font-size: 0.58rem;
+  }
+  .dock-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Dual WhatsApp button switches to single column for generous touch target */
+  .wa-dual-buttons {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Standard Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .envelope-frame {
+    padding: 30px 16px 26px;
+  }
+  .filigree-corner {
+    width: 28px;
+    height: 28px;
+  }
+  .filigree-corner.top-left { top: 8px; left: 8px; }
+  .filigree-corner.top-right { top: 8px; right: 8px; }
+  .filigree-corner.bottom-left { bottom: 8px; left: 8px; }
+  .filigree-corner.bottom-right { bottom: 8px; right: 8px; }
+
+  .decree-date-ribbon {
+    gap: 6px 10px;
+    padding: 6px 14px;
+  }
+
+  .baroque-nav-dock {
+    width: calc(100% - 16px);
+    max-width: 420px;
+    justify-content: space-around;
+    padding: 6px 4px;
+    gap: 0;
+  }
+  .dock-link {
+    padding: 4px 6px;
+    font-size: 0.52rem;
+    letter-spacing: 0;
+    flex: 1;
+    min-width: 0;
+  }
+  .dock-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .btn-royal-gold, .btn-royal-outline {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .dresscode-swatches {
+    gap: 10px;
+  }
+  .swatch-circle {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Extra Small Phones (<= 360px) */
+@media (max-width: 360px) {
+  .gilded-timer-wrap {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .attendance-pills-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .dock-link span {
+    display: none;
+  }
+  .dock-link {
+    padding: 8px 4px;
+  }
+  .dock-link svg {
+    margin-bottom: 0;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Landscape / Short Height Screens */
+@media (max-height: 640px) {
+  .envelope-frame {
+    padding: 20px 16px;
+  }
+  .royal-crest-wrap {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
+  }
+  .cover-french-proclamation {
+    margin-bottom: 2px;
+  }
+  .cover-date-engraved {
+    margin-bottom: 10px;
+    padding: 4px 10px;
+  }
+  .guest-recipient-box {
+    margin-bottom: 12px;
+    padding: 6px 10px;
+  }
+  .wax-seal-btn {
+    width: 70px;
+    height: 70px;
+  }
+  .wax-seal-btn svg {
+    width: 34px;
+    height: 34px;
+  }
+  .wax-seal-text {
+    margin-top: 6px;
+    font-size: 0.65rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BACKGROUND TEXTURE & GRAIN
+══════════════════════════════════════════════════════════════ -->
+<div class="chateau-bg-layer"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     COVER SCREEN: WAX-SEALED CHATEAU POSTAL ENVELOPE
+══════════════════════════════════════════════════════════════ -->
+<div id="coverScreen">
+  <div class="envelope-frame gold-shimmer-border">
+    <!-- Ornate Corners -->
+    <svg class="filigree-corner top-left" viewBox="0 0 40 40"><path d="M4 4 C16 4, 32 10, 36 28 C30 18, 20 18, 14 26 C12 18, 8 10, 4 4 Z" fill="currentColor"/></svg>
+    <svg class="filigree-corner top-right" viewBox="0 0 40 40"><path d="M4 4 C16 4, 32 10, 36 28 C30 18, 20 18, 14 26 C12 18, 8 10, 4 4 Z" fill="currentColor"/></svg>
+    <svg class="filigree-corner bottom-left" viewBox="0 0 40 40"><path d="M4 4 C16 4, 32 10, 36 28 C30 18, 20 18, 14 26 C12 18, 8 10, 4 4 Z" fill="currentColor"/></svg>
+    <svg class="filigree-corner bottom-right" viewBox="0 0 40 40"><path d="M4 4 C16 4, 32 10, 36 28 C30 18, 20 18, 14 26 C12 18, 8 10, 4 4 Z" fill="currentColor"/></svg>
+
+    <!-- Royal Monogram Crest -->
+    <div class="royal-crest-wrap">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 15 C52 26 62 30 72 34 C64 42 56 46 50 64 C44 46 36 42 28 34 C38 30 48 26 50 15 Z"/>
+        <path d="M50 36 C55 36 60 40 60 45 C60 52 50 60 50 60 C50 60 40 52 40 45 C40 40 45 36 50 36 Z"/>
+        <circle cx="50" cy="50" r="3" fill="#684e1b"/>
+      </svg>
+    </div>
+
+    <p class="cover-french-proclamation">Invitation de Mariage</p>
+    <h1 class="cover-cursive-title">
+      Lady Beatrice
+      <span class="and-char">&amp;</span>
+      Lord Arthur
+    </h1>
+
+    <div class="cover-date-engraved">Samedi • 18 Juillet 2026</div>
+
+    <!-- Guest Recipient Capsule (?to=) -->
+    <div class="guest-recipient-box">
+      <div class="guest-recipient-sub">To the Esteemed Guest:</div>
+      <div class="guest-recipient-name" id="guestNameOutput">Tamu Kehormatan</div>
+    </div>
+
+    <!-- 3D BURGUNDY WAX SEAL BUTTON -->
+    <div class="wax-seal-container" onclick="openRoyalDecree()">
+      <div class="wax-seal-ring"></div>
+      <button class="wax-seal-btn" title="Rompre le Sceau / Buka Undangan" aria-label="Buka Undangan Kerajaan">
+        <!-- Fleur-de-lis Crest -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/>
+        </svg>
+      </button>
+      <span class="wax-seal-text">Buka Segel Kerajaan</span>
+    </div>
+  </div>
+</div>
+
+<!-- AUDIO PLAYER ELEMENT -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="Payung Teduh - Akad (Official Music Video).mp3" type="audio/mpeg">
+</audio>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FLOATING GRAMOPHONE (CLASSICAL PIANO SYNTHESIZER)
+══════════════════════════════════════════════════════════════ -->
+<div class="gramophone-floater" id="gramophoneFloater" onclick="toggleClassicalMusic()" title="Musik Klasik">
+  <div class="gramophone-disc" id="gramophoneDisc">
+    <!-- Center Needle -->
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: #ffffff;"></div>
+  </div>
+  <span class="music-label-antique" id="musicStatusAntique">Nocturne</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FLOATING BAROQUE BOTTOM NAV DOCK
+══════════════════════════════════════════════════════════════ -->
+<nav class="baroque-nav-dock" id="baroqueDock">
+  <a href="#hero" class="dock-link active">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>Warkat</span>
+  </a>
+  <a href="#mempelai" class="dock-link">
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <span>Mempelai</span>
+  </a>
+  <a href="#agenda" class="dock-link">
+    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+    <span>Agenda</span>
+  </a>
+  <a href="#galeri" class="dock-link">
+    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    <span>Galeri</span>
+  </a>
+  <a href="#rsvp" class="dock-link">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <span>RSVP</span>
+  </a>
+  <a href="#tribut" class="dock-link">
+    <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
+    <span>Tanda Kasih</span>
+  </a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN WARKAT CONTENT
+══════════════════════════════════════════════════════════════ -->
+<div id="mainWrapper">
+
+  <!-- HERO: DECREE PROCLAMATION -->
+  <section id="hero">
+    <div class="hero-decree-scroll gold-shimmer-border">
+      <div class="bismillah-arab-classic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+      <p class="decree-salutation">
+        "Par la grâce de Dieu et avec la bénédiction de nos familles, nous avons l'insigne honneur d'annoncer les vœux sacrés de notre mariage."
+      </p>
+
+      <span class="royal-sub-eyebrow">The Royal Nuptials</span>
+      <h1 class="hero-names-cursive">
+        Lady Beatrice
+        <span class="and-sign">&amp;</span>
+        Lord Arthur
+      </h1>
+
+      <div class="decree-date-ribbon">
+        <span>Samedi</span>
+        <span>•</span>
+        <span>18 Juillet 2026</span>
+        <span>•</span>
+        <span>Chateau de Versailles</span>
+      </div>
+
+      <div class="holy-scripture-box">
+        "Et parmi Ses signes Il a créé de vous, pour vous, des épouses, pour que vous viviez en tranquillité avec elles et Il a mis entre vous de l'affection et de la bonté."
+        <cite>Sourate Ar-Rum: 21</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- GILDED CLOCKWORK COUNTDOWN -->
+  <section class="countdown-section">
+    <div class="gilded-timer-wrap">
+      <div class="timer-parchment-card">
+        <div class="timer-number" id="tDays">00</div>
+        <div class="timer-label">Jours</div>
+      </div>
+      <div class="timer-parchment-card">
+        <div class="timer-number" id="tHours">00</div>
+        <div class="timer-label">Heures</div>
+      </div>
+      <div class="timer-parchment-card">
+        <div class="timer-number" id="tMinutes">00</div>
+        <div class="timer-label">Minutes</div>
+      </div>
+      <div class="timer-parchment-card">
+        <div class="timer-number" id="tSeconds">00</div>
+        <div class="timer-label">Secondes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUPLE PROFILES: OVAL BAROQUE PORTRAITS -->
+  <section id="mempelai">
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">Les Mariés d'Honneur</span>
+      <h2 class="royal-main-title">Mempelai Bangsawan</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+    </div>
+
+    <div class="royal-couples-grid">
+      <!-- Lady Beatrice -->
+      <div class="royal-profile-card">
+        <div class="oval-portrait-frame">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Lady Beatrice">
+        </div>
+        <span class="profile-aristocrat-title">La Mariée</span>
+        <h3 class="profile-full-name">Lady Beatrice Aurelia</h3>
+        <p class="profile-lineage-desc">
+          Putri sulung yang terhormat dari<br>
+          <strong>Lord Henri de Montmorency</strong> &amp;<br>
+          <strong>Duchess Geneviève de Valois</strong>
+        </p>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="profile-social-seal">
+          <span>@beatrice.aurelia</span>
+        </a>
+      </div>
+
+      <!-- Lord Arthur -->
+      <div class="royal-profile-card">
+        <div class="oval-portrait-frame">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Lord Arthur">
+        </div>
+        <span class="profile-aristocrat-title">Le Marié</span>
+        <h3 class="profile-full-name">Lord Arthur Leopold</h3>
+        <p class="profile-lineage-desc">
+          Putra kedua yang terhormat dari<br>
+          <strong>Duke Charles de Beaumont</strong> &amp;<br>
+          <strong>Duchess Madeleine de Bourbon</strong>
+        </p>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="profile-social-seal">
+          <span>@arthur.leopold</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHRONICLE OF LOVE -->
+  <section>
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">La Chronique de Notre Amour</span>
+      <h2 class="royal-main-title">Kisah Perjalanan Kasih</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+    </div>
+
+    <div class="chronicle-timeline">
+      <div class="chronicle-chapter">
+        <div class="chronicle-node-badge">⚜</div>
+        <div class="chronicle-card">
+          <div class="chapter-era">Anno 2021 • Pertemuan Pertama</div>
+          <h4 class="chapter-title">Matinée à L'Orangerie</h4>
+          <p class="chapter-desc">Di bawah kubah kaca l'Orangerie Chateau de Chantilly, sepasang mata bertaut saat simfoni cello mengalun lembut mengiringi sore musim semi.</p>
+        </div>
+      </div>
+
+      <div class="chronicle-chapter">
+        <div class="chronicle-node-badge">⚜</div>
+        <div class="chronicle-card">
+          <div class="chapter-era">Anno 2023 • Lembaran Komitmen</div>
+          <h4 class="chapter-title">Les Promesses de Paris</h4>
+          <p class="chapter-desc">Menyusuri tepian Sungai Seine dan koridor galeri lukisan antik, kami berikrar untuk merajut masa depan dalam satu kesetiaan yang tak lekang waktu.</p>
+        </div>
+      </div>
+
+      <div class="chronicle-chapter">
+        <div class="chronicle-node-badge">⚜</div>
+        <div class="chronicle-card">
+          <div class="chapter-era">Anno 2025 • Lamaran Mulia</div>
+          <h4 class="chapter-title">Sous les Étoiles du Chateau</h4>
+          <p class="chapter-desc">Di pelataran kastil tua berlampu lilin keemasan, Lord Arthur berlutut mempersembahkan cincin berlian safir pusaka keluarga warisan berabad-abad.</p>
+        </div>
+      </div>
+
+      <div class="chronicle-chapter">
+        <div class="chronicle-node-badge">⚜</div>
+        <div class="chronicle-card">
+          <div class="chapter-era">Anno 2026 • Penyatuan Suci</div>
+          <h4 class="chapter-title">Le Sacre Éternel</h4>
+          <p class="chapter-desc">Kini tiba saatnya bagi kami untuk mengikat janji suci pernikahan di hadapan Sang Pencipta dan para saksi yang kami hormati.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA & CEREMONY -->
+  <section id="agenda">
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">Cérémonie et Festivités</span>
+      <h2 class="royal-main-title">Agenda &amp; Lokasi Resital</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+    </div>
+
+    <div class="agenda-cards-grid">
+      <!-- Holy Matrimony -->
+      <div class="agenda-warkat-box">
+        <span class="agenda-tag-seal">Pemberkatan / Akad</span>
+        <h3 class="agenda-name">Misa Suci Pernikahan</h3>
+
+        <div class="agenda-info-row">
+          <div class="agenda-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          </div>
+          <div>
+            <div class="agenda-text-primary">Sabtu, 18 Juli 2026</div>
+            <div class="agenda-text-sub">Pukul 09.00 – 11.00 WIB</div>
+          </div>
+        </div>
+
+        <div class="agenda-info-row">
+          <div class="agenda-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <div class="agenda-text-primary">Chapelle Royale du Chateau</div>
+            <div class="agenda-text-sub">Paviliun Katedral Marmer Klasik, Kawasan Heritage Jakarta Pusat</div>
+          </div>
+        </div>
+
+        <div class="agenda-actions-row">
+          <a href="https://maps.google.com/?q=Chapelle+Royale+Jakarta" target="_blank" rel="noopener" class="btn-royal-gold">
+            <span>Petunjuk Peta</span>
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pemberkatan+Pernikahan+Beatrice+%26+Arthur&dates=20260718T020000Z/20260718T040000Z&details=Pemberkatan+Pernikahan+di+Chapelle+Royale&location=Jakarta" target="_blank" rel="noopener" class="btn-royal-outline">
+            <span>Google Calendar</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Grand Banquet -->
+      <div class="agenda-warkat-box">
+        <span class="agenda-tag-seal">Grand Reception</span>
+        <h3 class="agenda-name">Le Grand Bal &amp; Resepsi</h3>
+
+        <div class="agenda-info-row">
+          <div class="agenda-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          </div>
+          <div>
+            <div class="agenda-text-primary">Sabtu, 18 Juli 2026</div>
+            <div class="agenda-text-sub">Pukul 18.30 – 22.00 WIB</div>
+          </div>
+        </div>
+
+        <div class="agenda-info-row">
+          <div class="agenda-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <div class="agenda-text-primary">Galerie des Glaces Grand Ballroom</div>
+            <div class="agenda-text-sub">The Grand Chateau Heritage Hall, Jakarta</div>
+          </div>
+        </div>
+
+        <div class="agenda-actions-row">
+          <a href="https://maps.google.com/?q=The+Grand+Chateau+Jakarta" target="_blank" rel="noopener" class="btn-royal-gold">
+            <span>Petunjuk Peta</span>
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Beatrice+%26+Arthur&dates=20260718T113000Z/20260718T150000Z&details=Grand+Bal+Resepsi+Pernikahan+di+Galerie+des+Glaces&location=Jakarta" target="_blank" rel="noopener" class="btn-royal-outline">
+            <span>Google Calendar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imperial Dress Code -->
+    <div class="dresscode-imperial-box">
+      <h4 class="dresscode-imperial-title">Code Vestimentaire (Dress Code)</h4>
+      <p style="font-size: 0.95rem; color: var(--burgundy-800); max-width: 520px; margin: 0 auto;">
+        Para tamu kehormatan dimohon mengenakan busana resmi bergaya <strong>Old-Money Black Tie &amp; Baroque Luxury</strong> dengan panduan palet warna berikut:
+      </p>
+      <div class="dresscode-swatches">
+        <div class="swatch-pillar">
+          <div class="swatch-circle" style="background: #58111a;"></div>
+          <span class="swatch-text">Deep Burgundy</span>
+        </div>
+        <div class="swatch-pillar">
+          <div class="swatch-circle" style="background: #cfa54f;"></div>
+          <span class="swatch-text">Antique Gold</span>
+        </div>
+        <div class="swatch-pillar">
+          <div class="swatch-circle" style="background: #180305;"></div>
+          <span class="swatch-text">Noir Velvet</span>
+        </div>
+        <div class="swatch-pillar">
+          <div class="swatch-circle" style="background: #f7f2e7; border-color: #cebc9b;"></div>
+          <span class="swatch-text">Warm Ivory</span>
+        </div>
+        <div class="swatch-pillar">
+          <div class="swatch-circle" style="background: #2b1f14;"></div>
+          <span class="swatch-text">Espresso Brown</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GILDED PICTURE GALLERY -->
+  <section id="galeri">
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">Galerie de Portraits</span>
+      <h2 class="royal-main-title">Galeri Pigura Kerajaan</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+    </div>
+
+    <div class="gilded-gallery-grid">
+      <div class="gallery-gilded-item tall" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Chateau Portrait">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">Promenade au Chateau</span></div>
+      </div>
+      <div class="gallery-gilded-item" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Vintage Glance">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">L'Élégance Pure</span></div>
+      </div>
+      <div class="gallery-gilded-item" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80" alt="Heirloom Ring">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">L'Alliance Sacrée</span></div>
+      </div>
+      <div class="gallery-gilded-item wide" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Grand Ball Entrance">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">Sous les Lustres Dorés</span></div>
+      </div>
+      <div class="gallery-gilded-item" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80" alt="Serenade">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">Serment Éternel</span></div>
+      </div>
+      <div class="gallery-gilded-item" onclick="openRoyalLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Ballroom Glance">
+        <div class="gallery-gilded-overlay"><span class="gallery-caption-text">La Douceur du Crépuscule</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM RSVP & DIRECT WHATSAPP OPTION -->
+  <section id="rsvp">
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">Répondez S'il Vous Plaît</span>
+      <h2 class="royal-main-title">Konfirmasi Kehadiran</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+    </div>
+
+    <div class="rsvp-centered-wrap">
+      <div class="rsvp-decree-box">
+        <p style="font-size: 0.95rem; text-align: center; color: var(--burgundy-800); margin-bottom: 24px;">
+          Merupakan suatu kehormatan apabila Anda berkenan mengisi konfirmasi kehadiran. Pesan doa restu Anda akan terkirim secara langsung ke WhatsApp pribadi mempelai.
+        </p>
+
+        <div class="form-field-group">
+          <label class="form-field-label" for="guestNameInput">Nom et Prénom (Nama Lengkap)</label>
+          <input type="text" id="guestNameInput" class="form-antique-input" placeholder="Contoh: Duke Albert &amp; Duchess" required>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-field-label">Konfirmasi Kehadiran</label>
+          <div class="attendance-pills-row">
+            <div class="att-pill-item">
+              <input type="radio" name="attStatus" id="attHadir" value="Hadir (Présent)" checked>
+              <label for="attHadir">
+                <span>⚜</span>
+                <span>Hadir</span>
+              </label>
+            </div>
+            <div class="att-pill-item">
+              <input type="radio" name="attStatus" id="attRagu" value="Ragu (Incertain)">
+              <label for="attRagu">
+                <span>⚖</span>
+                <span>Ragu</span>
+              </label>
+            </div>
+            <div class="att-pill-item">
+              <input type="radio" name="attStatus" id="attAbsen" value="Tidak Hadir (Absent)">
+              <label for="attAbsen">
+                <span>📜</span>
+                <span>Absen</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-field-label" for="guestTotalSelect">Nombre d'Invités (Jumlah Tamu)</label>
+          <select id="guestTotalSelect" class="form-antique-select">
+            <option value="1 Orang (1 Invité)">1 Orang (1 Invité)</option>
+            <option value="2 Orang (2 Invités)" selected>2 Orang (2 Invités)</option>
+            <option value="3 Orang (3 Invités)">3 Orang (3 Invités)</option>
+            <option value="4 Orang (Famille)">4 Orang (Famille)</option>
+            <option value="5+ Orang (Délégation)">5+ Orang (Délégation)</option>
+          </select>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-field-label" for="guestWishesText">Vœux &amp; Doa Restu</label>
+          <textarea id="guestWishesText" class="form-antique-textarea" placeholder="Tuliskan bait doa dan ucapan selamat bagi kedua mempelai..."></textarea>
+        </div>
+
+        <!-- 2 Opsi Pengiriman ke WhatsApp -->
+        <div class="wa-dispatch-section">
+          <p class="wa-dispatch-heading">Kirimkan Konfirmasi Langsung Melalui:</p>
+          <div class="wa-dual-buttons">
+            <button type="button" class="btn-wa-chateau btn-wa-lady" onclick="dispatchRoyalRSVP('lady')">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.25 16.01C12.84 16.27 13.3 16.42 13.66 16.54C14.26 16.73 14.8 16.7 15.24 16.64C15.72 16.56 16.72 16.03 16.93 15.44C17.14 14.85 17.14 14.35 17.08 14.24C17.01 14.14 16.85 14.08 16.6 13.96C16.36 13.84 15.17 13.25 14.95 13.17C14.73 13.09 14.56 13.05 14.4 13.3C14.24 13.54 13.77 14.09 13.63 14.25C13.49 14.42 13.35 14.44 13.1 14.32C12.86 14.19 12.08 13.94 11.15 13.11C10.43 12.46 9.94 11.66 9.8 11.42C9.66 11.17 9.78 11.04 9.91 10.91C10.02 10.8 10.16 10.62 10.28 10.48C10.4 10.33 10.45 10.23 10.53 10.07C10.61 9.9 10.57 9.76 10.51 9.64C10.45 9.51 9.98 8.35 9.78 7.88C9.59 7.41 9.39 7.48 9.24 7.47C9.1 7.47 8.93 7.46 8.77 7.46C8.61 7.46 8.53 7.33 8.53 7.33Z"/></svg>
+              <div class="btn-wa-info">
+                <span class="btn-wa-info-role">Mempelai Wanita</span>
+                <span class="btn-wa-info-name">Lady Beatrice</span>
+              </div>
+            </button>
+
+            <button type="button" class="btn-wa-chateau btn-wa-lord" onclick="dispatchRoyalRSVP('lord')">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.25 16.01C12.84 16.27 13.3 16.42 13.66 16.54C14.26 16.73 14.8 16.7 15.24 16.64C15.72 16.56 16.72 16.03 16.93 15.44C17.14 14.85 17.14 14.35 17.08 14.24C17.01 14.14 16.85 14.08 16.6 13.96C16.36 13.84 15.17 13.25 14.95 13.17C14.73 13.09 14.56 13.05 14.4 13.3C14.24 13.54 13.77 14.09 13.63 14.25C13.49 14.42 13.35 14.44 13.1 14.32C12.86 14.19 12.08 13.94 11.15 13.11C10.43 12.46 9.94 11.66 9.8 11.42C9.66 11.17 9.78 11.04 9.91 10.91C10.02 10.8 10.16 10.62 10.28 10.48C10.4 10.33 10.45 10.23 10.53 10.07C10.61 9.9 10.57 9.76 10.51 9.64C10.45 9.51 9.98 8.35 9.78 7.88C9.59 7.41 9.39 7.48 9.24 7.47C9.1 7.47 8.93 7.46 8.77 7.46C8.61 7.46 8.53 7.33 8.53 7.33Z"/></svg>
+              <div class="btn-wa-info">
+                <span class="btn-wa-info-role">Mempelai Pria</span>
+                <span class="btn-wa-info-name">Lord Arthur</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL ENVELOPE / TRIBUTE OF HONOR -->
+  <section id="tribut">
+    <div class="royal-heading-center">
+      <span class="royal-sub-eyebrow">Tribut d'Honneur</span>
+      <h2 class="royal-main-title">Tanda Kasih Digital</h2>
+      <div class="royal-filigree-divider">
+        <svg viewBox="0 0 24 24"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+      </div>
+      <p style="font-size: 0.95rem; color: var(--burgundy-800); max-width: 520px; margin: 12px auto 0;">
+        Doa restu Anda adalah karunia yang teramat berharga bagi kami. Bagi tamu terhormat yang hendak menyampaikan tanda kasih, dapat disalurkan melalui rekening resmi:
+      </p>
+    </div>
+
+    <div class="tribute-cards-grid">
+      <!-- BCA Card -->
+      <div class="royal-bank-card bank-card-burgundy">
+        <div class="card-crest-row">
+          <span class="card-bank-emblem">BANK CENTRAL ASIA</span>
+          <div class="card-antique-chip"></div>
+        </div>
+        <div>
+          <div class="card-account-digits">8720 5431 00</div>
+          <div class="card-beneficiary">a.n. Beatrice Aurelia</div>
+        </div>
+        <button class="btn-card-copy" onclick="copyRoyalAccount('8720543100', 'BCA a.n Beatrice Aurelia')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Salin Rekening</span>
+        </button>
+      </div>
+
+      <!-- Mandiri Card -->
+      <div class="royal-bank-card bank-card-gold">
+        <div class="card-crest-row">
+          <span class="card-bank-emblem">BANK MANDIRI</span>
+          <div class="card-antique-chip"></div>
+        </div>
+        <div>
+          <div class="card-account-digits">1300 0156 7890</div>
+          <div class="card-beneficiary">a.n. Arthur Leopold</div>
+        </div>
+        <button class="btn-card-copy" onclick="copyRoyalAccount('130001567890', 'Mandiri a.n Arthur Leopold')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Salin Rekening</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Postal Parcel Address Box -->
+    <div class="chateau-postal-box">
+      <h4 class="postal-box-title">Alamat Kediaman (Kado Fisik)</h4>
+      <p style="font-size: 0.94rem; color: var(--parchment-dark); line-height: 1.6; max-width: 500px; margin: 0 auto 18px;">
+        <strong>Chateau de Montmorency Residence:</strong><br>
+        Boulevard Royale No. 18, Menteng Heritage Estate, Jakarta Pusat 10310<br>
+        <span style="font-size: 0.85rem; color: var(--burgundy-700);">(Up: Beatrice &amp; Arthur - 0812-9876-5432)</span>
+      </p>
+      <button class="btn-royal-outline" onclick="copyRoyalAccount('Boulevard Royale No. 18, Menteng Heritage Estate, Jakarta Pusat 10310 (Beatrice/Arthur - 081298765432)', 'Alamat Kediaman')">
+        <span>Salin Alamat Lengkap</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- CLOSING SECTION -->
+  <section class="closing-arch-section">
+    <div class="closing-scroll-card">
+      <p class="closing-salutation-quote">
+        "Merupakan suatu kehormatan dan kebahagiaan yang tiada tara bagi kami sekeluarga, atas perkenan langkah dan ketulusan doa restu Bapak/Ibu/Saudara/i sekalian."
+      </p>
+      <p style="font-family: var(--font-royal); font-size: 0.76rem; letter-spacing: 4px; text-transform: uppercase; color: var(--burgundy-700); font-weight: 700; margin-bottom: 6px;">Avec Toute Notre Gratitude,</p>
+      <h3 class="closing-cursive-names">Beatrice &amp; Arthur</h3>
+      <p style="font-family: var(--font-royal); font-size: 0.88rem; color: var(--burgundy-900); margin-top: 8px;">Beserta Keluarga Besar de Montmorency &amp; de Beaumont</p>
+      <p class="closing-chateau-footer">Chateau Baroque Wedding Edition • MMXXVI</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ROYAL LIGHTBOX MODAL
+══════════════════════════════════════════════════════════════ -->
+<div id="royalLightbox" onclick="closeRoyalLightbox()">
+  <div class="lightbox-frame-wrap" onclick="event.stopPropagation()">
+    <button class="lightbox-close-seal" onclick="closeRoyalLightbox()">&times;</button>
+    <img id="royalLightboxImg" class="lightbox-main-img" src="" alt="Enlarged portrait">
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ROYAL TOAST NOTIFICATION
+══════════════════════════════════════════════════════════════ -->
+<div id="royalToast">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-400)"><path d="M12 2C11.5 5 9.5 7 7 8C8.5 9 10 10.5 10 13C10 15 8.5 17 6 18C8.5 18 10.5 16 11 14C11.5 16 12 18 12 21C12 18 12.5 16 13 14C13.5 16 15.5 18 18 18C15.5 17 14 15 14 13C14 10.5 15.5 9 17 8C14.5 7 12.5 5 12 2Z"/></svg>
+  <span id="royalToastMsg">Informasi berhasil disalin!</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     JAVASCRIPT: CHOPIN-STYLE NOCTURNE SYNTH, COUNTDOWN & RSVP
+══════════════════════════════════════════════════════════════ -->
+<script>
+/* ──────────────────────────────────────────────────────────────
+   1. GUEST RECIPIENT QUERY PARAM (?to=Nama+Tamu)
+────────────────────────────────────────────────────────────── */
+(function initGuestParameter() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get('to') || urlParams.get('guest') || urlParams.get('u');
+  if (guest) {
+    document.getElementById('guestNameOutput').textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
+  }
+})();
+
+/* ──────────────────────────────────────────────────────────────
+   2. WEB AUDIO API: CLASSICAL NOCTURNE PIANO & STRINGS SYNTH
+────────────────────────────────────────────────────────────── */
+let audioCtx = null;
+let isClassicAudioPlaying = false;
+let nocturneTimer = null;
+let masterGain = null;
+
+function setupAudioContext() {
+  if (audioCtx) return;
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  audioCtx = new AudioContext();
+
+  masterGain = audioCtx.createGain();
+  masterGain.gain.setValueAtTime(0.19, audioCtx.currentTime);
+
+  // Warm acoustic cathedral resonance
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(1600, audioCtx.currentTime);
+
+  masterGain.connect(filter);
+  filter.connect(audioCtx.destination);
+}
+
+// Classical Romantic Chord Progressions in E-flat Major (Chopin Nocturne style)
+const nocturneChords = [
+  // Ebmaj9: Eb3 (155.56), G3 (196.00), Bb3 (233.08), D4 (293.66), F4 (349.23)
+  [155.56, 196.00, 233.08, 293.66, 349.23],
+  // Cm9: C3 (130.81), Eb3 (155.56), G3 (196.00), Bb3 (233.08), D4 (293.66)
+  [130.81, 155.56, 196.00, 233.08, 293.66],
+  // Abmaj7: Ab2 (103.83), C3 (130.81), Eb3 (155.56), G3 (196.00), C4 (261.63)
+  [103.83, 130.81, 155.56, 196.00, 261.63],
+  // Bb7sus4 -> Bb7: Bb2 (116.54), F3 (174.61), Ab3 (207.65), D4 (293.66), F4 (349.23)
+  [116.54, 174.61, 207.65, 293.66, 349.23]
+];
+
+let chordSeqIndex = 0;
+
+function playAcousticNote(frequency, delaySec, durationSec, noteVelocity) {
+  if (!isClassicAudioPlaying || !audioCtx) return;
+  const noteStartTime = audioCtx.currentTime + delaySec;
+
+  const osc = audioCtx.createOscillator();
+  const noteGain = audioCtx.createGain();
+
+  // Natural warm bell-sine hybrid
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(frequency, noteStartTime);
+  osc.detune.setValueAtTime((Math.random() - 0.5) * 5, noteStartTime);
+
+  // Piano-like hammer stroke envelope
+  noteGain.gain.setValueAtTime(0.0001, noteStartTime);
+  noteGain.gain.exponentialRampToValueAtTime(noteVelocity, noteStartTime + 0.035);
+  noteGain.gain.exponentialRampToValueAtTime(noteVelocity * 0.45, noteStartTime + 0.55);
+  noteGain.gain.exponentialRampToValueAtTime(0.0001, noteStartTime + durationSec);
+
+  osc.connect(noteGain);
+  noteGain.connect(masterGain);
+
+  osc.start(noteStartTime);
+  osc.stop(noteStartTime + durationSec + 0.1);
+}
+
+function triggerNextNocturneMeasure() {
+  if (!isClassicAudioPlaying) return;
+  const chord = nocturneChords[chordSeqIndex % nocturneChords.length];
+  chordSeqIndex++;
+
+  // Gentle Chopin-like bass arpeggiation (left hand)
+  chord.forEach((freq, idx) => {
+    playAcousticNote(freq, idx * 0.32, 4.0, 0.08);
+  });
+
+  // Melodic right-hand flourish
+  const highMelodyNote = chord[Math.floor(Math.random() * chord.length)] * 2;
+  playAcousticNote(highMelodyNote, 1.25, 2.6, 0.04);
+
+  nocturneTimer = setTimeout(triggerNextNocturneMeasure, 3600);
+}
+
+const bgMusic = document.getElementById('bgMusic');
+
+function startClassicalMusic() {
+  if (bgMusic) {
+    bgMusic.volume = 0.6;
+    bgMusic.play().then(() => {
+      isClassicAudioPlaying = true;
+      document.getElementById('gramophoneFloater').classList.add('visible');
+      document.getElementById('gramophoneDisc').classList.add('spin');
+      document.getElementById('musicStatusAntique').textContent = 'Musique';
+    }).catch(err => {
+      console.warn('Audio auto-play policy error, using classical synth fallback:', err);
+      setupAudioContext();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      isClassicAudioPlaying = true;
+      document.getElementById('gramophoneFloater').classList.add('visible');
+      document.getElementById('gramophoneDisc').classList.add('spin');
+      document.getElementById('musicStatusAntique').textContent = 'Musique';
+      triggerNextNocturneMeasure();
+    });
+  } else {
+    setupAudioContext();
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    isClassicAudioPlaying = true;
+    document.getElementById('gramophoneFloater').classList.add('visible');
+    document.getElementById('gramophoneDisc').classList.add('spin');
+    document.getElementById('musicStatusAntique').textContent = 'Musique';
+    triggerNextNocturneMeasure();
+  }
+}
+
+function stopClassicalMusic() {
+  isClassicAudioPlaying = false;
+  clearTimeout(nocturneTimer);
+  document.getElementById('gramophoneDisc').classList.remove('spin');
+  document.getElementById('musicStatusAntique').textContent = 'Silence';
+  if (bgMusic && !bgMusic.paused) {
+    bgMusic.pause();
+  }
+}
+
+function toggleClassicalMusic() {
+  if (isClassicAudioPlaying) {
+    stopClassicalMusic();
+    showRoyalToast('Musique en pause');
+  } else {
+    startClassicalMusic();
+    showRoyalToast('Musique classique en cours');
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   3. OPEN ROYAL DECREE (BREAK THE WAX SEAL)
+────────────────────────────────────────────────────────────── */
+function openRoyalDecree() {
+  const cover = document.getElementById('coverScreen');
+  cover.classList.add('opened');
+
+  // Display floating controls
+  document.getElementById('baroqueDock').classList.add('visible');
+  document.getElementById('gramophoneFloater').classList.add('visible');
+
+  // Start music
+  startClassicalMusic();
+
+  // Scroll smoothly to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ──────────────────────────────────────────────────────────────
+   4. REALTIME WEDDING COUNTDOWN TIMER (18 JUILLET 2026)
+────────────────────────────────────────────────────────────── */
+const ROYAL_WEDDING_DATE = new Date('2026-07-18T09:00:00+07:00').getTime();
+
+function updateRoyalCountdown() {
+  const now = Date.now();
+  const diff = ROYAL_WEDDING_DATE - now;
+
+  if (diff <= 0) {
+    document.getElementById('tDays').textContent = '00';
+    document.getElementById('tHours').textContent = '00';
+    document.getElementById('tMinutes').textContent = '00';
+    document.getElementById('tSeconds').textContent = '00';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('tDays').textContent = String(days).padStart(2, '0');
+  document.getElementById('tHours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('tMinutes').textContent = String(mins).padStart(2, '0');
+  document.getElementById('tSeconds').textContent = String(secs).padStart(2, '0');
+}
+setInterval(updateRoyalCountdown, 1000);
+updateRoyalCountdown();
+
+/* ──────────────────────────────────────────────────────────────
+   5. GILDED GALLERY LIGHTBOX
+────────────────────────────────────────────────────────────── */
+function openRoyalLightbox(element) {
+  const img = element.querySelector('img');
+  if (!img) return;
+  const modal = document.getElementById('royalLightbox');
+  const target = document.getElementById('royalLightboxImg');
+  target.src = img.src;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeRoyalLightbox() {
+  const modal = document.getElementById('royalLightbox');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeRoyalLightbox();
+});
+
+/* ──────────────────────────────────────────────────────────────
+   6. WHATSAPP DISPATCHER (LADY BEATRICE / LORD ARTHUR)
+────────────────────────────────────────────────────────────── */
+// Nomor WhatsApp Tujuan
+const PHONE_LADY_BEATRICE = "6281234567891"; // WhatsApp Lady Beatrice
+const PHONE_LORD_ARTHUR   = "6281234567892"; // WhatsApp Lord Arthur
+
+function dispatchRoyalRSVP(recipientRole) {
+  const nameInput = document.getElementById('guestNameInput');
+  const wishInput = document.getElementById('guestWishesText');
+  const attEl = document.querySelector('input[name="attStatus"]:checked');
+  const guestTotal = document.getElementById('guestTotalSelect').value;
+
+  const name = nameInput.value.trim();
+  const attendance = attEl ? attEl.value : 'Hadir';
+  const wish = wishInput.value.trim();
+
+  if (!name) {
+    showRoyalToast('Mohon cantumkan nama lengkap Anda');
+    nameInput.focus();
+    return;
+  }
+
+  const isLady = (recipientRole === 'lady');
+  const recipientName = isLady ? 'Lady Beatrice' : 'Lord Arthur';
+  const targetPhone = isLady ? PHONE_LADY_BEATRICE : PHONE_LORD_ARTHUR;
+
+  // Format Warkat WhatsApp Elegan & Terstruktur
+  let msg = `Bonjour ${recipientName} & Pasangan,\n\n`;
+  msg += `Dengan penuh rasa hormat, saya ingin mengonfirmasi kehadiran untuk The Royal Wedding of Beatrice & Arthur:\n\n`;
+  msg += `⚜ *Nama Tamu:* ${name}\n`;
+  msg += `⚜ *Status Kehadiran:* ${attendance}\n`;
+  msg += `⚜ *Jumlah Tamu:* ${guestTotal}\n`;
+  if (wish) {
+    msg += `\n📜 *Untaian Doa & Vœux:*\n"${wish}"\n`;
+  }
+  msg += `\nTerima kasih atas undangannya dan sampai jumpa di Chateau de Versailles! ✨🏰`;
+
+  const waUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(msg)}`;
+
+  showRoyalToast(`Membuka WhatsApp ke ${recipientName}...`);
+  window.open(waUrl, '_blank');
+}
+
+/* ──────────────────────────────────────────────────────────────
+   7. 1-CLICK COPY TO CLIPBOARD & TOAST
+────────────────────────────────────────────────────────────── */
+let royalToastTimer = null;
+
+function showRoyalToast(msg) {
+  const toast = document.getElementById('royalToast');
+  document.getElementById('royalToastMsg').textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(royalToastTimer);
+  royalToastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+function copyRoyalAccount(text, label) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showRoyalToast(`${label} berhasil disalin!`);
+    }).catch(() => fallbackRoyalCopy(text, label));
+  } else {
+    fallbackRoyalCopy(text, label);
+  }
+}
+
+function fallbackRoyalCopy(text, label) {
+  const temp = document.createElement('textarea');
+  temp.value = text;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp);
+  showRoyalToast(`${label} berhasil disalin!`);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   8. ACTIVE NAV SCROLLSPY
+────────────────────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const sections = ['hero', 'mempelai', 'agenda', 'galeri', 'rsvp', 'tribut'];
+  const scrollPos = window.scrollY + 220;
+
+  for (let id of sections) {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.offsetTop;
+      const height = el.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        document.querySelectorAll('.dock-link').forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + id) {
+            item.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
+

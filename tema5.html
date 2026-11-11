@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Wedding of Dimas & Nadia — Modern Indonesian Heritage</title>
+  
+  <!-- Google Fonts: Marcellus, Plus Jakarta Sans, Playfair Display, Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       MODERN INDONESIAN HERITAGE DESIGN SYSTEM
+       Theme: Songket Palembang Emas & Royal Emerald & Tenun Sutra Kontemporer
+       ========================================================================== */
+    :root {
+      --emerald-dark: #092019;
+      --emerald-main: #11342A;
+      --emerald-light: #1A4D3E;
+      --emerald-subtle: #256350;
+      --gold-primary: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-pale: #FCF8E8;
+      --gold-deep: #AA820A;
+      --gold-bronze: #C5A059;
+      --ivory-cream: #FDFBF7;
+      --sand-warm: #F4EFE6;
+      --text-dark: #1C2421;
+      --text-muted: #596B64;
+      --text-gold: #C29B38;
+      
+      --font-serif-royal: 'Marcellus', Georgia, serif;
+      --font-serif-display: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-script: 'Great Vibes', cursive;
+      
+      --shadow-luxury: 0 16px 36px rgba(9, 32, 25, 0.12);
+      --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--ivory-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--gold-primary);
+      color: #092019;
+    }
+
+    /* Floating Jasmine / Bunga Melati Canvas */
+    #melati-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Outer Wrapper */
+    .site-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      box-shadow: 0 0 60px rgba(9, 32, 25, 0.18);
+      min-height: 100vh;
+      border-left: 1px solid rgba(212, 175, 55, 0.25);
+      border-right: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    /* Top Heritage Motif Border */
+    .songket-accent-strip {
+      width: 100%;
+      height: 8px;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--gold-primary),
+        var(--gold-primary) 8px,
+        var(--emerald-main) 8px,
+        var(--emerald-main) 16px
+      );
+    }
+
+    /* Shimmer Gold Animation */
+    @keyframes shimmerGold {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .gold-shimmer-text {
+      background: linear-gradient(90deg, #B8860B 0%, #F5DEB3 25%, #D4AF37 50%, #F5DEB3 75%, #B8860B 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerGold 6s linear infinite;
+    }
+
+    /* ==========================================================================
+       SECTION 1: COVER SCREEN (100% ABOVE THE FOLD - 100dvh)
+       Modern Asymmetrical Arch (Kubah Heritage Kontemporer)
+       ========================================================================== */
+    #cover {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(12px, 2.5vh, 26px) 16px;
+      background: 
+        radial-gradient(circle at 50% 30%, rgba(26, 77, 62, 0.96) 0%, rgba(9, 32, 25, 1) 100%);
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    /* Traditional Songket Pucuk Rebung Silhouette Background */
+    .cover-motif-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(var(--gold-primary) 1px, transparent 1px);
+      background-size: 18px 18px;
+      pointer-events: none;
+    }
+
+    /* Contemporary Arch Portal Frame */
+    .portal-arch-frame {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(17, 52, 42, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 200px 200px 12px 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: clamp(32px, 5vh, 46px) clamp(16px, 4vw, 28px) clamp(18px, 2.8vh, 26px);
+      position: relative;
+      box-shadow: 
+        0 20px 45px rgba(0, 0, 0, 0.5),
+        inset 0 0 35px rgba(212, 175, 55, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: archFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes archFadeUp {
+      0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Pucuk Rebung Songket Peak Graphic */
+    .pucuk-rebung-icon {
+      width: 52px;
+      height: 40px;
+      margin-bottom: clamp(6px, 1.2vh, 12px);
+      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
+    }
+
+    .cover-pretitle {
+      font-family: var(--font-sans);
+      font-size: clamp(0.68rem, 1.4vh, 0.78rem);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: clamp(2px, 0.6vh, 6px);
+      font-weight: 500;
+    }
+
+    .cover-names {
+      font-family: var(--font-serif-royal);
+      font-size: clamp(2.2rem, 5.8vh, 3.2rem);
+      line-height: 1.1;
+      color: #FFFFFF;
+      margin: 4px 0 2px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+    }
+    .cover-names .amp {
+      display: block;
+      font-family: var(--font-script);
+      font-size: 0.55em;
+      color: var(--gold-primary);
+      margin: -4px 0;
+    }
+
+    .cover-date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: clamp(4px, 1vh, 8px) 0 clamp(8px, 1.8vh, 14px);
+    }
+    .date-line {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary));
+    }
+    .date-line.right {
+      background: linear-gradient(90deg, var(--gold-primary), transparent);
+    }
+    .cover-date-text {
+      font-family: var(--font-serif-royal);
+      font-size: clamp(0.8rem, 1.6vh, 0.92rem);
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    /* Guest Card In Cover */
+    .cover-guest-wrapper {
+      width: 100%;
+      background: rgba(9, 32, 25, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: clamp(8px, 1.4vh, 12px) 14px;
+      margin-top: clamp(6px, 1.2vh, 12px);
+      position: relative;
+    }
+    .cover-guest-header {
+      font-size: 0.64rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #A3BFB5;
+      margin-bottom: 2px;
+    }
+    .cover-guest-name {
+      font-family: var(--font-serif-display);
+      font-size: clamp(1.15rem, 2.3vh, 1.35rem);
+      font-weight: 600;
+      color: var(--gold-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .cover-guest-name:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px var(--gold-primary);
+    }
+    .hint-edit-badge {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--gold-primary);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--gold-light);
+    }
+
+    /* Buka Undangan Royal Button */
+    .btn-buka-heritage {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: clamp(12px, 2vh, 18px);
+      padding: clamp(10px, 1.8vh, 13px) clamp(22px, 5vw, 34px);
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-deep) 100%);
+      color: var(--emerald-dark);
+      font-family: var(--font-serif-royal);
+      font-size: clamp(0.72rem, 1.5vh, 0.82rem);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      border: 1px solid var(--gold-pale);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-buka-heritage:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.55);
+      filter: brightness(1.08);
+    }
+
+    /* ==========================================================================
+       FLOATING AUDIO CONTROLLER (PIRINGAN WASTRA EMAS)
+       ========================================================================== */
+    .floating-audio-heritage {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 999;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--emerald-dark);
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .floating-audio-heritage:hover {
+      transform: scale(1.1);
+    }
+    .disc-wastra-inner {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--gold-primary),
+        var(--emerald-main),
+        var(--gold-deep),
+        var(--gold-light),
+        var(--gold-primary)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .disc-wastra-inner::after {
+      content: '♫';
+      font-size: 0.85rem;
+      color: var(--emerald-dark);
+      font-weight: bold;
+    }
+    .disc-wastra-inner.spinning {
+      animation: spinWastra 4s linear infinite;
+    }
+    @keyframes spinWastra {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================================
+       CONTENT SECTIONS (LAYOUT CONTEMPORARY EDITORIAL)
+       ========================================================================== */
+    section {
+      padding: clamp(38px, 6vh, 60px) clamp(18px, 4vw, 32px);
+      position: relative;
+    }
+
+    /* Section Subtitle & Title */
+    .sec-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: var(--font-serif-royal);
+      font-size: clamp(1.75rem, 3.8vh, 2.3rem);
+      color: var(--emerald-dark);
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .songket-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px auto 24px;
+      width: 100%;
+      max-width: 260px;
+    }
+    .songket-divider .div-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+    .songket-divider .div-motif {
+      color: var(--gold-primary);
+      font-size: 0.9rem;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       SECTION 2: AYAT & PETUAH LUHUR
+       ========================================================================== */
+    #verse {
+      background: var(--sand-warm);
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .verse-card-arch {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: clamp(24px, 4vh, 36px) clamp(16px, 3.5vw, 28px);
+      box-shadow: var(--shadow-luxury);
+      position: relative;
+    }
+    .arabic-script {
+      font-family: 'Amiri', serif, Georgia;
+      font-size: clamp(1.25rem, 2.6vh, 1.45rem);
+      line-height: 2.1;
+      color: var(--emerald-dark);
+      margin-bottom: 16px;
+      direction: rtl;
+    }
+    .verse-indonesia {
+      font-family: var(--font-serif-display);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .verse-ref-tag {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       SECTION 3: MEMPELAI (ASIMETRIS HAUTE-COUTURE EDITORIAL)
+       ========================================================================== */
+    #mempelai {
+      background: #FFFFFF;
+    }
+    .couple-editorial-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      margin-top: 24px;
+    }
+    .mempelai-card-modern {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--sand-warm);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      padding: 26px 20px;
+      position: relative;
+      box-shadow: var(--shadow-luxury);
+    }
+    .photo-arch-frame {
+      width: 170px;
+      height: 230px;
+      border-radius: 100px 100px 12px 12px;
+      border: 2px solid var(--gold-primary);
+      overflow: hidden;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-gold);
+      position: relative;
+    }
+    .photo-arch-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-arch-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .mempelai-title-badge {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .mempelai-call-name {
+      font-family: var(--font-serif-royal);
+      font-size: 1.85rem;
+      color: var(--emerald-dark);
+      margin-bottom: 2px;
+    }
+    .mempelai-full-name {
+      font-family: var(--font-serif-display);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .mempelai-parents {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .btn-ig-heritage {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--emerald-main);
+      text-decoration: none;
+      padding: 5px 14px;
+      border: 1px solid var(--emerald-light);
+      border-radius: 20px;
+      transition: all 0.2s;
+      background: #FFFFFF;
+    }
+    .btn-ig-heritage:hover {
+      background: var(--emerald-main);
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       SECTION 4: COUNTDOWN (EMERALD & GOLD REGAL)
+       ========================================================================== */
+    #countdown {
+      background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald-main) 100%);
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .countdown-gold-box {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 14px;
+      background: rgba(9, 32, 25, 0.6);
+      padding: 26px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-top: 18px;
+    }
+    .cd-grid-heritage {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .cd-cell {
+      background: rgba(26, 77, 62, 0.55);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 8px;
+      padding: 12px 4px;
+    }
+    .cd-num {
+      font-family: var(--font-serif-royal);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .cd-lbl {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #A3BFB5;
+    }
+
+    /* ==========================================================================
+       SECTION 5: ACARA (RANGKAIAN ADAT & RESEPSI)
+       ========================================================================== */
+    #agenda {
+      background: var(--ivory-cream);
+    }
+    .agenda-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow-luxury);
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .agenda-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
+    }
+    .agenda-type {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .agenda-name {
+      font-family: var(--font-serif-royal);
+      font-size: 1.45rem;
+      color: var(--emerald-dark);
+      margin-bottom: 14px;
+    }
+    .agenda-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+    .agenda-icon {
+      color: var(--gold-primary);
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    .btn-agenda-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn-agenda-pill {
+      flex: 1;
+      min-width: 135px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: var(--sand-warm);
+      border: 1px solid var(--gold-primary);
+      border-radius: 25px;
+      color: var(--emerald-dark);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-agenda-pill:hover {
+      background: var(--emerald-main);
+      color: #FFFFFF;
+      border-color: var(--emerald-main);
+    }
+
+    /* ==========================================================================
+       SECTION 6: PALET WASTRA (DRESS CODE BUSANA NUSANTARA)
+       ========================================================================== */
+    #palet {
+      background: var(--sand-warm);
+      text-align: center;
+    }
+    .palette-heritage-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: 24px 18px;
+      box-shadow: var(--shadow-luxury);
+      margin-top: 14px;
+    }
+    .palet-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .swatches-heritage-flex {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .swatch-heritage-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .swatch-circle-gold {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease;
+    }
+    .swatch-circle-gold:hover {
+      transform: scale(1.15);
+    }
+    .swatch-title {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--emerald-dark);
+    }
+
+    /* ==========================================================================
+       SECTION 7: KISAH CINTA (TAPESTRI PERJALANAN)
+       ========================================================================== */
+    #kisah {
+      background: #FFFFFF;
+    }
+    .story-timeline-heritage {
+      position: relative;
+      margin-top: 24px;
+      padding-left: 28px;
+    }
+    .story-timeline-heritage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold-primary), var(--gold-deep));
+    }
+    .story-step {
+      position: relative;
+      margin-bottom: 26px;
+    }
+    .story-step::before {
+      content: '✦';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--emerald-main);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .story-year {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-deep);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .story-heading {
+      font-family: var(--font-serif-royal);
+      font-size: 1.18rem;
+      color: var(--emerald-dark);
+      margin-bottom: 6px;
+    }
+    .story-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 8: GALERI WASTRA & PREWEDDING
+       ========================================================================== */
+    #galeri {
+      background: var(--sand-warm);
+      text-align: center;
+    }
+    .galeri-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .galeri-card-photo {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      position: relative;
+      cursor: pointer;
+      box-shadow: var(--shadow-luxury);
+    }
+    .galeri-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .galeri-card-photo:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(9, 32, 25, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-img-box {
+      max-width: 90%;
+      max-height: 80vh;
+      border: 2px solid var(--gold-primary);
+      border-radius: 8px;
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: var(--gold-light);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       SECTION 9: TANDA KASIH (AMPLOP DIGITAL & KADO)
+       ========================================================================== */
+    #kado {
+      background: #FFFFFF;
+      text-align: center;
+    }
+    .gift-card-royal {
+      background: var(--sand-warm);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: 20px 18px;
+      margin-top: 14px;
+      text-align: left;
+      box-shadow: var(--shadow-luxury);
+    }
+    .gift-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .bank-brand {
+      font-family: var(--font-serif-royal);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--emerald-dark);
+    }
+    .bank-logo-sub {
+      font-size: 0.7rem;
+      color: var(--gold-deep);
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .acc-digits {
+      font-family: var(--font-serif-display);
+      font-size: 1.45rem;
+      color: var(--emerald-dark);
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .acc-name {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .btn-copy-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      color: var(--emerald-dark);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--gold-primary);
+      border-radius: 20px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy-gold:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       SECTION 10: PENUTUP & DOA RESTU
+       ========================================================================== */
+    #closing {
+      background: linear-gradient(180deg, var(--ivory-cream) 0%, var(--sand-warm) 100%);
+      text-align: center;
+    }
+    .closing-box {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 14px;
+      padding: clamp(24px, 4vh, 36px) clamp(16px, 3.5vw, 28px);
+      box-shadow: var(--shadow-luxury);
+    }
+    .closing-text {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .closing-couple {
+      font-family: var(--font-serif-royal);
+      font-size: 2.1rem;
+      color: var(--emerald-dark);
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+    .closing-foot {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-top: 24px;
+      text-transform: uppercase;
+    }
+
+    /* Toast Notification */
+    #heritage-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: var(--emerald-dark);
+      color: var(--gold-light);
+      border: 1px solid var(--gold-primary);
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 1001;
+      white-space: nowrap;
+    }
+    #heritage-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Jasmine Petals Canvas -->
+  <canvas id="melati-canvas"></canvas>
+
+  <!-- Local Background Audio -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="Payung Teduh - Akad (Official Music Video).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Wastra Emas Audio Controller -->
+  <div class="floating-audio-heritage" id="music-widget" title="Putar / Jeda Musik">
+    <div class="disc-wastra-inner" id="disc-wastra"></div>
+  </div>
+
+  <!-- Main Website Container -->
+  <div class="site-container">
+
+    <!-- Top Traditional Songket Weave Accent -->
+    <div class="songket-accent-strip"></div>
+
+    <!-- ========================================================================
+         SECTION 1: COVER SCREEN (100% ABOVE THE FOLD - 100dvh)
+         ======================================================================== -->
+    <section id="cover">
+      <div class="cover-motif-bg"></div>
+
+      <!-- Modern Arch Portal Frame -->
+      <div class="portal-arch-frame">
+        <!-- SVG Pucuk Rebung Songket Motif -->
+        <svg class="pucuk-rebung-icon" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 2 L45 22 L37 22 L52 42 L8 42 L23 22 L15 22 Z" stroke="url(#goldGradient)" stroke-width="1.8" fill="rgba(212,175,55,0.12)"/>
+          <circle cx="30" cy="18" r="2.5" fill="#F3E5AB"/>
+          <circle cx="23" cy="34" r="2" fill="#D4AF37"/>
+          <circle cx="37" cy="34" r="2" fill="#D4AF37"/>
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F3E5AB"/>
+              <stop offset="50%" stop-color="#D4AF37"/>
+              <stop offset="100%" stop-color="#AA820A"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <span class="cover-pretitle">PAWIWAHAN AGUNG</span>
+
+        <h1 class="cover-names">
+          DIMAS<span class="amp">&</span>NADIA
+        </h1>
+
+        <div class="cover-date-badge">
+          <span class="date-line"></span>
+          <span class="cover-date-text">24 • OKTOBER • 2026</span>
+          <span class="date-line right"></span>
+        </div>
+
+        <!-- Dynamic Guest Card -->
+        <div class="cover-guest-wrapper">
+          <div class="cover-guest-header">KEPADA YTH. BAPAK/IBU/SAUDARA/I:</div>
+          <div class="cover-guest-name" id="guest-card" title="Klik untuk mengubah preview nama">
+            <span id="guest-name">Tamu Undangan</span>
+            <span class="hint-edit-badge">✎ Ganti</span>
+          </div>
+        </div>
+
+        <!-- Buka Undangan Action Button -->
+        <button class="btn-buka-heritage" id="btn-open-heritage">
+          <span>BUKA UNDANGAN</span>
+          <span>✦</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: AYAT & PETUAH LUHUR
+         ======================================================================== -->
+    <section id="verse" class="reveal">
+      <div class="sec-tag">KUTIPAN SUCI</div>
+      <h2 class="sec-title">Kalam Ilahi & Restu</h2>
+      <div class="songket-divider">
+        <span class="div-line"></span>
+        <span class="div-motif">❖</span>
+        <span class="div-line"></span>
+      </div>
+
+      <div class="verse-card-arch">
+        <div class="arabic-script">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+        </div>
+        <p class="verse-indonesia">
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+        </p>
+        <div class="verse-ref-tag">QS. AR-RUM : 21</div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 3: MEMPELAI (ASIMETRIS HAUTE-COUTURE)
+         ======================================================================== -->
+    <section id="mempelai" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-tag">PASANGAN MEMPELAI</div>
+        <h2 class="sec-title">Sang Pengantin</h2>
+        <div class="songket-divider">
+          <span class="div-line"></span>
+          <span class="div-motif">❖</span>
+          <span class="div-line"></span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 20px;">
+          Dengan penuh rasa syukur ke hadirat Allah SWT, kami bermaksud melangsungkan akad pernikahan putra-putri kami:
+        </p>
+      </div>
+
+      <div class="couple-editorial-wrap">
+        <!-- Groom -->
+        <div class="mempelai-card-modern">
+          <div class="photo-arch-frame">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80" alt="Dimas Rizky Pratama">
+          </div>
+          <span class="mempelai-title-badge">PENGANTIN PRIA</span>
+          <h3 class="mempelai-call-name">Dimas</h3>
+          <p class="mempelai-full-name">Dimas Rizky Pratama, S.T.</p>
+          <p class="mempelai-parents">
+            Putra Pertama dari Pasangan<br>
+            <strong>Bapak Bambang Pratama</strong><br>&amp; <strong>Ibu Sri Wahyuni</strong>
+          </p>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-ig-heritage">
+            <span>📷</span> @dimaspratama
+          </a>
+        </div>
+
+        <!-- Bride -->
+        <div class="mempelai-card-modern">
+          <div class="photo-arch-frame">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Nadia Anindya Putri">
+          </div>
+          <span class="mempelai-title-badge">PENGANTIN WANITA</span>
+          <h3 class="mempelai-call-name">Nadia</h3>
+          <p class="mempelai-full-name">Nadia Anindya Putri, S.Ds.</p>
+          <p class="mempelai-parents">
+            Putri Kedua dari Pasangan<br>
+            <strong>Bapak Hendra Gunawan</strong><br>&amp; <strong>Ibu Ratna Dewi</strong>
+          </p>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-ig-heritage">
+            <span>📷</span> @nadiaputri
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 4: COUNTDOWN (EMERALD & GOLD REGAL)
+         ======================================================================== -->
+    <section id="countdown" class="reveal">
+      <div class="sec-tag" style="color: var(--gold-light);">MENUJU HARI BAHAGIA</div>
+      <h2 class="sec-title" style="color: #FFFFFF;">Hitung Mundur Acara</h2>
+      <div class="songket-divider">
+        <span class="div-line" style="background: linear-gradient(90deg, transparent, var(--gold-light), transparent);"></span>
+        <span class="div-motif" style="color: var(--gold-light);">❖</span>
+        <span class="div-line" style="background: linear-gradient(90deg, transparent, var(--gold-light), transparent);"></span>
+      </div>
+
+      <div class="countdown-gold-box">
+        <p style="font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 8px;">
+          WAKTU YANG TERSISA
+        </p>
+        <div class="cd-grid-heritage">
+          <div class="cd-cell">
+            <div class="cd-num" id="cd-days">00</div>
+            <div class="cd-lbl">HARI</div>
+          </div>
+          <div class="cd-cell">
+            <div class="cd-num" id="cd-hours">00</div>
+            <div class="cd-lbl">JAM</div>
+          </div>
+          <div class="cd-cell">
+            <div class="cd-num" id="cd-minutes">00</div>
+            <div class="cd-lbl">MENIT</div>
+          </div>
+          <div class="cd-cell">
+            <div class="cd-num" id="cd-seconds">00</div>
+            <div class="cd-lbl">DETIK</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 5: ACARA (RANGKAIAN ADAT & RESEPSI)
+         ======================================================================== -->
+    <section id="agenda" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-tag">AGENDA ACARA</div>
+        <h2 class="sec-title">Waktu & Tempat</h2>
+        <div class="songket-divider">
+          <span class="div-line"></span>
+          <span class="div-motif">❖</span>
+          <span class="div-line"></span>
+        </div>
+      </div>
+
+      <!-- Akad Nikah -->
+      <div class="agenda-card">
+        <span class="agenda-type">SESI PERTAMA</span>
+        <h3 class="agenda-name">Akad Nikah & Upacara Adat</h3>
+        
+        <div class="agenda-info-row">
+          <span class="agenda-icon">📅</span>
+          <div>
+            <strong>Sabtu, 24 Oktober 2026</strong><br>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Pukul 08.00 - 10.00 WIB</span>
+          </div>
+        </div>
+
+        <div class="agenda-info-row">
+          <span class="agenda-icon">🏛️</span>
+          <div>
+            <strong>Grand Ballroom The Heritage Palace</strong><br>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Jl. Jenderal Sudirman Kav. 28, Jakarta Pusat</span>
+          </div>
+        </div>
+
+        <div class="btn-agenda-actions">
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-agenda-pill">
+            <span>🗺️</span> BUKA GOOGLE MAPS
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Dimas+%26+Nadia&dates=20261024T010000Z/20261024T030000Z&details=Akad+Nikah+Dimas+%26+Nadia&location=The+Heritage+Palace+Jakarta" target="_blank" rel="noopener noreferrer" class="btn-agenda-pill">
+            <span>📅</span> SIMPAN KE KALENDER
+          </a>
+        </div>
+      </div>
+
+      <!-- Resepsi -->
+      <div class="agenda-card">
+        <span class="agenda-type">SESI KEDUA</span>
+        <h3 class="agenda-name">Resepsi Pernikahan</h3>
+        
+        <div class="agenda-info-row">
+          <span class="agenda-icon">📅</span>
+          <div>
+            <strong>Sabtu, 24 Oktober 2026</strong><br>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Pukul 11.30 - 14.30 WIB</span>
+          </div>
+        </div>
+
+        <div class="agenda-info-row">
+          <span class="agenda-icon">🏛️</span>
+          <div>
+            <strong>Grand Ballroom The Heritage Palace</strong><br>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Jl. Jenderal Sudirman Kav. 28, Jakarta Pusat</span>
+          </div>
+        </div>
+
+        <div class="btn-agenda-actions">
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-agenda-pill">
+            <span>🗺️</span> BUKA GOOGLE MAPS
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Dimas+%26+Nadia&dates=20261024T043000Z/20261024T073000Z&details=Resepsi+Dimas+%26+Nadia&location=The+Heritage+Palace+Jakarta" target="_blank" rel="noopener noreferrer" class="btn-agenda-pill">
+            <span>📅</span> SIMPAN KE KALENDER
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 6: PALET WASTRA (DRESS CODE BUSANA NUSANTARA)
+         ======================================================================== -->
+    <section id="palet" class="reveal">
+      <div class="sec-tag">PANDUAN BUSANA</div>
+      <h2 class="sec-title">Palet Warna Wastra</h2>
+      <div class="songket-divider">
+        <span class="div-line"></span>
+        <span class="div-motif">❖</span>
+        <span class="div-line"></span>
+      </div>
+
+      <div class="palette-heritage-card">
+        <p class="palet-desc">
+          Tanpa mengurangi rasa hormat, tamu undangan disarankan mengenakan busana bernuansa Wastra Nusantara (Batik, Tenun, atau Songket) dengan harmoni warna berikut:
+        </p>
+
+        <div class="swatches-heritage-flex">
+          <div class="swatch-heritage-item">
+            <div class="swatch-circle-gold" style="background: #11342A;"></div>
+            <span class="swatch-title">Emerald</span>
+          </div>
+          <div class="swatch-heritage-item">
+            <div class="swatch-circle-gold" style="background: #D4AF37;"></div>
+            <span class="swatch-title">Songket Gold</span>
+          </div>
+          <div class="swatch-heritage-item">
+            <div class="swatch-circle-gold" style="background: #78281F;"></div>
+            <span class="swatch-title">Marun Soga</span>
+          </div>
+          <div class="swatch-heritage-item">
+            <div class="swatch-circle-gold" style="background: #FDFBF7;"></div>
+            <span class="swatch-title">Ivory Sutra</span>
+          </div>
+          <div class="swatch-heritage-item">
+            <div class="swatch-circle-gold" style="background: #8C6239;"></div>
+            <span class="swatch-title">Tembaga</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 7: KISAH CINTA (TAPESTRI PERJALANAN)
+         ======================================================================== -->
+    <section id="kisah" class="reveal">
+      <div style="text-align: center;">
+        <div class="sec-tag">TAPESTRI PERJALANAN</div>
+        <h2 class="sec-title">Kisah Cinta Kami</h2>
+        <div class="songket-divider">
+          <span class="div-line"></span>
+          <span class="div-motif">❖</span>
+          <span class="div-line"></span>
+        </div>
+      </div>
+
+      <div class="story-timeline-heritage">
+        <div class="story-step">
+          <div class="story-year">2021 • AWAL PERJUMPAAN</div>
+          <h4 class="story-heading">Untaian Takdir di Galeri Seni</h4>
+          <p class="story-text">
+            Pertemuan pertama kami berakar dari apresiasi bersama pada pameran kain Wastra Nusantara di Yogyakarta. Diskusi hangat mengenai makna filosofis motif batik membuka lembaran cerita yang tak disangka.
+          </p>
+        </div>
+
+        <div class="story-step">
+          <div class="story-year">2023 • MENYATUKAN LANGKAH</div>
+          <h4 class="story-heading">Dua Hati Saling Menguatkan</h4>
+          <p class="story-text">
+            Dalam setiap ujian dan suka duka, kami belajar bahwa cinta bukan sekadar rasa kagum, melainkan komitmen untuk saling mendukung, menghargai, dan menenun impian bersama.
+          </p>
+        </div>
+
+        <div class="story-step">
+          <div class="story-year">2025 • PINANGAN KELUARGA</div>
+          <h4 class="story-heading">Ikrar di Hadapan Orang Tua</h4>
+          <p class="story-text">
+            Dengan restu kedua orang tua dan sanak saudara, ikatan pertunangan diresmikan dalam balutan kehangatan keluarga besar. Sebuah langkah sakral menuju ikrar seumur hidup.
+          </p>
+        </div>
+
+        <div class="story-step">
+          <div class="story-year">2026 • JANJI SUCI</div>
+          <h4 class="story-heading">Pernikahan yang Diridhai</h4>
+          <p class="story-text">
+            Kini kami siap menyatukan doa dan langkah dalam tali pernikahan yang suci. Menyempurnakan separuh agama dan membangun bahtera rumah tangga yang sakinah, mawaddah, warahmah.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 8: GALERI WASTRA & PREWEDDING
+         ======================================================================== -->
+    <section id="galeri" class="reveal">
+      <div class="sec-tag">KENANGAN INDAH</div>
+      <h2 class="sec-title">Galeri Prewedding</h2>
+      <div class="songket-divider">
+        <span class="div-line"></span>
+        <span class="div-motif">❖</span>
+        <span class="div-line"></span>
+      </div>
+
+      <div class="galeri-grid-modern">
+        <div class="galeri-card-photo" onclick="openHeritageLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&auto=format&fit=crop&q=80" alt="Moment 1">
+        </div>
+        <div class="galeri-card-photo" onclick="openHeritageLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&auto=format&fit=crop&q=80" alt="Moment 2">
+        </div>
+        <div class="galeri-card-photo" onclick="openHeritageLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&auto=format&fit=crop&q=80" alt="Moment 3">
+        </div>
+        <div class="galeri-card-photo" onclick="openHeritageLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&auto=format&fit=crop&q=80" alt="Moment 4">
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="heritage-lightbox" onclick="closeHeritageLightbox()">
+      <span class="lightbox-close-btn">&times;</span>
+      <img src="" alt="Enlarged" class="lightbox-img-box" id="heritage-lightbox-img">
+    </div>
+
+    <!-- ========================================================================
+         SECTION 9: TANDA KASIH (AMPLOP DIGITAL & KADO)
+         ======================================================================== -->
+    <section id="kado" class="reveal">
+      <div class="sec-tag">TANDA KASIH</div>
+      <h2 class="sec-title">Kado Pernikahan</h2>
+      <div class="songket-divider">
+        <span class="div-line"></span>
+        <span class="div-motif">❖</span>
+        <span class="div-line"></span>
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 460px; margin: 0 auto 16px;">
+        Kehadiran dan doa restu Anda adalah anugerah terbesar bagi kami. Namun apabila Anda berkenan mengirimkan tanda kasih secara digital, Anda dapat melalui rekening di bawah ini:
+      </p>
+
+      <!-- BCA -->
+      <div class="gift-card-royal">
+        <div class="gift-card-header">
+          <div>
+            <div class="bank-brand">BANK BCA</div>
+            <div class="bank-logo-sub">TRANSFER ELEKTRONIK</div>
+          </div>
+          <span style="font-size: 1.4rem;">💳</span>
+        </div>
+        <div class="acc-digits">8820 4912 30</div>
+        <div class="acc-name">a.n. Dimas Rizky Pratama</div>
+        <button class="btn-copy-gold" onclick="copyHeritageText('8820491230', 'Rekening BCA Dimas')">
+          <span>📋</span> SALIN NO. REKENING
+        </button>
+      </div>
+
+      <!-- Mandiri -->
+      <div class="gift-card-royal">
+        <div class="gift-card-header">
+          <div>
+            <div class="bank-brand">BANK MANDIRI</div>
+            <div class="bank-logo-sub">TRANSFER ELEKTRONIK</div>
+          </div>
+          <span style="font-size: 1.4rem;">💳</span>
+        </div>
+        <div class="acc-digits">1370 0192 8491</div>
+        <div class="acc-name">a.n. Nadia Anindya Putri</div>
+        <button class="btn-copy-gold" onclick="copyHeritageText('137001928491', 'Rekening Mandiri Nadia')">
+          <span>📋</span> SALIN NO. REKENING
+        </button>
+      </div>
+
+      <!-- Alamat Kado Fisik -->
+      <div class="gift-card-royal">
+        <div class="gift-card-header">
+          <div>
+            <div class="bank-brand">PENGIRIMAN KADO FISIK</div>
+            <div class="bank-logo-sub">ALAMAT DOMISILI</div>
+          </div>
+          <span style="font-size: 1.4rem;">📦</span>
+        </div>
+        <div style="font-size: 0.9rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 12px;">
+          <strong>Kediaman Mempelai:</strong><br>
+          Graha Heritage Regency Kav. B-15, Jl. Wijaya Kusuma No. 88, Kebayoran Baru, Jakarta Selatan 12160<br>
+          <em>(Penerima: Dimas & Nadia / 0812-3456-7890)</em>
+        </div>
+        <button class="btn-copy-gold" onclick="copyHeritageText('Graha Heritage Regency Kav. B-15, Jl. Wijaya Kusuma No. 88, Kebayoran Baru, Jakarta Selatan 12160 (Penerima: Dimas & Nadia / 0812-3456-7890)', 'Alamat Pengiriman Kado')">
+          <span>📋</span> SALIN ALAMAT KADO
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 10: PENUTUP & DOA RESTU
+         ======================================================================== -->
+    <section id="closing" class="reveal">
+      <div class="closing-box">
+        <div class="sec-tag">UNGKAPAN TERIMA KASIH</div>
+        <div class="songket-divider">
+          <span class="div-line"></span>
+          <span class="div-motif">❖</span>
+          <span class="div-line"></span>
+        </div>
+
+        <p class="closing-text">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu bagi kami dalam menempuh lembaran hidup yang baru.
+        </p>
+
+        <p style="font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600;">
+          KAMI YANG BERBAHAGIA,
+        </p>
+        <h3 class="closing-couple">Dimas &amp; Nadia</h3>
+
+        <div class="closing-foot">
+          © 2026 DIMAS & NADIA • MODERN INDONESIAN HERITAGE
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End .site-container -->
+
+  <!-- Toast Notification Popup -->
+  <div id="heritage-toast">BERHASIL DISALIN!</div>
+
+  <!-- ========================================================================
+       JAVASCRIPT LOGIC & INTERACTION
+       ======================================================================== -->
+  <script>
+    /* ──────────────────────────────────────────────
+       1. FLOATING JASMINE / MELATI PETALS CANVAS
+       ────────────────────────────────────────────── */
+    (function initMelatiCanvas() {
+      const canvas = document.getElementById('melati-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H;
+      let petals = [];
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class MelatiPetal {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * W;
+          this.y = Math.random() * H;
+          this.size = Math.random() * 7 + 4;
+          this.vy = Math.random() * 0.8 + 0.4;
+          this.vx = Math.sin(Math.random() * Math.PI) * 0.5;
+          this.rot = Math.random() * Math.PI * 2;
+          this.vRot = (Math.random() - 0.5) * 0.02;
+          this.alpha = Math.random() * 0.55 + 0.25;
+          this.isGoldSpeck = Math.random() > 0.7; // Sebagian serpihan emas songket
+        }
+        update() {
+          this.y += this.vy;
+          this.x += this.vx;
+          this.rot += this.vRot;
+          if (this.y > H + 20 || this.x < -20 || this.x > W + 20) {
+            this.reset();
+            this.y = -15;
+          }
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rot);
+          ctx.globalAlpha = this.alpha;
+
+          if (this.isGoldSpeck) {
+            // Serpihan kilau benang emas songket
+            ctx.fillStyle = '#D4AF37';
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 0.3, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            // Kelopak Bunga Melati Putih Gading
+            ctx.fillStyle = '#FFFDF7';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, this.size * 0.5, this.size, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Aksen tengah kelopak
+            ctx.fillStyle = '#F3E5AB';
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 0.15, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      const count = Math.min(28, Math.floor(window.innerWidth / 32));
+      for (let i = 0; i < count; i++) {
+        petals.push(new MelatiPetal());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < petals.length; i++) {
+          petals[i].update();
+          petals[i].draw();
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    /* ──────────────────────────────────────────────
+       2. URL QUERY PARAMETER & GUEST NAME
+       ────────────────────────────────────────────── */
+    (function initGuestName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestFromUrl = urlParams.get('to') || urlParams.get('u') || urlParams.get('nama');
+      const guestEl = document.getElementById('guest-name');
+      const guestCard = document.getElementById('guest-card');
+
+      if (guestFromUrl && guestEl) {
+        guestEl.textContent = guestFromUrl;
+      }
+
+      if (guestCard && guestEl) {
+        guestCard.addEventListener('click', function() {
+          const current = guestEl.textContent.trim();
+          const nextName = prompt("Ubah nama tamu (untuk preview / bagikan tautan):", current);
+          if (nextName && nextName.trim() !== "") {
+            guestEl.textContent = nextName.trim();
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('to', nextName.trim());
+            window.history.replaceState({}, '', newUrl);
+            showHeritageToast("Nama tamu berhasil diperbarui!");
+          }
+        });
+      }
+    })();
+
+    /* ──────────────────────────────────────────────
+       3. BACKGROUND AUDIO & PIRINGAN WASTRA CONTROLLER
+       ────────────────────────────────────────────── */
+    const audioEl = document.getElementById('bg-audio');
+    const musicWidget = document.getElementById('music-widget');
+    const discWastra = document.getElementById('disc-wastra');
+    let isPlaying = false;
+
+    function playMusic() {
+      if (!audioEl) return;
+      audioEl.volume = 0.6;
+      const playPromise = audioEl.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isPlaying = true;
+          if (discWastra) discWastra.classList.add('spinning');
+        }).catch(err => {
+          console.warn('Autoplay terhalang browser, menunggu interaksi pengguna:', err);
+        });
+      }
+    }
+
+    function pauseMusic() {
+      if (!audioEl) return;
+      audioEl.pause();
+      isPlaying = false;
+      if (discWastra) discWastra.classList.remove('spinning');
+    }
+
+    if (musicWidget) {
+      musicWidget.addEventListener('click', () => {
+        if (isPlaying) {
+          pauseMusic();
+        } else {
+          playMusic();
+        }
+      });
+    }
+
+    // Tombol Buka Undangan
+    const btnOpenHeritage = document.getElementById('btn-open-heritage');
+    if (btnOpenHeritage) {
+      btnOpenHeritage.addEventListener('click', function(e) {
+        e.preventDefault();
+        playMusic();
+        const target = document.getElementById('verse');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    /* ──────────────────────────────────────────────
+       4. COUNTDOWN TIMER
+       ────────────────────────────────────────────── */
+    (function initCountdown() {
+      const targetDate = new Date('2026-10-24T08:00:00+07:00').getTime();
+      const elDays = document.getElementById('cd-days');
+      const elHours = document.getElementById('cd-hours');
+      const elMinutes = document.getElementById('cd-minutes');
+      const elSeconds = document.getElementById('cd-seconds');
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          if (elDays) elDays.textContent = "00";
+          if (elHours) elHours.textContent = "00";
+          if (elMinutes) elMinutes.textContent = "00";
+          if (elSeconds) elSeconds.textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMinutes) elMinutes.textContent = String(minutes).padStart(2, '0');
+        if (elSeconds) elSeconds.textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    })();
+
+    /* ──────────────────────────────────────────────
+       5. SCROLL REVEAL OBSERVER
+       ────────────────────────────────────────────── */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('active'));
+    }
+
+    /* ──────────────────────────────────────────────
+       6. COPY TO CLIPBOARD & TOAST NOTIFICATION
+       ────────────────────────────────────────────── */
+    function showHeritageToast(msg) {
+      const toast = document.getElementById('heritage-toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copyHeritageText(text, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showHeritageToast(`✓ ${label} berhasil disalin!`);
+        }).catch(() => {
+          fallbackHeritageCopy(text, label);
+        });
+      } else {
+        fallbackHeritageCopy(text, label);
+      }
+    }
+
+    function fallbackHeritageCopy(text, label) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showHeritageToast(`✓ ${label} berhasil disalin!`);
+      } catch (err) {
+        showHeritageToast("Gagal menyalin!");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    /* ──────────────────────────────────────────────
+       7. GALLERY LIGHTBOX MODAL
+       ────────────────────────────────────────────── */
+    function openHeritageLightbox(el) {
+      const img = el.querySelector('img');
+      const modal = document.getElementById('heritage-lightbox');
+      const targetImg = document.getElementById('heritage-lightbox-img');
+      if (img && modal && targetImg) {
+        targetImg.src = img.src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeHeritageLightbox() {
+      const modal = document.getElementById('heritage-lightbox');
+      if (modal) modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeHeritageLightbox();
+    });
+  </script>
+</body>
+</html>
+
