@@ -390,25 +390,26 @@ body {
 
 /* Mobile Drawer Backdrop */
 .mobile-nav-backdrop {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 9995;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0.25s;
 }
 .mobile-nav-backdrop.is-open {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  display: block !important;
+  animation: fadeInBackdrop 0.2s ease forwards;
+}
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Mobile Drawer Navigation */
 .mobile-nav-drawer {
+  display: none;
   position: fixed;
   top: 58px;
   left: 0;
@@ -424,18 +425,21 @@ body {
   border-bottom: 1px solid rgba(45, 212, 191, 0.3);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.9), 0 0 30px rgba(45, 212, 191, 0.1);
   z-index: 9999;
-  transform: translateY(-120%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.3s;
   padding: 16px 0 24px;
 }
 .mobile-nav-drawer.is-open {
-  transform: translateY(0) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  display: block !important;
+  animation: drawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes drawerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mobile-drawer-inner {
@@ -2995,44 +2999,67 @@ body {
   window.showToast = showToast;
 
   // 2. Mobile Navigation Drawer Toggle Logic (Immediate Global Exposure)
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  let lastToggleTime = 0;
 
   function openMobileMenu() {
-    if (hamburgerBtn) {
-      hamburgerBtn.classList.add('is-active');
-      hamburgerBtn.setAttribute('aria-expanded', 'true');
+    const btn = document.getElementById('hamburgerBtn');
+    const drawer = document.getElementById('mobileNavDrawer');
+    const backdrop = document.getElementById('mobileNavBackdrop');
+    const header = document.getElementById('mainHeader');
+
+    if (header && drawer) {
+      const headerHeight = header.offsetHeight || 58;
+      drawer.style.top = headerHeight + 'px';
+      drawer.style.maxHeight = 'calc(100vh - ' + headerHeight + 'px)';
     }
-    if (mobileNavDrawer) {
-      mobileNavDrawer.classList.add('is-open');
+
+    if (btn) {
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-expanded', 'true');
     }
-    if (mobileNavBackdrop) {
-      mobileNavBackdrop.classList.add('is-open');
+    if (drawer) {
+      drawer.classList.add('is-open');
+    }
+    if (backdrop) {
+      backdrop.classList.add('is-open');
     }
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileMenu() {
-    if (hamburgerBtn) {
-      hamburgerBtn.classList.remove('is-active');
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    const btn = document.getElementById('hamburgerBtn');
+    const drawer = document.getElementById('mobileNavDrawer');
+    const backdrop = document.getElementById('mobileNavBackdrop');
+
+    if (btn) {
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-expanded', 'false');
     }
-    if (mobileNavDrawer) {
-      mobileNavDrawer.classList.remove('is-open');
+    if (drawer) {
+      drawer.classList.remove('is-open');
     }
-    if (mobileNavBackdrop) {
-      mobileNavBackdrop.classList.remove('is-open');
+    if (backdrop) {
+      backdrop.classList.remove('is-open');
     }
     document.body.style.overflow = '';
   }
 
   function toggleMobileMenu(e) {
-    if (e && e.preventDefault) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (e) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
     }
-    if (mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+    const now = Date.now();
+    if (now - lastToggleTime < 350) {
+      return; // Prevent double trigger from dual event listener or rapid taps
+    }
+    lastToggleTime = now;
+
+    const drawer = document.getElementById('mobileNavDrawer');
+    if (!drawer) return;
+
+    if (drawer.classList.contains('is-open')) {
       closeMobileMenu();
     } else {
       openMobileMenu();
@@ -3044,16 +3071,13 @@ body {
   window.closeMobileMenu = closeMobileMenu;
   window.toggleMobileMenu = toggleMobileMenu;
 
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', toggleMobileMenu);
-  }
-
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
   if (mobileNavBackdrop) {
     mobileNavBackdrop.addEventListener('click', closeMobileMenu);
-    mobileNavBackdrop.addEventListener('touchstart', closeMobileMenu, { passive: true });
   }
 
   // Close when clicking any menu link inside drawer
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
   if (mobileNavDrawer) {
     mobileNavDrawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
@@ -3064,8 +3088,11 @@ body {
 
   // Close on Escape key
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
-      closeMobileMenu();
+    if (e.key === 'Escape') {
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (drawer && drawer.classList.contains('is-open')) {
+        closeMobileMenu();
+      }
     }
   });
 
