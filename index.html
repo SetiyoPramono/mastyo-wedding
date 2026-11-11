@@ -157,7 +157,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 10005;
   background: rgba(9, 13, 20, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -353,9 +353,10 @@ body {
   padding: 0;
   transition: all 0.25s ease;
   flex-shrink: 0;
-  z-index: 1010;
+  z-index: 10010;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  pointer-events: auto;
 }
 .btn-hamburger:hover, .btn-hamburger:focus {
   background: rgba(45, 212, 191, 0.15);
@@ -394,24 +395,26 @@ body {
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 1000;
+  z-index: 9995;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease, visibility 0.25s;
 }
 .mobile-nav-backdrop.is-open {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 /* Mobile Drawer Navigation */
 .mobile-nav-drawer {
   position: fixed;
-  top: 54px;
+  top: 58px;
   left: 0;
   right: 0;
   width: 100%;
-  max-height: calc(100vh - 54px);
+  max-height: calc(100vh - 58px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #090d14;
@@ -420,19 +423,19 @@ body {
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(45, 212, 191, 0.3);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.9), 0 0 30px rgba(45, 212, 191, 0.1);
-  z-index: 1001;
+  z-index: 9999;
   transform: translateY(-120%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.35s;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.3s;
   padding: 16px 0 24px;
 }
 .mobile-nav-drawer.is-open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .mobile-drawer-inner {
@@ -1979,7 +1982,7 @@ body {
         </a>
 
         <!-- Mobile Hamburger Toggle Button (Hanya tampil di Mobile) -->
-        <button type="button" class="btn-hamburger" id="hamburgerBtn" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <button type="button" class="btn-hamburger" id="hamburgerBtn" onclick="window.toggleMobileMenu(event)" aria-label="Buka Menu Navigasi" aria-expanded="false">
           <span class="hamburger-line line-1"></span>
           <span class="hamburger-line line-2"></span>
           <span class="hamburger-line line-3"></span>
@@ -1990,7 +1993,7 @@ body {
 </header>
 
 <!-- Mobile Navigation Backdrop & Slide-Down Drawer (Placed outside header for perfect layering) -->
-<div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="window.closeMobileMenu()"></div>
 <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Menu Navigasi Mobile">
   <div class="container">
     <div class="mobile-drawer-inner">
@@ -2976,17 +2979,109 @@ body {
 (function() {
   'use strict';
 
-  // 1. Guest Name Customizer (?to=...)
+  // 1. Toast Notification System (Defined first so it's always available)
+  const toastBox = document.getElementById('catalogToast');
+  let toastTimeout = null;
+
+  function showToast(msg) {
+    if (!toastBox) return;
+    toastBox.textContent = msg;
+    toastBox.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toastBox.classList.remove('show');
+    }, 2500);
+  }
+  window.showToast = showToast;
+
+  // 2. Mobile Navigation Drawer Toggle Logic (Immediate Global Exposure)
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+  function openMobileMenu() {
+    if (hamburgerBtn) {
+      hamburgerBtn.classList.add('is-active');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
+    if (mobileNavDrawer) {
+      mobileNavDrawer.classList.add('is-open');
+    }
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.classList.add('is-open');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    if (hamburgerBtn) {
+      hamburgerBtn.classList.remove('is-active');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+    if (mobileNavDrawer) {
+      mobileNavDrawer.classList.remove('is-open');
+    }
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.classList.remove('is-open');
+    }
+    document.body.style.overflow = '';
+  }
+
+  function toggleMobileMenu(e) {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Expose functions globally for inline onclick
+  window.openMobileMenu = openMobileMenu;
+  window.closeMobileMenu = closeMobileMenu;
+  window.toggleMobileMenu = toggleMobileMenu;
+
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+    mobileNavBackdrop.addEventListener('touchstart', closeMobileMenu, { passive: true });
+  }
+
+  // Close when clicking any menu link inside drawer
+  if (mobileNavDrawer) {
+    mobileNavDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+  }
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      closeMobileMenu();
+    }
+  });
+
+  // 3. Guest Name Customizer (?to=...)
   const guestNameInput = document.getElementById('guestNameInput');
   const applyGuestBtn = document.getElementById('applyGuestBtn');
   const themeLinks = document.querySelectorAll('[data-theme-link]');
 
-  function updateAllThemeUrls() {
+  function updateAllThemeUrls(notify = true) {
+    if (!guestNameInput) return;
     const rawName = guestNameInput.value.trim();
     const encodedName = encodeURIComponent(rawName);
 
     themeLinks.forEach(link => {
       const baseFile = link.getAttribute('data-theme-link');
+      if (!baseFile) return;
       if (rawName) {
         link.href = `${baseFile}?to=${encodedName}`;
       } else {
@@ -2994,28 +3089,30 @@ body {
       }
     });
 
-    if (rawName) {
-      showToast(`Nama tamu "${rawName}" diterapkan ke semua demo!`);
-    } else {
-      showToast('Nama tamu dikosongkan.');
+    if (notify) {
+      if (rawName) {
+        showToast(`Nama tamu "${rawName}" diterapkan ke semua demo!`);
+      } else {
+        showToast('Nama tamu dikosongkan.');
+      }
     }
   }
 
   if (applyGuestBtn) {
-    applyGuestBtn.addEventListener('click', updateAllThemeUrls);
+    applyGuestBtn.addEventListener('click', () => updateAllThemeUrls(true));
   }
   if (guestNameInput) {
     guestNameInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        updateAllThemeUrls();
+        updateAllThemeUrls(true);
       }
     });
   }
 
-  // Set initial default guest name
-  updateAllThemeUrls();
+  // Initialize links without throwing toast on load
+  updateAllThemeUrls(false);
 
-  // 2. All Theme Cards Visibility & Dynamic Count
+  // 4. All Theme Cards Visibility & Dynamic Count
   const themeCards = document.querySelectorAll('.theme-card');
   themeCards.forEach(card => card.style.display = 'flex');
 
@@ -3024,7 +3121,7 @@ body {
     catalogStatusText.textContent = `Menampilkan Seluruh ${themeCards.length} Koleksi Tema Undangan Online`;
   }
 
-  // 3. Interactive Decorative Stage Micro-Parallax
+  // 5. Interactive Decorative Stage Micro-Parallax
   const decorativeStage = document.querySelector('.decorative-stage');
   if (decorativeStage) {
     decorativeStage.addEventListener('mousemove', (e) => {
@@ -3044,20 +3141,7 @@ body {
     });
   }
 
-  // 4. Toast Notification & Copy Link
-  const toastBox = document.getElementById('catalogToast');
-  let toastTimeout = null;
-
-  window.showToast = function(msg) {
-    if (!toastBox) return;
-    toastBox.textContent = msg;
-    toastBox.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-      toastBox.classList.remove('show');
-    }, 2500);
-  };
-
+  // 6. Copy Theme Link with Toast
   window.copyThemeLink = function(themeFile) {
     const rawName = guestNameInput ? guestNameInput.value.trim() : '';
     let finalUrl = window.location.origin + window.location.pathname.replace('index.html', '') + themeFile;
@@ -3090,7 +3174,7 @@ body {
     document.body.removeChild(input);
   }
 
-  // 5. Fixed Sticky Navbar Scroll Effect & Back-to-Top Floating Button
+  // 7. Fixed Sticky Navbar Scroll Effect & Back-to-Top Floating Button
   const mainHeader = document.getElementById('mainHeader');
   const backToTopBtn = document.getElementById('backToTopBtn');
 
@@ -3124,66 +3208,6 @@ body {
       });
     });
   }
-
-  // Mobile Navigation Drawer Toggle Logic
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-
-  function openMobileMenu() {
-    if (!hamburgerBtn || !mobileNavDrawer) return;
-    hamburgerBtn.classList.add('is-active');
-    hamburgerBtn.setAttribute('aria-expanded', 'true');
-    mobileNavDrawer.classList.add('is-open');
-    if (mobileNavBackdrop) mobileNavBackdrop.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMobileMenu() {
-    if (!hamburgerBtn || !mobileNavDrawer) return;
-    hamburgerBtn.classList.remove('is-active');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    mobileNavDrawer.classList.remove('is-open');
-    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  function toggleMobileMenu(e) {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    if (mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
-      closeMobileMenu();
-    } else {
-      openMobileMenu();
-    }
-  }
-
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', toggleMobileMenu);
-  }
-
-  if (mobileNavBackdrop) {
-    mobileNavBackdrop.addEventListener('click', closeMobileMenu);
-    mobileNavBackdrop.addEventListener('touchstart', closeMobileMenu, { passive: true });
-  }
-
-  // Close when clicking any menu link inside drawer
-  if (mobileNavDrawer) {
-    mobileNavDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
-  }
-
-  // Close on Escape key
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
-      closeMobileMenu();
-    }
-  });
 
 })();
 </script>
