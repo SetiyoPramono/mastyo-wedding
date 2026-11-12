@@ -1570,6 +1570,57 @@ body {
   height: 20px;
 }
 
+/* Floating Panduan Kirim Undangan Button */
+.floating-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 18px;
+  background: linear-gradient(135deg, rgba(14, 21, 32, 0.96) 0%, rgba(20, 38, 48, 0.94) 100%);
+  color: #f8fafc;
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(45, 212, 191, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+}
+.floating-guide-btn:hover {
+  background: linear-gradient(135deg, rgba(20, 32, 48, 0.98) 0%, rgba(15, 60, 60, 0.96) 100%);
+  color: var(--mastyo-teal-light);
+  border-color: var(--mastyo-teal);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 24px var(--mastyo-teal-glow);
+}
+.floating-guide-btn svg {
+  width: 18px;
+  height: 18px;
+  color: var(--mastyo-amber);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.floating-guide-btn:hover svg {
+  transform: rotate(-10deg) scale(1.1);
+  color: var(--mastyo-amber-light);
+}
+.guide-floating-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--mastyo-amber-light);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  line-height: 1.2;
+}
+
 /* Toast Message */
 #catalogToast {
   position: fixed;
@@ -1907,9 +1958,25 @@ body {
     width: 18px;
     height: 18px;
   }
+  .floating-guide-btn {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    gap: 7px;
+  }
+  .floating-guide-btn svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 @media (max-width: 440px) {
+  .floating-guide-btn .guide-floating-badge {
+    display: none;
+  }
+  .floating-guide-btn {
+    padding: 8px 12px;
+    font-size: 0.76rem;
+  }
   .logo-subtitle {
     display: none;
   }
@@ -1974,6 +2041,10 @@ body {
           <span>Kirim Undangan</span>
           <span class="nav-badge-pill">Baru</span>
         </a>
+        <a href="panduan-kirim-undangan.html" class="nav-link" title="Panduan Lengkap Cara Kirim Undangan">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Panduan Kirim</span>
+        </a>
       </nav>
 
       <div class="header-actions">
@@ -2028,6 +2099,18 @@ body {
           <span class="drawer-link-sub">Kirim personalisasi nama tamu otomatis 1-klik</span>
         </div>
         <span class="drawer-link-badge badge-new">Baru</span>
+      </a>
+
+      <!-- Menu Panduan Kirim Undangan -->
+      <a href="panduan-kirim-undangan.html" class="mobile-drawer-link" id="mobileLinkPanduan">
+        <div class="drawer-link-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="9" y1="7" x2="16" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line></svg>
+        </div>
+        <div class="drawer-link-content">
+          <span class="drawer-link-title">Panduan Kirim Undangan</span>
+          <span class="drawer-link-sub">Tutorial bergambar nama tamu & trik WhatsApp</span>
+        </div>
+        <span class="drawer-link-badge badge-teal">Panduan</span>
       </a>
 
       <a href="#keunggulanSection" class="mobile-drawer-link" id="mobileLinkKeunggulan">
@@ -3009,7 +3092,7 @@ body {
   </div>
 </footer>
 
-<!-- Floating Actions Dock (Back to Top & WhatsApp Consultation) -->
+<!-- Floating Actions Dock (Back to Top, Panduan & WhatsApp) -->
 <div class="floating-actions-dock">
   <!-- Floating Back to Top Button -->
   <button type="button" id="backToTopBtn" class="floating-back-to-top" title="Kembali ke Atas" aria-label="Kembali ke Atas Halaman">
@@ -3017,6 +3100,18 @@ body {
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
+
+  <!-- Floating Panduan Kirim Undangan Button -->
+  <a href="panduan-kirim-undangan.html" class="floating-guide-btn" title="Buka Panduan Lengkap Cara Kirim Undangan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      <line x1="9" y1="7" x2="16" y2="7"></line>
+      <line x1="9" y1="11" x2="15" y2="11"></line>
+    </svg>
+    <span>Panduan Kirim</span>
+    <span class="guide-floating-badge">Tips</span>
+  </a>
 
   <!-- Floating WhatsApp Quick Consultation Button (082332261924) -->
   <a href="https://api.whatsapp.com/send?phone=6282332261924&text=Halo%20MasTyo%20Wedding,%20saya%20ingin%20konsultasi%20pembuatan%20undangan%20online"
